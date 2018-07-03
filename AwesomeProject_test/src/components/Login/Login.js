@@ -9,6 +9,7 @@ import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
 import IcoMoonConfig from '../../selection.json';
 const Icon = createIconSetFromIcoMoon(IcoMoonConfig);
 import { Fonts } from '../../utils/Fonts';
+import LinearGradient from 'react-native-linear-gradient';
 
 
 // set connection of firebase
@@ -240,15 +241,13 @@ class Login extends Component {
       ref = {(input) => this.passwordInput = input}
       ></TextInput>
       </View>
-      <AwesomeButton
-          style={styles.LoginButton}
-          type="anchor"
-          width={ windowWidth * 0.75}
-          textColor="#fff"
+      <TouchableOpacity style={styles.LoginButton}
           onPress = {() => this.loginFirebase(this.state.email, this.state.password)}
         >
-          Login
-        </AwesomeButton>
+        <LinearGradient colors={['#72d60e', '#66bf0d', '#3a6d06']} style = {{flex: 1, justifyContent: 'center', height: 55, borderRadius: 27, width: windowWidth * 0.75}}>
+          <Text style={styles.LoginTextstyle}>Login</Text>
+        </LinearGradient>
+        </TouchableOpacity>
       {/* <TouchableOpacity style={styles.LoginButton}
       onPress = {() => this.loginFirebase(this.state.email, this.state.password)}
       ><Text style={styles.LoginTextstyle}>Login</Text></TouchableOpacity> */}
@@ -260,10 +259,12 @@ class Login extends Component {
         <TouchableOpacity style={styles.LoginButton2}
           onPress = {() => this.loginWithFacebook()}
           >
-          <View style = {{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style = {{flex: 1, justifyContent: 'center', height: 55, borderRadius: 27, width: windowWidth * 0.75}}>
+          <View style = {{flex: 1,flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>
           <Icon name="facebook" style={{ paddingRight: 10,}} size={20} color = '#fff'/>
           <Text style={styles.LoginTextstyle}>Connect with Facebook</Text>
           </View>
+        </LinearGradient>
         </TouchableOpacity>
         </View>
         </View>
@@ -291,7 +292,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: windowWidth,
     overflow: 'hidden',
-    height: windowHeight * 0.73,
+    height: windowHeight * 0.7,
   },
   background: {
     borderRadius: (windowHeight+windowWidth) /2,
@@ -303,7 +304,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   image: {
-    height: windowHeight * 0.73,
+    height: windowHeight * 0.7,
     width: windowWidth,
     position: 'absolute',
     bottom: 0,
@@ -343,7 +344,6 @@ const styles = StyleSheet.create({
     LoginButton2:{
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#2980b9',
       marginHorizontal: 40,
       height: 55,
       borderRadius: 27,
@@ -351,6 +351,7 @@ const styles = StyleSheet.create({
     LoginTextstyle:{
       color: '#ffffff',
       fontWeight: 'bold',
+      alignSelf: 'center'
     },
   });
 
