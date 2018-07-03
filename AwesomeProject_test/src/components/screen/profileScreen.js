@@ -40,7 +40,7 @@ const ARTICLES = [
 ]
 
 const ARTICLES_length = ARTICLES.length;
-const amountpin = 1;
+const amountpin = 0;
 
 
 export default class ProfileScreen extends React.Component {
@@ -136,6 +136,7 @@ _keyExtractor = (item, index) => item._key;
           _key: child.key
         });
       });
+      amountpin = tasks.length;
   
       this.setState({
         dataTips:tasks,
@@ -227,8 +228,7 @@ renderItemTips(item){
 
   render() {
     return (
-
-      <SafeAreaView style={styles.container}>
+      <View>
 
       <Modal
         transparent={true}
@@ -365,7 +365,7 @@ renderItemTips(item){
                         renderItem = {({item}) => this.renderItemTips(item)} />
         </View>
         </ScrollView>
-      </SafeAreaView>
+        </View>
     );
   }
 }

@@ -3,6 +3,7 @@ package com.awesomeproject_test;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import iyegoroff.RNTextGradient.RNTextGradientPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.imagepicker.ImagePickerPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -10,6 +11,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
+import iyegoroff.RNTextGradient.RNTextGradientPackage;
 
 
 import java.util.Arrays;
@@ -27,7 +29,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNTextGradientPackage(),
           new LinearGradientPackage(),
+          new RNTextGradientPackage(),
           new ImagePickerPackage(),
           new VectorIconsPackage()
           // new FBSDKPackage(mCallbackManager)

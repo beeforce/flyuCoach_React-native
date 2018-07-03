@@ -211,7 +211,7 @@ class Login extends Component {
             <View style={styles.image}>
       <Image source = {require('../../images/logo_app.png')}
               resizeMode={'stretch'}
-              style = {{ width:windowWidth * 0.7, height: windowHeight * 0.2, alignSelf: 'center', marginTop:40 }}
+              style = {{ flex: 1, width:windowWidth * 0.7, height: windowHeight * 0.2, alignSelf: 'center', marginTop:40 }}
               ></Image>
       <View style={styles.content}>
       <View style={styles.searchSection}>
@@ -292,7 +292,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: windowWidth,
     overflow: 'hidden',
-    height: windowHeight * 0.7,
+    height: windowHeight * 0.61,
   },
   background: {
     borderRadius: (windowHeight+windowWidth) /2,
@@ -304,7 +304,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   image: {
-    height: windowHeight * 0.7,
+    height: windowHeight * 0.61,
     width: windowWidth,
     position: 'absolute',
     bottom: 0,
@@ -315,7 +315,10 @@ const styles = StyleSheet.create({
     flex:1
   },
     content:{
-      marginTop: 40
+      flex: 2,
+      justifyContent: 'center',
+      marginTop: 30,
+
     },
     canvas: {
         width: windowWidth,
@@ -342,6 +345,7 @@ const styles = StyleSheet.create({
       height: 55,
     },
     LoginButton2:{
+      marginTop: 30,
       justifyContent: 'center',
       alignItems: 'center',
       marginHorizontal: 40,

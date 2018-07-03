@@ -8,6 +8,13 @@ import SettingsScreen from '../screen/settingScreen';
 import QandAScreen from '../screen/QandAScreen';
 import ScheduleScreen from '../screen/ScheduleScreen';
 import ProfileScreen from '../screen/profileScreen';
+import addMoreQuestionScreen from '../screen/addMoreQuestionScreen';
+
+const navigationOptions = ({ navigation }) => ({
+  headerLeft: <HeaderBackButton onPress={() => navigation.goBack(null)} />,
+  headerStyle: {backgroundColor: '#EEEEEE', elevation: 0, shadowOpacity: 0},
+  style: { elevation: 0 }
+})
 
 const FeedStack = createStackNavigator({
   Feed: FeedScreen,
@@ -46,6 +53,9 @@ ScheduleStack.navigationOptions = {
 //Q&A page
 const QandAStack = createStackNavigator({
   QandA: QandAScreen,
+  addQuestion: {
+		screen: addMoreQuestionScreen,
+	}
 });
 
 QandAStack.navigationOptions = {
@@ -72,12 +82,6 @@ VIPsStack.navigationOptions = {
     />
   ),
 };
-
-const navigationOptions = ({ navigation }) => ({
-  headerLeft: <HeaderBackButton onPress={() => navigation.goBack(null)} />,
-  headerStyle: {backgroundColor: '#EEEEEE', elevation: 0, shadowOpacity: 0},
-  style: { elevation: 0 }
-})
 
 //Profile
 const ProfileStack = createStackNavigator({
