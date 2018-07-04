@@ -244,7 +244,7 @@ class Login extends Component {
       <TouchableOpacity style={styles.LoginButton}
           onPress = {() => this.loginFirebase(this.state.email, this.state.password)}
         >
-        <LinearGradient colors={['#72d60e', '#66bf0d', '#3a6d06']} style = {{flex: 1, justifyContent: 'center', height: 55, borderRadius: 27, width: windowWidth * 0.75}}>
+        <LinearGradient colors={['#bced49', '#3e9e16']} style = {{flex: 1, justifyContent: 'center', height: 55, borderRadius: 27, width: windowWidth * 0.75}}>
           <Text style={styles.LoginTextstyle}>Login</Text>
         </LinearGradient>
         </TouchableOpacity>
@@ -292,7 +292,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: windowWidth,
     overflow: 'hidden',
-    height: windowHeight * 0.61,
+    height: windowHeight * 0.62,
   },
   background: {
     borderRadius: (windowHeight+windowWidth) /2,
@@ -304,7 +304,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   image: {
-    height: windowHeight * 0.61,
+    height: windowHeight * 0.62,
     width: windowWidth,
     position: 'absolute',
     bottom: 0,

@@ -31,7 +31,7 @@ ShowHideTextComponentView = () =>{
     const { isShown } = this.state;
     return (
         <View>
-        <LinearGradient colors={['#f70c5a', '#c60b49', '#910836']} style = {styles.container}>
+        <LinearGradient colors={['#f94581', '#f91863', '#910836']} style = {styles.container}>
         <TouchableHighlight onPress={this.ShowHideTextComponentView} style = {{borderRadius: 10}} underlayColor = 'transparent'>
         <View style = {{flexDirection: 'row', alignItems: 'baseline',justifyContent: 'space-between', marginTop:10, marginBottom:10}}>
         <Text style={styles.questionTitle}>{this.props.title}</Text>
@@ -45,7 +45,7 @@ ShowHideTextComponentView = () =>{
         </TouchableHighlight>
     </LinearGradient>
     {
-        this.state.isShown ? <LinearGradient colors={['#72d60e', '#488709', '#325e06']} style = {{marginTop: 2, justifyContent: 'center', alignSelf: 'center', borderRadius: 10, marginHorizontal: 20}}>
+        this.state.isShown ? <LinearGradient colors={['#88e222', '#69b513', '#325e06']} style = {{marginTop: 2, justifyContent: 'center', alignSelf: 'center', borderRadius: 10, marginHorizontal: 20}}>
         <View style = {{alignSelf: 'flex-start', marginTop:10, marginLeft:20, marginBottom:10, marginRight:20}}>
         <Text style={styles.questionText}>{this.props.text}</Text>
         </View>
@@ -71,14 +71,16 @@ const styles = StyleSheet.create({
         marginLeft: 15, 
         lineHeight: 15,
         padding: 5, 
-        fontFamily: Fonts.Roboto_medium
+        fontFamily: Fonts.Kanit,
+        fontSize: 15
     },
     questionText:{
         alignSelf:'flex-start',
         color: '#fff',
         lineHeight: 20,
         padding: 5,
-        fontFamily: Fonts.Roboto_medium
+        fontFamily: Fonts.Kanit,
+        fontSize: 14
     },
   });
 

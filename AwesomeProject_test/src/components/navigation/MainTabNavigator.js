@@ -38,7 +38,7 @@ const ScheduleStack = createStackNavigator({
 });
 
 ScheduleStack.navigationOptions = {
-  tabBarLabel: 'Schedule',
+  tabBarLabel: 'Activity',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
     focused = {focused}
@@ -59,7 +59,7 @@ const QandAStack = createStackNavigator({
 });
 
 QandAStack.navigationOptions = {
-  tabBarLabel: 'Q & A',
+  tabBarLabel: 'Question',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}

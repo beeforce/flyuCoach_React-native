@@ -7,13 +7,15 @@ Dimensions,
 Image, 
 TouchableOpacity,
 ScrollView,
-Animated
+Animated,
+TextInput,
  } from 'react-native';
 
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
 import IcoMoonConfig from '../../selection.json';
 const Icon = createIconSetFromIcoMoon(IcoMoonConfig);
 import { Fonts } from '../../utils/Fonts';
+import LinearGradient from 'react-native-linear-gradient';
 
 const SCREEN_HEIGHT = Dimensions.get("window").height
 const SCREEN_WIDTH = Dimensions.get("window").width
@@ -38,7 +40,14 @@ export default class SettingsScreen extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {email: '' ,
+    this.state = {email:'matoyza007@gmail.com',
+                  phonenumber: '0823165489',
+                  Fullname: 'Matoy Sukhuvimonpanich',
+                  Nickname: 'Toy',
+                  Date_of_Birth: '20/05/2008',
+                  province:'Uttaradit',
+                  school:'Uttaradit School',
+                  goal:'วิศวกรโยธา มช.',
                   user:null,
                   Modalopen : true,
                   loading: true,
@@ -70,7 +79,7 @@ render() {
             ]
             )}  >
 
-              <View style = {{flexDirection: 'row', alignItems: 'baseline',justifyContent: 'center'}}>
+             <View style = {{flexDirection: 'row', alignItems: 'baseline',justifyContent: 'center'}}>
               {this.renderProfileImage()}
                 <TouchableOpacity style={styles.goalButton} onPress = {()=> {
                   ImagePicker.showImagePicker(options, (response) => {
@@ -98,79 +107,160 @@ render() {
                   }
                 })
                 }}>
+                <LinearGradient colors={['#f7c042', '#f2892e','#f26304']} style={styles.goalButton} >
                 <Text style={{color: '#ffffff', fontWeight: 'bold', fontFamily: Fonts.Roboto_medium , margin: 10}}>แก้ไขภาพโปรไฟล์</Text>
+                </LinearGradient>
                 </TouchableOpacity>
                 </View>
 
                 <View style = {styles.contentcontainer}>
                 <View style = {{borderBottomWidth: 0.5, borderColor: '#c9c9c9',}}>
                 <View style = {styles.layouteachcontent} >
-                <View style = {{ flexDirection : 'row', marginBottom: 3}}>
+                <View style = {{ flexDirection : 'row',}}>
                 <Text>Email</Text>
                 <Icon name="envelope" style={{ paddingLeft: 8, }} size={16} color = '#2c3e50'/>
                 </View>
-                <Text style = {{fontFamily:Fonts.Roboto_medium, fontWeight: 'bold'}}>matoyza007@gmail.com</Text>
+                <TextInput 
+                style = {{fontFamily:Fonts.Roboto_medium, fontWeight: 'bold',}}
+                value= {this.state.email}
+                placeholderTextColor="#2c3e50"
+                keyboardType = "email-address"
+                returnKeyType = "next"
+                underlineColorAndroid="transparent"
+                onChangeText={(email) => this.setState({email})}
+                onSubmitEditing = {() => this.phonenumber.focus()}
+                />
                 </View>
                 </View>
 
                 <View style = {{borderBottomWidth: 0.5, borderColor: '#c9c9c9',}}>
                 <View style = {styles.layouteachcontent} >
-                <View style = {{ flexDirection : 'row', marginBottom: 3}}>
+                <View style = {{ flexDirection : 'row',}}>
                 <Text>Phone Number</Text>
                 <Icon name="phone" style={{ paddingLeft: 8, }} size={16} color = '#2c3e50'/>
                 </View>
-                <Text style = {{fontFamily:Fonts.Roboto_Regular, fontWeight: 'bold'}}>0853352116</Text>
+                <TextInput 
+                style = {{fontFamily:Fonts.Roboto_medium, fontWeight: 'bold',}}
+                value= {this.state.phonenumber}
+                placeholderTextColor="#2c3e50"
+                keyboardType = "numeric"
+                returnKeyType = "next"
+                underlineColorAndroid="transparent"
+                onChangeText={(phonenumber) => this.setState({phonenumber})}
+                ref = {(input) => this.phonenumber = input}
+                onSubmitEditing = {() => this.Fullname.focus()}
+                />
                 </View>
                 </View>
 
                 <View style = {{borderBottomWidth: 0.5, borderColor: '#c9c9c9',}}>
                 <View style = {styles.layouteachcontent} >
-                <View style = {{ flexDirection : 'row', marginBottom: 3}}>
+                <View style = {{ flexDirection : 'row',}}>
                 <Text>Fullname</Text>
                 <Icon name="user" style={{ paddingLeft: 8, }} size={16} color = '#2c3e50'/>
                 </View>
-                <Text style = {{fontFamily:Fonts.Roboto_Regular, fontWeight: 'bold'}}>Matoy Sukhuvimonpanich</Text>
+                <TextInput 
+                style = {{fontFamily:Fonts.Roboto_medium, fontWeight: 'bold',}}
+                value= {this.state.Fullname}
+                placeholderTextColor="#2c3e50"
+                keyboardType = "default"
+                returnKeyType = "next"
+                underlineColorAndroid="transparent"
+                onChangeText={(Fullname) => this.setState({Fullname})}
+                ref = {(input) => this.Fullname = input}
+                onSubmitEditing = {() => this.Nickname.focus()}
+                />
                 </View>
                 </View>
 
                 <View style = {{borderBottomWidth: 0.5, borderColor: '#c9c9c9',}}>
                 <View style = {styles.layouteachcontent} >
-                <View style = {{ flexDirection : 'row', marginBottom: 3}}>
+                <View style = {{ flexDirection : 'row',}}>
                 <Text>Nickname</Text>
                 <Icon name="user" style={{ paddingLeft: 8, }} size={16} color = '#2c3e50'/>
                 </View>
-                <Text style = {{fontFamily:Fonts.Roboto_Regular, fontWeight: 'bold'}}>Toy</Text>
+                <TextInput 
+                style = {{fontFamily:Fonts.Roboto_medium, fontWeight: 'bold',}}
+                value= {this.state.Nickname}
+                placeholderTextColor="#2c3e50"
+                keyboardType = "default"
+                returnKeyType = "next"
+                underlineColorAndroid="transparent"
+                onChangeText={(Nickname) => this.setState({Nickname})}
+                ref = {(input) => this.Nickname = input}
+                onSubmitEditing = {() => this.Date_of_Birth.focus()}
+                />
                 </View>
                 </View>
 
                 <View style = {{borderBottomWidth: 0.5, borderColor: '#c9c9c9',}}>
                 <View style = {styles.layouteachcontent} >
-                <View style = {{ flexDirection : 'row', marginBottom: 3}}>
+                <View style = {{ flexDirection : 'row',}}>
                 <Text>Date of Birth</Text>
                 <Icon name="birthday-cake" style={{ paddingLeft: 8, }} size={16} color = '#2c3e50'/>
                 </View>
-                <Text style = {{fontFamily:Fonts.Roboto_Regular, fontWeight: 'bold'}}>20/05/2008</Text>
+                <TextInput 
+                style = {{fontFamily:Fonts.Roboto_medium, fontWeight: 'bold',}}
+                value= {this.state.Date_of_Birth}
+                placeholderTextColor="#2c3e50"
+                placeholder = "DD/MM/YYYY"
+                keyboardType = "numeric"
+                returnKeyType = "next"
+                underlineColorAndroid="transparent"
+                onChangeText={(Date_of_Birth) => this.setState({Date_of_Birth})}
+                ref = {(input) => this.Date_of_Birth = input}
+                onSubmitEditing = {() => this.province.focus()}
+                />
                 </View>
                 </View>
 
                 <View style = {{borderBottomWidth: 0.5, borderColor: '#c9c9c9',}}>
                 <View style = {{flexDirection: 'row'}}>
 
-                <View style = {styles.layouteachcontent} >
-                <View style = {{ flexDirection : 'row', marginBottom: 3}}>
+                <View style = {{
+                flex: 1,
+                flexDirection: 'column',
+                marginTop: 10,
+                marginLeft: 15, 
+                marginRight: 15, }} >
+                <View style = {{ flexDirection : 'row',}}>
                 <Text>Province</Text>
                 <Icon name="map-marker-alt" style={{ paddingLeft: 8, }} size={16} color = '#2c3e50'/>
                 </View>
-                <Text style = {{fontFamily:Fonts.Roboto_Regular, fontWeight: 'bold'}}>Uttaradit</Text>
+                <TextInput 
+                style = {{fontFamily:Fonts.Roboto_medium, fontWeight: 'bold',}}
+                value= {this.state.province}
+                placeholderTextColor="#2c3e50"
+                keyboardType = "default"
+                returnKeyType = "next"
+                underlineColorAndroid="transparent"
+                onChangeText={(province) => this.setState({province})}
+                ref = {(input) => this.province = input}
+                onSubmitEditing = {() => this.School.focus()}
+                multiline
+                blurOnSubmit={true}
+                />
                 </View>
 
-                <View style = {{borderLeftWidth: 0.5, borderColor: '#c9c9c9',}}>
+                <View style = {{borderLeftWidth: 0.5, borderColor: '#c9c9c9',flex: 2}}>
                 <View style = {styles.layouteachcontent} >
-                <View style = {{ flexDirection : 'row', marginBottom: 3}}>
+                <View style = {{ flexDirection : 'row',}}>
                 <Text>School</Text>
                 <Icon name="school" style={{ paddingLeft: 8, }} size={16} color = '#2c3e50'/>
                 </View>
-                <Text style = {{fontFamily:Fonts.Roboto_Regular, fontWeight: 'bold'}}>Uttaradit School</Text>
+                <TextInput 
+                style = {{fontFamily:Fonts.Roboto_medium, fontWeight: 'bold',}}
+                value= {this.state.school}
+                placeholderTextColor="#2c3e50"
+                keyboardType = "default"
+                returnKeyType = "next"
+                underlineColorAndroid="transparent"
+                onChangeText={(school) => this.setState({school})}
+                ref = {(input) => this.School = input}
+                onSubmitEditing = {() => this.goal.focus()}
+                multiline
+                blurOnSubmit={true}
+                />
                 </View>
                 </View>
 
@@ -179,18 +269,29 @@ render() {
 
                 <View style = {{borderBottomWidth: 0.5, borderColor: '#c9c9c9',}}>
                 <View style = {styles.layouteachcontent} >
-                <View style = {{ flexDirection : 'row', marginBottom: 3}}>
+                <View style = {{ flexDirection : 'row',}}>
                 <Text>Goal</Text>
                 <Icon name="road" style={{ paddingLeft: 8, }} size={16} color = '#2c3e50'/>
                 </View>
-                <Text style = {{fontFamily:Fonts.Roboto_Regular, fontWeight: 'bold'}}>วิศวกรโยธา มช.</Text>
+                <TextInput 
+                style = {{fontFamily:Fonts.Roboto_medium, fontWeight: 'bold',}}
+                value= {this.state.goal}
+                placeholderTextColor="#2c3e50"
+                keyboardType = "default"
+                returnKeyType = "done"
+                underlineColorAndroid="transparent"
+                onChangeText={(goal) => this.setState({goal})}
+                ref = {(input) => this.goal = input}
+                />
                 </View>
                 </View>
               </View>
 
-               <TouchableOpacity style={styles.saveButton}>
+               <LinearGradient colors={['#bbe84a','#7bd834', '#3e9e16']} style={styles.saveButton}>
+               <TouchableOpacity>
                 <Text style={{color: '#ffffff', fontWeight: 'bold', fontFamily: Fonts.Roboto_medium , textAlign:'center', alignSelf:'center'}}>บันทึกการแก้ไข</Text>
-              </TouchableOpacity>
+                </TouchableOpacity>
+                </LinearGradient>
         </ScrollView>
         </View>
     );
@@ -200,17 +301,13 @@ render() {
 const styles = StyleSheet.create({
   container: {
       flex: 1,
-      backgroundColor: '#EEEEEE'
+      backgroundColor: '#EEEEEE',
+      overflow: 'hidden',
   },
   goalButton:{
-    backgroundColor: '#e67e22',
     alignSelf: 'center',
     borderRadius: 27,
     marginLeft: 20,
-    shadowColor: '#000',
-    shadowOpacity : 0.24, 
-    shadowRadius: 10, 
-    elevation: 3,
   },
   saveButton:{
     backgroundColor: '#A3CB38',
@@ -251,7 +348,6 @@ const styles = StyleSheet.create({
   layouteachcontent:{
     flexDirection: 'column',
     marginTop: 10,
-    marginBottom: 10, 
     marginLeft: 15, 
     marginRight: 15, 
   }

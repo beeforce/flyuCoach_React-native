@@ -22,6 +22,7 @@ import * as Progress from 'react-native-progress';
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
 import IcoMoonConfig from '../../selection.json';
 import { Fonts } from '../../utils/Fonts';
+import LinearGradient from 'react-native-linear-gradient';
 
 
 const Icon = createIconSetFromIcoMoon(IcoMoonConfig);
@@ -191,20 +192,20 @@ renderItemTips(item){
 
   <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline'}}>
 
-  <View style = {{flex: 1,}}>
+  <View>
   <View style = {{borderColor: '#e67e22', borderRadius: 5, borderWidth: 2, alignSelf: 'flex-start'}}>
   <Text style = {{margin:2, color:'#e67e22', fontSize: 12,}}>{item.type}</Text>
   </View>
   </View>
   
-  <View style = {{flex: 1, flexDirection: 'row', alignItems: 'baseline', alignSelf: 'flex-end'}}>
-  <Icon name="clock2" style={{ paddingRight:5,}} size={13} color = '#000'/>
-  <Text style = {{margin:2, color:'#000000', fontSize: 12}}>{item.date}</Text>
+  <View style = {{flexDirection: 'row', alignItems: 'baseline', alignSelf: 'flex-end'}}>
+  <Icon name="clock2" style={{ paddingRight:5, paddingBottom:1}} size={10} color = '#000'/>
+  <Text style = {{ color:'#000000', fontSize: 10}}>{item.date}</Text>
   </View>
 
   </View>
 
-  <Text style = {{fontSize: 14, fontWeight: 'bold', }}>{item.title}</Text>
+  <Text style = {{fontSize: 14, fontFamily: Fonts.Kanit, color: '#000', marginTop:5 }}>{item.title}</Text>
   {/* color = '#2c3e50' */}
   </View>
   </View>
@@ -252,7 +253,7 @@ renderItemTips(item){
                 <Image resizeMode = 'stretch' source = {{uri: 'https://firebasestorage.googleapis.com/v0/b/test-fb2a3.appspot.com/o/dataImages%2FtipsTypeImages%2Ficon_annou.png?alt=media&token=b15cf403-ed6e-4e7c-90d9-353035ee3399'}} style={{ width:25, height:25, borderRadius:(25/2),}}></Image>
                 <Text style = {{marginLeft: 7, color:'#e67e22'}}>Announcement</Text>
                 </View>
-                <Text style = {{fontSize: 14, fontWeight: 'bold',}}>ย้อนกลับไปอ่านใหม่</Text>
+                <Text style = {{fontSize: 14, fontWeight: 'bold', color:'#000'}}>ย้อนกลับไปอ่านใหม่</Text>
                 </View>
                 <View style = {{flex:1, justifyContent: 'center' , flexDirection: 'column', alignItems: 'center',}}>
                     <View style = {{flex:3,}}>
@@ -304,7 +305,10 @@ renderItemTips(item){
                       <Text style = {{fontSize: 13, fontWeight: 'bold', color: '#4cd137'}}>{this.state.cardIndex +1 }/ </Text>
                       <Text style = {{fontSize: 13, fontWeight: 'bold',}}>{ARTICLES_length} Cards</Text>
                       </View>
-                      <Progress.Bar progress={(this.state.cardIndex + 1)/ ARTICLES_length} width={SCREEN_WIDTH*0.5} height={15} style = {{alignSelf: 'center', marginTop:10}}/>
+                      <Progress.Bar progress={(this.state.cardIndex + 1)/ ARTICLES_length} 
+                      width={SCREEN_WIDTH*0.5} height={15} 
+                      style = {{alignSelf: 'center', marginTop:10, borderRadius: 15, backgroundColor: '#3e9e16'}}
+                      color = "rgb(115, 214, 40)"/>
                       </View>
                       <View>
                       {/* <Text style = {{fontSize: 14, fontWeight: 'bold', color: '#32ff7e',}}>Next</Text> */}
@@ -328,37 +332,37 @@ renderItemTips(item){
             )}  >
         <View style = {styles.profileImagecontent}>
         <Image source={require('../../images/image.jpg')} style={ styles.profileImage } />
-        <Text style = {{padding:8, fontFamily:Fonts.Roboto_Regular}}>matoyza007@gmail.com</Text>
+        <Text style = {{padding:8, fontFamily:Fonts.Roboto_Regular, color: '#000'}}>matoyza007@gmail.com</Text>
         </View>
     
         <View style = {styles.cardviewcontent}>
           <View style = {{ flexDirection: 'row', marginLeft:15, marginRight: 15, 
           marginTop: 15, marginBottom: 15, justifyContent: 'space-between', alignItems: 'baseline'}} >
           <View style = {{ flexDirection: 'column', alignSelf: 'flex-start'}}>
-          <Text style = {{ margin:2, fontWeight: 'bold', fontFamily: Fonts.Roboto_medium,}}>Matoy Sukhuvimonpanich (Toy)</Text>
-          <Text style = {{ margin:2, fontFamily: Fonts.Roboto_medium,}}>Uttaradit, Uttaradit school</Text>
+          <Text style = {{ margin:2, fontWeight: 'bold', fontFamily: Fonts.Roboto_medium, color: '#000'}}>Matoy Sukhuvimonpanich (Toy)</Text>
+          <Text style = {{ margin:2, fontFamily: Fonts.Roboto_medium, color: '#000'}}>Uttaradit, Uttaradit school</Text>
           </View>
           <View style = {{ flexDirection: 'column', alignItems: 'baseline', alignSelf: 'flex-end'}}>
-          <Text style = {{margin:2, color:'#000000', fontSize: 12}}>แก้ไขข้อมูล</Text>
+          <Text style = {{margin:2, color:'#000', fontSize: 12}}>แก้ไขข้อมูล</Text>
           <TouchableOpacity style={{ paddingRight:5, alignSelf: 'center'}}
           onPress={() => this.props.navigation.push('Profile2')}>
-          <Icon name="edit" size={22} color = '#000'/></TouchableOpacity>
+          <Icon name="edit" size={27} color = '#000'/></TouchableOpacity>
           </View>
           </View>
         </View>
 
-        <Text style = {{alignSelf: 'center', fontWeight: 'bold', fontFamily: Fonts.Roboto_medium,}}>เป้าหมายของเรา</Text>
-        <View style={styles.goalButton}>
+        <Text style = {{alignSelf: 'center', fontWeight: 'bold', fontFamily: Fonts.Roboto_medium, color: '#000'}}>เป้าหมายของเรา</Text>
+        <LinearGradient colors={['#f7c042', '#f2892e','#f26304']} style = {styles.goalButton}>
           <View style = {{flexDirection: 'row', justifyContent: 'space-between'}}>
           <Text style={{color: '#ffffff', fontWeight: 'bold', fontFamily: Fonts.Roboto_medium ,margin: 15}}>วิศวกรโยธา มช.</Text>
-          <View style = {{backgroundColor: '#44bd32', width:50, height:50, borderRadius:25, justifyContent:'center', 
+          <LinearGradient colors={['#bbe84a','#7bd834', '#3e9e16']} style = {{backgroundColor: '#44bd32', width:50, height:50, borderRadius:25, justifyContent:'center', 
           alignItems:'center', shadowColor: '#000', shadowOpacity : 0.24, shadowRadius: 3, elevation: 3, }}>
           <Image source={require('../../images/check_white.png')} style={{ width: 20, height:20}} />
+          </LinearGradient>
           </View>
-          </View>
-        </View>
+        </LinearGradient>
       
-        <Text style = {{ marginLeft: 20, marginBottom: 10, fontWeight: 'bold', marginTop: 15, marginLeft: 15,}}>
+        <Text style = {{ marginLeft: 20, marginBottom: 10, fontWeight: 'bold', marginTop: 15, marginLeft: 15, color: '#000'}}>
         Your Pins ( {amountpin} )</Text>
         <View style = {styles.pincontent}>
         <FlatList data = {this.state.dataTips} keyExtractor={this._keyExtractor}

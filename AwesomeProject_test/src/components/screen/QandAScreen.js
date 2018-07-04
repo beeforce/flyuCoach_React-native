@@ -16,9 +16,9 @@ const ARTICLES = [
   text: 'ต้องฝึกที่จะรักตัวเองก่อน หาสิ่งดีๆให้ รู้จักให้รางวัลกับตัวเอง และที่สำคัญหัดตั้งเป้าหมายไว้เอาแบบที่ง่ายๆก่อน ในชีวิตโค้ชเจอคนดูถูกมาเยอะแต่เรามีสิ่งหนึ่งคือความมั่นใจ และความมุ่งมั่นลึกๆที่ไม่รู้ตัว ต้องบอกตัวเองว่าต้องทำได้'},
   { id: "5", title: 'There is กับ Has/Have ใช้ต่างกันอย่างไรคะ',
    text: 'ต้องฝึกที่จะรักตัวเองก่อน หาสิ่งดีๆให้ รู้จักให้รางวัลกับตัวเอง และที่สำคัญหัดตั้งเป้าหมายไว้เอาแบบที่ง่ายๆก่อน ในชีวิตโค้ชเจอคนดูถูกมาเยอะแต่เรามีสิ่งหนึ่งคือความมั่นใจ และความมุ่งมั่นลึกๆที่ไม่รู้ตัว ต้องบอกตัวเองว่าต้องทำได้'},
-   { id: "5", title: 'วันหยุดโค้ชฝ้ายชอบทำอะไรคะ',
+   { id: "6", title: 'วันหยุดโค้ชฝ้ายชอบทำอะไรคะ',
    text: 'ต้องฝึกที่จะรักตัวเองก่อน หาสิ่งดีๆให้ รู้จักให้รางวัลกับตัวเอง และที่สำคัญหัดตั้งเป้าหมายไว้เอาแบบที่ง่ายๆก่อน ในชีวิตโค้ชเจอคนดูถูกมาเยอะแต่เรามีสิ่งหนึ่งคือความมั่นใจ และความมุ่งมั่นลึกๆที่ไม่รู้ตัว ต้องบอกตัวเองว่าต้องทำได้'},
-   { id: "5", title: 'เที่ยงคืน เที่ยงวัน ใช้ AM/PM อย่างไรบ้างคะ',
+   { id: "7", title: 'เที่ยงคืน เที่ยงวัน ใช้ AM/PM อย่างไรบ้างคะ',
    text: 'ต้องฝึกที่จะรักตัวเองก่อน หาสิ่งดีๆให้ รู้จักให้รางวัลกับตัวเอง และที่สำคัญหัดตั้งเป้าหมายไว้เอาแบบที่ง่ายๆก่อน ในชีวิตโค้ชเจอคนดูถูกมาเยอะแต่เรามีสิ่งหนึ่งคือความมั่นใจ และความมุ่งมั่นลึกๆที่ไม่รู้ตัว ต้องบอกตัวเองว่าต้องทำได้'},
   ]
 
@@ -31,8 +31,41 @@ export default class QandAScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        isShown: false
+        isShown: false,
+        question: '',
+        array: ARTICLES,
     };
+}
+
+// searchQuestion () {
+//   this.setState({array: []})
+//   for(var i = 0; i < ARTICLES.length; i++)
+// {
+//   if(ARTICLES[i].id == '1')
+//   {
+//     this.state.array.push(ARTICLES[i]);
+//   }
+// }
+// }
+
+searchText = (e) => {
+  console.log('ontextChange')
+  console.log(e)
+  let text = e.toLowerCase()
+  let trucks = ARTICLES
+  let filteredName = trucks.filter((item) => {
+    return item.title.toLowerCase().match(text)
+  })
+  if (!text || text === '') {
+    this.setState({
+      array: ARTICLES
+    })
+  } else if (Array.isArray(filteredName)) {
+    this.setState({
+      noData: false,
+      array: filteredName
+    })
+  }
 }
 
   render() {
@@ -56,9 +89,10 @@ export default class QandAScreen extends React.Component {
       marginHorizontal: 25,}}>
       <Icon name="search" style={{ paddingRight: 10,alignSelf:'center'}} size={25} color = '#2c3e50'/>
       <TextInput style = {styles.inputtextstyle}
+                  onChangeText={(text) => this.searchText(text)}
       ></TextInput>
       </View>
-       {ARTICLES.map((item) => {
+       {this.state.array.map((item) => {
                           return (
                         <View key={item.id}>
                         <ShowmoreIcon
@@ -101,9 +135,8 @@ export default class QandAScreen extends React.Component {
     },
     textTopicQuestion:{
       color: '#d60842',
-      fontSize: 17,
-      fontWeight:'bold',
-      fontFamily: Fonts.Bitter,
+      fontSize: 18,
+      fontFamily: Fonts.Kanit_Semibold,
       marginLeft: 25,
       marginTop: 25
     },

@@ -163,20 +163,20 @@ renderItem(item){
 
   <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline'}}>
 
-  <View style = {{flex: 1,}}>
+  <View style = {{}}>
   <View style = {{borderColor: '#e67e22', borderRadius: 5, borderWidth: 2, alignSelf: 'flex-start'}}>
   <Text style = {{margin:2, color:'#e67e22', fontSize: 12,}}>{item.type}</Text>
   </View>
   </View>
   
-  <View style = {{flex: 1, flexDirection: 'row', alignItems: 'baseline', alignSelf: 'flex-end'}}>
-  <Icon name="clock2" style={{ paddingRight:5,}} size={13} color = '#000'/>
-  <Text style = {{margin:2, color:'#000000', fontSize: 12}}>{item.date}</Text>
+  <View style = {{ flexDirection: 'row', alignItems: 'baseline', alignSelf: 'flex-end'}}>
+  <Icon name="clock2" style={{ paddingRight:5, paddingBottom:1}} size={10} color = '#000'/>
+  <Text style = {{ color:'#000000', fontSize: 10}}>{item.date}</Text>
   </View>
 
   </View>
 
-  <Text style = {{fontSize: 14, fontWeight: 'bold', }}>{item.title}</Text>
+  <Text style = {{fontSize: 14, fontFamily: Fonts.Kanit, color: '#000', marginTop:5 }}>{item.title}</Text>
   </View>
   </View>
   </View>
@@ -282,20 +282,20 @@ renderItemTips(item){
 
   <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline'}}>
 
-  <View style = {{flex: 1,}}>
+  <View>
   <View style = {{borderColor: '#e67e22', borderRadius: 5, borderWidth: 2, alignSelf: 'flex-start'}}>
   <Text style = {{margin:2, color:'#e67e22', fontSize: 12,}}>{item.type}</Text>
   </View>
   </View>
   
-  <View style = {{flex: 1, flexDirection: 'row', alignItems: 'baseline', alignSelf: 'flex-end'}}>
-  <Icon name="clock2" style={{ paddingRight:5,}} size={13} color = '#000'/>
-  <Text style = {{margin:2, color:'#000000', fontSize: 12}}>{item.date}</Text>
+  <View style = {{flexDirection: 'row', alignItems: 'baseline', alignSelf: 'flex-end'}}>
+  <Icon name="clock2" style={{ paddingRight:5, paddingBottom:1}} size={10} color = '#000'/>
+  <Text style = {{color:'#000000', fontSize: 10}}>{item.date}</Text>
   </View>
 
   </View>
 
-  <Text style = {{fontSize: 14, fontWeight: 'bold', }}>{item.title}</Text>
+  <Text style = {{fontSize: 14, fontFamily: Fonts.Kanit, color: '#000', marginTop:5 }}>{item.title}</Text>
   {/* color = '#2c3e50' */}
   </View>
   </View>
@@ -334,7 +334,7 @@ renderItemTips(item){
                 <Image resizeMode = 'stretch' source = {{uri: 'https://firebasestorage.googleapis.com/v0/b/test-fb2a3.appspot.com/o/dataImages%2FtipsTypeImages%2Ficon_annou.png?alt=media&token=b15cf403-ed6e-4e7c-90d9-353035ee3399'}} style={{ width:25, height:25, borderRadius:(25/2),}}></Image>
                 <Text style = {{marginLeft: 7, color:'#e67e22'}}>Announcement</Text>
                 </View>
-                <Text style = {{fontSize: 14, fontWeight: 'bold',}}>ย้อนกลับไปอ่านใหม่</Text>
+                <Text style = {{fontSize: 14, fontWeight: 'bold', color: '#000'}}>ย้อนกลับไปอ่านใหม่</Text>
                 </View>
                 <View style = {{flex:1, justifyContent: 'center' , flexDirection: 'column', alignItems: 'center',}}>
                     <View style = {{flex:3,}}>
@@ -383,10 +383,13 @@ renderItemTips(item){
                       </View>
                       <View>
                       <View style = {{flexDirection: 'row', alignItems:'center', alignSelf:'center'}}>
-                      <Text style = {{fontSize: 13, fontWeight: 'bold', color: '#4cd137'}}>{this.state.cardIndex +1 }/ </Text>
+                      <Text style = {{fontSize: 13, fontWeight: 'bold', color: '#3e9e16'}}>{this.state.cardIndex +1 }/ </Text>
                       <Text style = {{fontSize: 13, fontWeight: 'bold',}}>{ARTICLES_length} Cards</Text>
                       </View>
-                      <Progress.Bar progress={(this.state.cardIndex + 1)/ ARTICLES_length} width={SCREEN_WIDTH*0.5} height={15} style = {{alignSelf: 'center', marginTop:10}}/>
+                      <Progress.Bar progress={(this.state.cardIndex + 1)/ ARTICLES_length} 
+                      width={SCREEN_WIDTH*0.5} height={15} 
+                      style = {{alignSelf: 'center', marginTop:10, borderRadius: 15, backgroundColor: '#3e9e16'}}
+                      color = "rgb(115, 214, 40)"/>
                       </View>
                       <View>
                       {/* <Text style = {{fontSize: 14, fontWeight: 'bold', color: '#32ff7e',}}>Next</Text> */}
@@ -426,13 +429,13 @@ renderItemTips(item){
                           );
                         })}
                         </Swiper>
-                        <Text style = {{marginTop: 10, marginRight: 10, marginBottom: 10,marginLeft: 20, fontWeight: 'bold', fontFamily: Fonts.Roboto_medium}}>Featured Topics</Text>
+                        <Text style = {{paddingTop: 20, paddingRight: 10, paddingBottom: 20,paddingLeft: 20, color: '#000', fontFamily: Fonts.Prompt_Medium, fontSize: 14}}>Featured Topics</Text>
                         <View style = {{flex:1, justifyContent: 'center', backgroundColor: '#fff'}}>
                         <FlatList data = {this.state.dataTips} keyExtractor={this._keyExtractor}
                         renderItem = {({item}) => this.renderItem(item)} />
                         </View>
                         <View style = {{flex:1, justifyContent: 'center',backgroundColor: '#EEEEEE', borderBottomColor: '#c9c9c9', borderBottomWidth: 0.5}}>
-                        <Text style = {{marginTop: 10, marginRight: 10, marginBottom: 10,marginLeft: 20, fontWeight: 'bold', fontFamily: Fonts.Roboto_medium}}>Latest Feed</Text>
+                        <Text style = {{paddingTop: 20, paddingRight: 10, paddingBottom: 20,paddingLeft: 20, color: '#000', fontFamily: Fonts.Prompt_Medium, fontSize: 14}}>Latest Feed</Text>
                         <FlatList data = {this.state.dataTips} keyExtractor={this._keyExtractor}
                         renderItem = {({item}) => this.renderItemTips(item)} />
                         </View>
@@ -523,7 +526,8 @@ const styles = StyleSheet.create({
     width:SCREEN_WIDTH*0.9,
     height: SCREEN_HEIGHT* 0.125,
     flexDirection:'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
+    alignItems: 'baseline',
     marginBottom: 20,
   },
   button:{
