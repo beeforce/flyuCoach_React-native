@@ -159,13 +159,13 @@ renderItem(item){
   <View style = {{ flex: 1, marginTop: 15, borderBottomWidth: 0.5, borderColor: '#c9c9c9', backgroundColor: '#fff' }}>
   <View style = {{ flex: 1, flexDirection: 'row', marginLeft:20, marginRight: 20, marginBottom: 15,}} >
   {this.getImageTypeTips(item.type)}
-  <View style = {{flex: 1, flexDirection: 'column', marginLeft: 10}}>
+  <View style = {{flex: 1, flexDirection: 'column', marginLeft: 20}}>
 
   <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline'}}>
 
   <View style = {{}}>
-  <View style = {{borderColor: '#e67e22', borderRadius: 5, borderWidth: 2, alignSelf: 'flex-start'}}>
-  <Text style = {{margin:2, color:'#e67e22', fontSize: 12,}}>{item.type}</Text>
+  <View style = {{borderColor: '#e67e22', borderRadius: 2, borderWidth: 1, alignSelf: 'flex-start'}}>
+  <Text style = {{padding:2, color:'#e67e22', fontSize: 9,}}>{item.type}</Text>
   </View>
   </View>
   
@@ -178,7 +178,7 @@ renderItem(item){
 
   </View>
 
-  <Text style = {{fontSize: 14, fontFamily: Fonts.Kanit, color: '#000', marginTop:5 }}>{item.title}</Text>
+  <Text style = {{fontSize: 15, fontFamily: Fonts.Kanit, color: '#000', marginTop:5 }}>{item.title}</Text>
   </View>
   </View>
   </View>
@@ -194,6 +194,7 @@ listenForFeature(featuresRef) {
         title: child.val().title,
         uri: child.val().uri,
         date: child.val().date,
+        type: child.val().type,
         _key: child.key
       });
     });
@@ -257,17 +258,25 @@ _pressRow = (rowID) => {
 getImageTypeTips = (type) => {
   switch (type) {
     case "Announcement":
-        return (<Image resizeMode = 'contain' source = {{uri: 'https://firebasestorage.googleapis.com/v0/b/test-fb2a3.appspot.com/o/dataImages%2FtipsTypeImages%2Ficon_annou.png?alt=media&token=b15cf403-ed6e-4e7c-90d9-353035ee3399'}} 
-        style={{ width:SCREEN_WIDTH* 0.1, height:SCREEN_WIDTH* 0.1, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.1 + SCREEN_WIDTH* 0.1)/2}}></Image>)
+        return (<View 
+        style={{ backgroundColor: '#ff9a16' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.1, height:SCREEN_WIDTH* 0.1, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.1 + SCREEN_WIDTH* 0.1)/2}}>
+        <Icon name="bullhorn-solid" style={{ alignSelf:'center',}} size={12} color = '#fff'/>
+        </View>)
     case "Document":
-        return (<Image resizeMode = 'contain' source = {{uri: 'https://firebasestorage.googleapis.com/v0/b/test-fb2a3.appspot.com/o/dataImages%2FtipsTypeImages%2Ficon_doc.png?alt=media&token=8932c2fd-739d-4a3e-b125-e90f80e6c8af'}} 
-        style={{ width:SCREEN_WIDTH* 0.1, height:SCREEN_WIDTH* 0.1, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.1 + SCREEN_WIDTH* 0.1)/2 }}></Image>)
+    return (<View 
+        style={{ backgroundColor: '#2ce018' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.1, height:SCREEN_WIDTH* 0.1, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.1 + SCREEN_WIDTH* 0.1)/2}}>
+        <Icon name="file-alt-solid" style={{ alignSelf:'center',}} size={12} color = '#fff'/>
+        </View>)
     case "English":
-        return (<Image resizeMode = 'contain' source = {{uri: 'https://firebasestorage.googleapis.com/v0/b/test-fb2a3.appspot.com/o/dataImages%2FtipsTypeImages%2Ficon_pen.png?alt=media&token=1e6623e2-fd87-41d7-a5c5-f13db5d0b10c'}} 
-        style={{ width:SCREEN_WIDTH* 0.1, height:SCREEN_WIDTH* 0.1, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.1 + SCREEN_WIDTH* 0.1)/2 }}></Image>)
+    return (<View 
+        style={{ backgroundColor: '#330ed3' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.1, height:SCREEN_WIDTH* 0.1, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.1 + SCREEN_WIDTH* 0.1)/2}}>
+         <Icon name="book-solid" style={{ alignSelf:'center'}} size={12} color = '#fff'/>
+        </View>)
     case "Quote":
-        return (<Image resizeMode = 'contain' source = {{uri: 'https://firebasestorage.googleapis.com/v0/b/test-fb2a3.appspot.com/o/dataImages%2FtipsTypeImages%2Ficon_quote.png?alt=media&token=5b9cd387-6dd7-4183-aba3-ec4c1865e193'}} 
-        style={{ width:SCREEN_WIDTH* 0.1, height:SCREEN_WIDTH* 0.1, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.1 + SCREEN_WIDTH* 0.1)/2}}></Image>)
+    return (<View 
+      style={{ backgroundColor: '#e81747' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.1, height:SCREEN_WIDTH* 0.1, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.1 + SCREEN_WIDTH* 0.1)/2}}>
+      <Icon name="heart-solid" style={{ alignSelf:'center'}} size={12} color = '#fff'/>
+      </View>)
 }
 }
 
@@ -277,7 +286,7 @@ renderItemTips(item){
     return(
   <View style = {styles.cardviewcontent}>
   <TouchableHighlight onPress={() => this._pressRow(item.id)}>
-  <View style = {{ flex: 1, flexDirection: 'column', marginTop: 15, marginBottom: 10, marginLeft: 10, marginRight: 10,}} >
+  <View style = {{ flex: 1, flexDirection: 'column', marginTop: 15, marginBottom: 10, marginLeft: 10, marginRight: 20,}} >
   <View style = {{ flex: 1, flexDirection: 'row', justifyContent: 'center'}} >
   {this.getImageTypeTips(item.type)}
   <View style = {{flex: 1, flexDirection: 'column', marginLeft: 10}}>
@@ -285,8 +294,8 @@ renderItemTips(item){
   <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline'}}>
 
   <View>
-  <View style = {{borderColor: '#e67e22', borderRadius: 5, borderWidth: 2, alignSelf: 'flex-start'}}>
-  <Text style = {{margin:2, color:'#e67e22', fontSize: 12,}}>{item.type}</Text>
+  <View style = {{borderColor: '#e67e22', borderRadius: 2, borderWidth: 1, alignSelf: 'flex-start'}}>
+  <Text style = {{padding:2, color:'#e67e22', fontSize: 9,}}>{item.type}</Text>
   </View>
   </View>
   
@@ -299,11 +308,14 @@ renderItemTips(item){
 
   </View>
 
-  <Text style = {{fontSize: 14, fontFamily: Fonts.Kanit, color: '#000', marginTop:5 }}>{item.title}</Text>
-  {/* color = '#2c3e50' */}
+  <View style = {{flexDirection:'row'}}>
+  <Text style = {{fontSize: 15, fontFamily: Fonts.Kanit, color: '#000', marginTop:10,flex: 5,  lineHeight: 20, }}>{item.title}</Text>
+  <Text style = {{flex:1.5}}/>
+  </View>
+
   </View>
   </View>
-  <View style = {{alignItems: 'flex-end'}}>
+  <View style = {{alignItems: 'flex-end', paddingTop: 5}}>
   <PinIconImage name= 'thumbtack' favorite={this.state.pressStatus} />
   </View>
   </View>
@@ -440,7 +452,7 @@ renderItemTips(item){
                         </View>
                         <View style = {{flex:1, justifyContent: 'center',backgroundColor: '#EEEEEE', borderBottomColor: '#c9c9c9', borderBottomWidth: 0.5}}>
                         <Text style = {{paddingTop: 20, paddingRight: 10, paddingBottom: 20,paddingLeft: 20, color: '#000', fontFamily: Fonts.Prompt_Medium, fontSize: 14}}>Latest Feed</Text>
-                        <FlatList data = {this.state.dataTips} keyExtractor={this._keyExtractor}
+                        <FlatList data = {this.state.dataFeatures} keyExtractor={this._keyExtractor}
                         renderItem = {({item}) => this.renderItemTips(item)} />
                         </View>
                     </View>
