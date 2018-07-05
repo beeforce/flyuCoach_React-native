@@ -170,8 +170,10 @@ renderItem(item){
   </View>
   
   <View style = {{ flexDirection: 'row', alignItems: 'baseline', alignSelf: 'flex-end'}}>
-  <Icon name="clock2" style={{ paddingRight:5, paddingBottom:1}} size={10} color = '#000'/>
-  <Text style = {{ color:'#000000', fontSize: 10}}>{item.date}</Text>
+  <View>
+  <Icon name="clock2" style={{ padding:5, alignSelf:'center'}} size={11} color = '#000'/>
+  </View>
+  <Text style = {{ color:'#000000', fontSize: 10, alignSelf:'center'}}>{item.date}</Text>
   </View>
 
   </View>
@@ -288,9 +290,11 @@ renderItemTips(item){
   </View>
   </View>
   
-  <View style = {{flexDirection: 'row', alignItems: 'baseline', alignSelf: 'flex-end'}}>
-  <Icon name="clock2" style={{ paddingRight:5, paddingBottom:1}} size={10} color = '#000'/>
-  <Text style = {{color:'#000000', fontSize: 10}}>{item.date}</Text>
+  <View style = {{ flexDirection: 'row', alignItems: 'baseline', alignSelf: 'flex-end'}}>
+  <View>
+  <Icon name="clock2" style={{ padding:5, alignSelf:'center'}} size={11} color = '#000'/>
+  </View>
+  <Text style = {{ color:'#000000', fontSize: 10, alignSelf:'center'}}>{item.date}</Text>
   </View>
 
   </View>
