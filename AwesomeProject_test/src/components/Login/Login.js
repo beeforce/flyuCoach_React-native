@@ -11,6 +11,13 @@ const Icon = createIconSetFromIcoMoon(IcoMoonConfig);
 import { Fonts } from '../../utils/Fonts';
 import LinearGradient from 'react-native-linear-gradient';
 
+const FBSDK = require('react-native-fbsdk');
+const {
+  LoginManager,
+  AccessToken
+} = FBSDK;
+
+
 
 // set connection of firebase
 const config = {
@@ -32,7 +39,6 @@ class Login extends Component {
   static navigationOptions = {
     header: null,
   }
-
 
   componentWillMount() {
     setInterval( () => {
@@ -103,38 +109,78 @@ class Login extends Component {
       }
     else {
       return true;
+      }
     }
-    }
-    async loginWithFacebook(){
-        const {type, token } = await Expo.Facebook.logInWithReadPermissionsAsync
-        ('229482407828081', {permissions: ['public_profile']})
 
-        if(type == 'success'){
-                      const credential = firebase.auth.FacebookAuthProvider.credential(token);
-                      console.log(credential);
-            firebase.auth().signInAndRetrieveDataWithCredential(credential).then((user) => {
-              firebase.auth().onAuthStateChanged((user) => {
-                if(user != null){
-                    console.log(user)
-                    firebase.database().ref('User').child('Login').child('Facebook').child(user.uid).set({
-                      Login_time: this.state.curTime,
-                    });
-                    firebase.database().ref('User').child('Facebook').child(user.uid).set({
-                      Name: user.displayName,
-                      PhotoURL: user.photoURL,
-                    });
-                    this.props.navigation.navigate('Homepage', {
-                      uid: user.uid,
-                    });
-                }
-            })
-            }).catch((error) => {
-                console.log(error);
-                Alert.alert('Error !',error.toString());
+    loginWithFacebook() {
+      LoginManager.logInWithReadPermissions(['public_profile'])
+        .then(
+          (result) => {
+            if (result.isCancelled) {
+            } else {
+              AccessToken.getCurrentAccessToken()
+              .then((data) => {
+                const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
+                // firebase.auth().signInWithCredential(credential)
+                firebase.auth().signInAndRetrieveDataWithCredential(credential)
+                .then((user) => {
+                            firebase.auth().onAuthStateChanged((user) => {
+                              if(user != null){
+                                  console.log(user)
+                                  firebase.database().ref('User').child('Login').child('Facebook').child(user.uid).set({
+                                    Login_time: this.state.curTime,
+                                  });
+                                  firebase.database().ref('User').child('Facebook').child(user.uid).set({
+                                    Name: user.displayName,
+                                    PhotoURL: user.photoURL,
+                                  });
+                                  this.props.navigation.navigate('Homepage', {
+                                    uid: user.uid,
+                                  });
+                              }
+                          })
+                          }).catch((error) => {
+                              console.log(error);
+                              LoginManager.getInstance().logOut();
+                              Alert.alert('Error !',error.toString());
+                              
+                          })
+              });
+            }
+          },
+        );
+    };
+
+    // async loginWithFacebook(){
+    //     const {type, token } = await Expo.Facebook.logInWithReadPermissionsAsync
+    //     ('229482407828081', {permissions: ['public_profile']})
+
+    //     if(type == 'success'){
+    //                   const credential = firebase.auth.FacebookAuthProvider.credential(token);
+    //                   console.log(credential);
+    //         firebase.auth().signInAndRetrieveDataWithCredential(credential).then((user) => {
+    //           firebase.auth().onAuthStateChanged((user) => {
+    //             if(user != null){
+    //                 console.log(user)
+    //                 firebase.database().ref('User').child('Login').child('Facebook').child(user.uid).set({
+    //                   Login_time: this.state.curTime,
+    //                 });
+    //                 firebase.database().ref('User').child('Facebook').child(user.uid).set({
+    //                   Name: user.displayName,
+    //                   PhotoURL: user.photoURL,
+    //                 });
+    //                 this.props.navigation.navigate('Homepage', {
+    //                   uid: user.uid,
+    //                 });
+    //             }
+    //         })
+    //         }).catch((error) => {
+    //             console.log(error);
+    //             Alert.alert('Error !',error.toString());
                 
-            })
-        }
-    }
+    //         })
+    //     }
+    // }
     
   render() {
 
