@@ -131,6 +131,15 @@
 		80B0A39288F6416A83919CD0 /* libRNTextGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 539719C9E92F470F8D75847A /* libRNTextGradient.a */; };
 		1CA576C2E70049A58D5F3C0F /* WendyOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77F014BE4DA14D37A83837D7 /* WendyOne-Regular.ttf */; };
 		9F35D3909A6D449298EB71B0 /* Itim-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA955F6B18B1481F8AFCD7CB /* Itim-Regular.ttf */; };
+		B11F1DE5672F49E9AD902410 /* MosseThai-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA5BEA919D8549D898330013 /* MosseThai-Black.otf */; };
+		47EC5836BE264A03800AB9A6 /* MosseThai-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 597BA48A2901461082081755 /* MosseThai-Bold.otf */; };
+		F2C77FBF25C64B7690E5A915 /* MosseThai-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 961D12E51D174B85951165EE /* MosseThai-Book.otf */; };
+		C6C4B4267EC44DE6BF6E58C9 /* MosseThai-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FBF8C3323E764E37842A2CC6 /* MosseThai-ExtraBold.otf */; };
+		7B365D15DEC243CCA7A0D6F9 /* MosseThai-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8368778AA5304862B7C0E579 /* MosseThai-ExtraLight.otf */; };
+		33FDEBE8F3F94EA890F1F500 /* MosseThai-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 97809B30A62C427EA96BF761 /* MosseThai-Light.otf */; };
+		78D3151298BC4886A812E3F0 /* MosseThai-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D781B9ACD777452B925D6C83 /* MosseThai-Medium.otf */; };
+		1676E46440134088A1FCF14A /* MosseThai-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C092D8D6CBED4D1AA86882E1 /* MosseThai-Regular.otf */; };
+		4210F5278DC4418994AED4EC /* MosseThai-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 14EEB4DD77FE49B4A73FE563 /* MosseThai-Thin.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -535,6 +544,15 @@
 		539719C9E92F470F8D75847A /* libRNTextGradient.a */ = {isa = PBXFileReference; name = "libRNTextGradient.a"; path = "libRNTextGradient.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		77F014BE4DA14D37A83837D7 /* WendyOne-Regular.ttf */ = {isa = PBXFileReference; name = "WendyOne-Regular.ttf"; path = "../assets/fonts/WendyOne-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		CA955F6B18B1481F8AFCD7CB /* Itim-Regular.ttf */ = {isa = PBXFileReference; name = "Itim-Regular.ttf"; path = "../assets/fonts/Itim-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FA5BEA919D8549D898330013 /* MosseThai-Black.otf */ = {isa = PBXFileReference; name = "MosseThai-Black.otf"; path = "../assets/fonts/MosseThai-Black.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		597BA48A2901461082081755 /* MosseThai-Bold.otf */ = {isa = PBXFileReference; name = "MosseThai-Bold.otf"; path = "../assets/fonts/MosseThai-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		961D12E51D174B85951165EE /* MosseThai-Book.otf */ = {isa = PBXFileReference; name = "MosseThai-Book.otf"; path = "../assets/fonts/MosseThai-Book.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FBF8C3323E764E37842A2CC6 /* MosseThai-ExtraBold.otf */ = {isa = PBXFileReference; name = "MosseThai-ExtraBold.otf"; path = "../assets/fonts/MosseThai-ExtraBold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8368778AA5304862B7C0E579 /* MosseThai-ExtraLight.otf */ = {isa = PBXFileReference; name = "MosseThai-ExtraLight.otf"; path = "../assets/fonts/MosseThai-ExtraLight.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		97809B30A62C427EA96BF761 /* MosseThai-Light.otf */ = {isa = PBXFileReference; name = "MosseThai-Light.otf"; path = "../assets/fonts/MosseThai-Light.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D781B9ACD777452B925D6C83 /* MosseThai-Medium.otf */ = {isa = PBXFileReference; name = "MosseThai-Medium.otf"; path = "../assets/fonts/MosseThai-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C092D8D6CBED4D1AA86882E1 /* MosseThai-Regular.otf */ = {isa = PBXFileReference; name = "MosseThai-Regular.otf"; path = "../assets/fonts/MosseThai-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		14EEB4DD77FE49B4A73FE563 /* MosseThai-Thin.otf */ = {isa = PBXFileReference; name = "MosseThai-Thin.otf"; path = "../assets/fonts/MosseThai-Thin.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -899,6 +917,15 @@
 				93CB43364DA9405E90BC663A /* Roboto-Regular.ttf */,
 				77F014BE4DA14D37A83837D7 /* WendyOne-Regular.ttf */,
 				CA955F6B18B1481F8AFCD7CB /* Itim-Regular.ttf */,
+				FA5BEA919D8549D898330013 /* MosseThai-Black.otf */,
+				597BA48A2901461082081755 /* MosseThai-Bold.otf */,
+				961D12E51D174B85951165EE /* MosseThai-Book.otf */,
+				FBF8C3323E764E37842A2CC6 /* MosseThai-ExtraBold.otf */,
+				8368778AA5304862B7C0E579 /* MosseThai-ExtraLight.otf */,
+				97809B30A62C427EA96BF761 /* MosseThai-Light.otf */,
+				D781B9ACD777452B925D6C83 /* MosseThai-Medium.otf */,
+				C092D8D6CBED4D1AA86882E1 /* MosseThai-Regular.otf */,
+				14EEB4DD77FE49B4A73FE563 /* MosseThai-Thin.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1439,6 +1466,15 @@
 				E154B96886DF4EDE80DFC048 /* Roboto-Regular.ttf in Resources */,
 				1CA576C2E70049A58D5F3C0F /* WendyOne-Regular.ttf in Resources */,
 				9F35D3909A6D449298EB71B0 /* Itim-Regular.ttf in Resources */,
+				B11F1DE5672F49E9AD902410 /* MosseThai-Black.otf in Resources */,
+				47EC5836BE264A03800AB9A6 /* MosseThai-Bold.otf in Resources */,
+				F2C77FBF25C64B7690E5A915 /* MosseThai-Book.otf in Resources */,
+				C6C4B4267EC44DE6BF6E58C9 /* MosseThai-ExtraBold.otf in Resources */,
+				7B365D15DEC243CCA7A0D6F9 /* MosseThai-ExtraLight.otf in Resources */,
+				33FDEBE8F3F94EA890F1F500 /* MosseThai-Light.otf in Resources */,
+				78D3151298BC4886A812E3F0 /* MosseThai-Medium.otf in Resources */,
+				1676E46440134088A1FCF14A /* MosseThai-Regular.otf in Resources */,
+				4210F5278DC4418994AED4EC /* MosseThai-Thin.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

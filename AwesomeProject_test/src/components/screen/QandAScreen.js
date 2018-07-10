@@ -2,7 +2,9 @@ import React from 'react';
 import { Text, View, StyleSheet, TextInput, Dimensions, ScrollView, Animated, } from 'react-native';
 import { Fonts } from '../../utils/Fonts';
 import ShowmoreIcon from '../styles/ShowmoreIcon';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
+import IcoMoonConfig from '../../selection.json';
+const Icon = createIconSetFromIcoMoon(IcoMoonConfig);
 import ActionButton from 'react-native-action-button';
 
 const ARTICLES = [
@@ -87,7 +89,7 @@ searchText = (e) => {
       height: 45,
       margin: 3,
       marginHorizontal: 25,}}>
-      <Icon name="search" style={{ paddingRight: 10,alignSelf:'center'}} size={25} color = '#2c3e50'/>
+      <Icon name="search" style={{ paddingRight: 10,alignSelf:'center'}} size={22} color = '#2c3e50'/>
       <TextInput style = {styles.inputtextstyle}
                   onChangeText={(text) => this.searchText(text)}
       ></TextInput>
@@ -136,7 +138,7 @@ searchText = (e) => {
     textTopicQuestion:{
       color: '#d60842',
       fontSize: 18,
-      fontFamily: Fonts.Kanit_Semibold,
+      fontFamily: Fonts.MosseThai_Extra_Bold,
       marginLeft: 25,
       marginTop: 25
     },
@@ -144,7 +146,7 @@ searchText = (e) => {
       flex: 1,
       paddingLeft: 7,
       fontSize: 16,
-      fontFamily: Fonts.Roboto_medium
+      fontFamily: Fonts.MosseThai_Medium
     },
     actionButtonIcon: {
       fontSize: 20,

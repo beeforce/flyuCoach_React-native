@@ -19,13 +19,12 @@ import {
 } from 'react-native';
 import * as firebase from 'firebase';
 import Swiper from 'react-native-swiper';
-import CardStack, { Card } from 'react-native-card-stack-swiper';
-import * as Progress from 'react-native-progress';
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
 import IcoMoonConfig from '../../selection.json';
 import PinIconImage from '../styles/piniconimage';
 const Icon = createIconSetFromIcoMoon(IcoMoonConfig);
 import { Fonts } from '../../utils/Fonts';
+import CardSwipe from '../styles/cardSwipe';
 
 const ARTICLES = [
   { id: "1", uri: require('../../images/image.jpg'), 
@@ -157,30 +156,30 @@ _keyExtractor = (item, index) => item._key;
 renderItem(item){
   return(
   <View style = {{ flex: 1, marginTop: 15, borderBottomWidth: 0.5, borderColor: '#c9c9c9', backgroundColor: '#fff' }}>
+  <TouchableHighlight onPress={() => this._pressRow(item.id)}>
   <View style = {{ flex: 1, flexDirection: 'row', marginLeft:20, marginRight: 20, marginBottom: 15,}} >
   {this.getImageTypeTips(item.type)}
-  <View style = {{flex: 1, flexDirection: 'column', marginLeft: 20}}>
+  <View style = {{flex: 1, flexDirection: 'column', marginLeft: 10}}>
 
   <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline'}}>
 
   <View style = {{}}>
-  <View style = {{borderColor: '#e67e22', borderRadius: 2, borderWidth: 1, alignSelf: 'flex-start'}}>
-  <Text style = {{padding:2, color:'#e67e22', fontSize: 9,}}>{item.type}</Text>
-  </View>
+  {this.getTypeofTips(item.type)}
   </View>
   
   <View style = {{ flexDirection: 'row', alignItems: 'baseline', alignSelf: 'flex-end'}}>
   <View>
   <Icon name="clock2" style={{ padding:5, alignSelf:'center'}} size={11} color = '#000'/>
   </View>
-  <Text style = {{ color:'#000000', fontSize: 10, alignSelf:'center'}}>{item.date}</Text>
+  <Text style = {{ color:'#000000', fontSize: 10, alignSelf:'center', fontFamily: Fonts.MosseThai_Regular}}>{item.date}</Text>
   </View>
 
   </View>
 
-  <Text style = {{fontSize: 15, fontFamily: Fonts.Kanit, color: '#000', marginTop:5 }}>{item.title}</Text>
+  <Text style = {{fontSize: 15, fontFamily: Fonts.MosseThai_Medium, color: '#000', marginTop:5 }}>{item.title}</Text>
   </View>
   </View>
+  </TouchableHighlight>
   </View>
   )
 }
@@ -260,24 +259,46 @@ getImageTypeTips = (type) => {
     case "Announcement":
         return (<View 
         style={{ backgroundColor: '#ff9a16' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.1, height:SCREEN_WIDTH* 0.1, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.1 + SCREEN_WIDTH* 0.1)/2}}>
-        <Icon name="bullhorn-solid" style={{ alignSelf:'center',}} size={12} color = '#fff'/>
+        <Icon name="bullhorn-solid" style={{ alignSelf:'center',}} size={11} color = '#fff'/>
         </View>)
     case "Document":
     return (<View 
         style={{ backgroundColor: '#2ce018' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.1, height:SCREEN_WIDTH* 0.1, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.1 + SCREEN_WIDTH* 0.1)/2}}>
-        <Icon name="file-alt-solid" style={{ alignSelf:'center',}} size={12} color = '#fff'/>
+        <Icon name="file-alt-solid" style={{ alignSelf:'center',}} size={11} color = '#fff'/>
         </View>)
     case "English":
     return (<View 
-        style={{ backgroundColor: '#330ed3' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.1, height:SCREEN_WIDTH* 0.1, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.1 + SCREEN_WIDTH* 0.1)/2}}>
-         <Icon name="book-solid" style={{ alignSelf:'center'}} size={12} color = '#fff'/>
+        style={{ backgroundColor: '#0420f7' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.1, height:SCREEN_WIDTH* 0.1, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.1 + SCREEN_WIDTH* 0.1)/2}}>
+         <Icon name="book-solid" style={{ alignSelf:'center'}} size={11} color = '#fff'/>
         </View>)
     case "Quote":
     return (<View 
       style={{ backgroundColor: '#e81747' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.1, height:SCREEN_WIDTH* 0.1, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.1 + SCREEN_WIDTH* 0.1)/2}}>
-      <Icon name="heart-solid" style={{ alignSelf:'center'}} size={12} color = '#fff'/>
+      <Icon name="heart-solid" style={{ alignSelf:'center'}} size={11} color = '#fff'/>
       </View>)
 }
+}
+
+getTypeofTips = (type) =>{
+  switch (type){
+    case "Announcement":
+    return (<View style = {{borderColor: '#e67e22', borderRadius: 2, borderWidth: 1, alignSelf: 'flex-start'}}>
+            <Text style = {{paddingTop:2, paddingBottom:2, paddingHorizontal:5, color:'#e67e22', fontSize: 9, fontFamily: Fonts.MosseThai_Regular}}>Announcement</Text>
+            </View>)
+    case "Document":
+    return (<View style = {{borderColor: '#2ce018', borderRadius: 2, borderWidth: 1, alignSelf: 'flex-start'}}>
+             <Text style = {{paddingTop:2, paddingBottom:2, paddingHorizontal:5, color:'#2ce018', fontSize: 9, fontFamily: Fonts.MosseThai_Regular}}>Document</Text>
+             </View>)
+    case "English":
+    return (<View style = {{borderColor: '#0469f7', borderRadius: 2, borderWidth: 1, alignSelf: 'flex-start'}}>
+             <Text style = {{paddingTop:2, paddingBottom:2, paddingHorizontal:5, color:'#0469f7', fontSize: 9, fontFamily: Fonts.MosseThai_Regular}}>English</Text>
+             </View>)
+    case "Quote":
+    return (<View style = {{borderColor: '#e81747', borderRadius: 2, borderWidth: 1, alignSelf: 'flex-start'}}>
+             <Text style = {{paddingTop:2, paddingBottom:2, paddingHorizontal:5, color:'#e81747', fontSize: 9, fontFamily: Fonts.MosseThai_Regular}}>Quote</Text>
+             </View>)
+  }
+
 }
 
 
@@ -294,29 +315,27 @@ renderItemTips(item){
   <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline'}}>
 
   <View>
-  <View style = {{borderColor: '#e67e22', borderRadius: 2, borderWidth: 1, alignSelf: 'flex-start'}}>
-  <Text style = {{padding:2, color:'#e67e22', fontSize: 9,}}>{item.type}</Text>
-  </View>
+  {this.getTypeofTips(item.type)}
   </View>
   
   <View style = {{ flexDirection: 'row', alignItems: 'baseline', alignSelf: 'flex-end'}}>
   <View>
   <Icon name="clock2" style={{ padding:5, alignSelf:'center'}} size={11} color = '#000'/>
   </View>
-  <Text style = {{ color:'#000000', fontSize: 10, alignSelf:'center'}}>{item.date}</Text>
+  <Text style = {{ color:'#000000', fontSize: 10, alignSelf:'center', fontFamily: Fonts.MosseThai_Regular}}>{item.date}</Text>
   </View>
 
   </View>
 
   <View style = {{flexDirection:'row'}}>
-  <Text style = {{fontSize: 15, fontFamily: Fonts.Kanit, color: '#000', marginTop:10,flex: 5,  lineHeight: 20, }}>{item.title}</Text>
+  <Text style = {{fontSize: 15, fontFamily: Fonts.MosseThai_Medium, color: '#000', marginTop:10,flex: 5,  lineHeight: 20, }}>{item.title}</Text>
   <Text style = {{flex:1.5}}/>
   </View>
 
   </View>
   </View>
   <View style = {{alignItems: 'flex-end', paddingTop: 5}}>
-  <PinIconImage name= 'thumbtack' favorite={this.state.pressStatus} />
+  <PinIconImage favorite={this.state.pressStatus} />
   </View>
   </View>
   </TouchableHighlight>
@@ -342,83 +361,15 @@ renderItemTips(item){
         </View>
       </Modal>
       <Modal style = {{flex:1}} visible = {this.state.Modalopen} onRequestClose = {() => console.warn("this is close modal")}>
-                <TouchableHighlight style = {{margin:10}} onPress ={this._onCloseModal}>
-                <Image source = {require('../../images/icon_delete.png')} style = {{ width:20, height:20 }}/>
+                <View style ={{ padding:15}}>
+                <TouchableHighlight style = {{width:SCREEN_WIDTH * 0.065, height:SCREEN_WIDTH * 0.065,}} onPress ={this._onCloseModal}>
+                <Image source = {require('../../images/icon_delete.png')}
+                style = {{ width:SCREEN_WIDTH * 0.065, height:SCREEN_WIDTH * 0.05 }}/>
                 </TouchableHighlight>
-                <View style = {{flexDirection: 'row',marginLeft: SCREEN_WIDTH * 0.05, marginRight: SCREEN_WIDTH * 0.05, alignItems: 'baseline',justifyContent: 'space-between'}}>
-                <View style = {{flexDirection: 'row',alignItems: 'baseline'}}>
-                <Image resizeMode = 'stretch' source = {{uri: 'https://firebasestorage.googleapis.com/v0/b/test-fb2a3.appspot.com/o/dataImages%2FtipsTypeImages%2Ficon_annou.png?alt=media&token=b15cf403-ed6e-4e7c-90d9-353035ee3399'}} style={{ width:25, height:25, borderRadius:(25/2),}}></Image>
-                <Text style = {{marginLeft: 7, color:'#e67e22'}}>Announcement</Text>
                 </View>
-                <Text style = {{fontSize: 14, fontWeight: 'bold', color: '#000'}}>ย้อนกลับไปอ่านใหม่</Text>
-                </View>
-                <View style = {{flex:1, justifyContent: 'center' , flexDirection: 'column', alignItems: 'center',}}>
-                    <View style = {{flex:3,}}>
-                        <CardStack
-                        style={styles.content}
-                        renderNoMoreCards={() => <Text style={{fontWeight:'700', fontSize:18, color:'gray'}}>No more cards :(</Text>}
-                        disableLeftSwipe
-                        disableRightSwipe
-                        // onSwipedLeft={this.swipeLeft}
-                        // onSwipedRight = {this.swipeRight}
-                        onSwipedTop = {this.swipeTop}
-                        onSwipedBottom = {this.swipeBottom}
-                        horizontalverticalSwipe = {false}
-                        ref={swiper => {
-                          this.swiper = swiper
-                        }}
-                      >
-                      {ARTICLES.map((item) => {
-                        return (
-                        <Card style={[styles.card, styles.card1]} key={item.id}>
-                        <View style = {{ flexDirection: 'row', marginTop: 7, marginRight: SCREEN_WIDTH* 0.15 }}>
-                        <Image source={require('../../images/icon_tips.png')} resizeMode={'contain'} style={{ height: 32, width: 32, borderRadius: 5, marginTop: 10, marginBottom:10, marginLeft:10}} />
-                        <Text style = {{fontSize: 18, fontWeight: 'bold', color: '#000000', marginTop: 7, marginLeft: 3}}>{item.id} {item.title}</Text>
-                        </View>
-                        <ImageBackground source={item.uri} resizeMode={'stretch'} style={{ height: 120, width: SCREEN_WIDTH* 0.8, justifyContent:'center', alignSelf: 'center', marginTop: 7}}>
-                        <Text style = {{fontSize: 18, fontWeight: 'bold', color: '#fff', marginHorizontal: 30, textAlign: 'center', 
-                        textShadowColor: 'rgba(0, 0, 0, 0.75)', textShadowOffset: {width: -1, height: 1}, textShadowRadius: 10}}>
-                        {item.title}</Text>
-                        </ImageBackground>
-                  
-                      <Text style = {{fontSize: 16, color: '#000000', marginHorizontal: SCREEN_WIDTH*0.05, marginTop: 5, marginBottom:15}}>{item.text}</Text>
-                        </Card>
-                      );
-                    })}
-                    </CardStack>
-                    </View>
+                <CardSwipe />
+      </Modal>
 
-                    <View style={styles.buttonContainer}>
-                    <View>
-                      {/* <Text style = {{fontSize: 14, fontWeight: 'bold', color: '#ff4d4d',}}>Prev</Text> */}
-                      <TouchableOpacity style={styles.button} onPress={()=>{
-                        this.swiper.swipeTop()
-                      }}>
-                        <Image source={require('../../images/icon_left.png')} resizeMode={'contain'} style={{ height: 32, width: 32, borderRadius: 5 }} />
-                      </TouchableOpacity>
-                      </View>
-                      <View>
-                      <View style = {{flexDirection: 'row', alignItems:'center', alignSelf:'center'}}>
-                      <Text style = {{fontSize: 13, fontWeight: 'bold', color: '#3e9e16'}}>{this.state.cardIndex +1 }/ </Text>
-                      <Text style = {{fontSize: 13, fontWeight: 'bold',}}>{ARTICLES_length} Cards</Text>
-                      </View>
-                      <Progress.Bar progress={(this.state.cardIndex + 1)/ ARTICLES_length} 
-                      width={SCREEN_WIDTH*0.5} height={15} 
-                      style = {{alignSelf: 'center', marginTop:10, borderRadius: 15, backgroundColor: '#3e9e16'}}
-                      color = "rgb(115, 214, 40)"/>
-                      </View>
-                      <View>
-                      {/* <Text style = {{fontSize: 14, fontWeight: 'bold', color: '#32ff7e',}}>Next</Text> */}
-                      <TouchableOpacity style={styles.button} onPress={()=>{
-                        this.swiper.swipeBottom();
-                      }}>
-                        <Image source={require('../../images/icon_right.png')} resizeMode={'contain'} style={{ height: 32, width: 32, borderRadius: 5 }} />
-                      </TouchableOpacity>
-                      </View>
-                    </View>
-
-                    </View>
-                </Modal>
                 <View style={{ flex: 1 }}>
                     <ScrollView
                         scrollEventThrottle={16}
@@ -445,13 +396,13 @@ renderItemTips(item){
                           );
                         })}
                         </Swiper>
-                        <Text style = {{paddingTop: 20, paddingRight: 10, paddingBottom: 20,paddingLeft: 20, color: '#000', fontFamily: Fonts.Prompt_Medium, fontSize: 14}}>Featured Topics</Text>
+                        <Text style = {{paddingTop: 20, paddingRight: 10, paddingBottom: 20,paddingLeft: 20, color: '#000', fontFamily: Fonts.MosseThai_Bold, fontSize: 14}}>Featured Topics</Text>
                         <View style = {{flex:1, justifyContent: 'center', backgroundColor: '#fff'}}>
                         <FlatList data = {this.state.dataTips} keyExtractor={this._keyExtractor}
                         renderItem = {({item}) => this.renderItem(item)} />
                         </View>
                         <View style = {{flex:1, justifyContent: 'center',backgroundColor: '#EEEEEE', borderBottomColor: '#c9c9c9', borderBottomWidth: 0.5}}>
-                        <Text style = {{paddingTop: 20, paddingRight: 10, paddingBottom: 20,paddingLeft: 20, color: '#000', fontFamily: Fonts.Prompt_Medium, fontSize: 14}}>Latest Feed</Text>
+                        <Text style = {{paddingTop: 20, paddingRight: 10, paddingBottom: 20,paddingLeft: 20, color: '#000', fontFamily: Fonts.MosseThai_Bold, fontSize: 14}}>Latest Feed</Text>
                         <FlatList data = {this.state.dataFeatures} keyExtractor={this._keyExtractor}
                         renderItem = {({item}) => this.renderItemTips(item)} />
                         </View>

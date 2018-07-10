@@ -261,7 +261,10 @@ class Login extends Component {
               ></Image>
       <View style={styles.content}>
       <View style={styles.searchSection}>
-      <Icon name="envelop" style={{ paddingRight: 10, alignSelf:'center'}} size={25} color = '#2c3e50'/>
+      <View style={{ justifyContent: 'center', borderWidth: 2, alignSelf: 'center',
+      borderColor: '#2c3e50', width:windowWidth* 0.09, height:windowWidth* 0.09, borderRadius: (windowWidth* 0.09 + windowWidth* 0.09)/2}}>
+      <Icon name="user-alt" style={{alignSelf:'center'}} size={16} color = '#2c3e50'/>
+      </View>
       <TextInput style={styles.inputtextstyle}
       placeholder="Email Address"
       placeholderTextColor="#2c3e50"
@@ -274,7 +277,10 @@ class Login extends Component {
       ></TextInput>
       </View>
       <View style={styles.searchSection}>
-      <Icon name="keyboard" style={{ paddingRight: 10,alignSelf:'center'}} size={25} color = '#2c3e50'/>
+      <View style={{ justifyContent: 'center', borderWidth: 2, alignSelf: 'center',
+      borderColor: '#2c3e50', width:windowWidth* 0.09, height:windowWidth* 0.09, borderRadius: (windowWidth* 0.09 + windowWidth* 0.09)/2}}>
+      <Icon name="lock" style={{ alignSelf:'center'}} size={16} color = '#2c3e50'/>
+      </View>
       <TextInput style={styles.inputtextstyle}
        placeholder="Password"
        placeholderTextColor="#2c3e50"
@@ -290,14 +296,14 @@ class Login extends Component {
       <TouchableOpacity style={styles.LoginButton}
           onPress = {() => this.loginFirebase(this.state.email, this.state.password)}
         >
-        <LinearGradient colors={['#bced49', '#3e9e16']} style = {{flex: 1, justifyContent: 'center', height: 55, borderRadius: 27, width: windowWidth * 0.75}}>
+        <LinearGradient colors={['#9be534', '#4e8e11']} style = {{flex: 1, justifyContent: 'center', height: 55, borderRadius: 27, width: windowWidth * 0.75}}>
           <Text style={styles.LoginTextstyle}>Login</Text>
         </LinearGradient>
         </TouchableOpacity>
       {/* <TouchableOpacity style={styles.LoginButton}
       onPress = {() => this.loginFirebase(this.state.email, this.state.password)}
       ><Text style={styles.LoginTextstyle}>Login</Text></TouchableOpacity> */}
-      <Text style = {{color:'#2c3e50', alignSelf: 'center', paddingTop: 10, fontFamily: Fonts.Roboto_medium, fontSize: 15, fontWeight: 'bold'}}>OR</Text>
+      <Text style = {{color:'#2c3e50', alignSelf: 'center', paddingTop: 10, fontFamily: Fonts.MosseThai_Medium, fontSize: 15, fontWeight: 'bold'}}>OR</Text>
       </View>
             </View>
           </View>
@@ -305,22 +311,28 @@ class Login extends Component {
         <TouchableOpacity style={styles.LoginButton2}
           onPress = {() => this.loginWithFacebook()}
           >
-          <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style = {{flex: 1, justifyContent: 'center', height: 55, borderRadius: 27, width: windowWidth * 0.75}}>
+          <LinearGradient start={{ x: 1, y: 0 }}
+          end={{ x: 0, y: 1 }}
+          locations={[0,0.5,1]}
+          colors={['#013da5', '#2069e8', '#5191ff']} style = {{flex: 1, justifyContent: 'center', height: 55, borderRadius: 27, width: windowWidth * 0.75}}>
           <View style = {{flex: 1,flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>
           <Icon name="facebook" style={{ paddingRight: 10,}} size={20} color = '#fff'/>
           <Text style={styles.LoginTextstyle}>Connect with Facebook</Text>
           </View>
         </LinearGradient>
         </TouchableOpacity>
+        <Text style = {{paddingHorizontal: windowWidth * 0.2, color: '#5191ff',
+        textAlign:'center', paddingTop: 5, fontFamily: Fonts.MosseThai_Medium, fontSize: 13
+        }}>by logging in you agree to our privacy policy & term of service</Text>
         </View>
         </View>
         <View style={styles.footer}>
         <View style = {{flexDirection: 'row', justifyContent: 'space-between'}} >
         <TouchableOpacity>
-        <Text style={{color: '#c44569', fontSize: 16, fontFamily: Fonts.Roboto_medium , paddingLeft:15, paddingBottom: 20}}>Forget Password</Text></TouchableOpacity>
+        <Text style={{color: '#c44569', fontSize: 16, fontFamily: Fonts.MosseThai_Bold , paddingLeft:15, paddingBottom: 20}}>Forget Password</Text></TouchableOpacity>
         <TouchableOpacity
         onPress={() => this.props.navigation.push('Signup')}>
-        <Text style={{color: '#c44569', fontSize: 16, fontFamily: Fonts.Roboto_medium , paddingRight:15, paddingBottom: 20}}>Create Account</Text></TouchableOpacity>
+        <Text style={{color: '#c44569', fontSize: 16, fontFamily: Fonts.MosseThai_Bold , paddingRight:15, paddingBottom: 20}}>Create Account</Text></TouchableOpacity>
         {/* <Text style={{color: '#2ecc71', fontSize: 15, fontWeight: 'bold', textShadowColor: 'rgba(0, 0, 0, 0.75)', 
         textShadowOffset: {width: -1, height: 1},textShadowRadius: 10}}>Signup!</Text></TouchableOpacity> */}
         </View>
@@ -338,7 +350,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: windowWidth,
     overflow: 'hidden',
-    height: windowHeight * 0.62,
+    height: windowHeight * 0.66,
   },
   background: {
     borderRadius: (windowHeight+windowWidth) /2,
@@ -350,12 +362,12 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   image: {
-    height: windowHeight * 0.62,
+    height: windowHeight * 0.66,
     width: windowWidth,
     position: 'absolute',
     bottom: 0,
     marginLeft: 100,
-    backgroundColor: '#f2f2f2'
+    backgroundColor: '#daffc4'
   },
   contentContainer:{
     flex:1
@@ -376,32 +388,35 @@ const styles = StyleSheet.create({
       height: 45,
       margin: 3,
       marginHorizontal: 40,
-      borderBottomWidth: 0.5, 
+      borderBottomWidth: 0.7, 
       borderColor: '#3d3d3d',
+      paddingBottom: 5
     },
     inputtextstyle:{
       flex: 1,
-      paddingLeft: 7,
+      paddingLeft: 10,
       fontSize: 16,
-      fontFamily: Fonts.Roboto_medium
+      fontFamily: Fonts.MosseThai_Medium
     },
     LoginButton:{
       marginTop: 30,
       alignSelf: 'center',
       height: 55,
+      borderRadius: 30,
     },
     LoginButton2:{
-      marginTop: 30,
+      marginTop: 15,
+      height: 55,
       justifyContent: 'center',
       alignItems: 'center',
       marginHorizontal: 40,
-      height: 55,
-      borderRadius: 27,
+      borderRadius: 30,
     },
     LoginTextstyle:{
       color: '#ffffff',
-      fontWeight: 'bold',
-      alignSelf: 'center'
+      fontFamily: Fonts.MosseThai_Bold,
+      alignSelf: 'center',
+      fontSize: 16,
     },
   });
 

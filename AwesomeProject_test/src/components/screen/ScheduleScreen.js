@@ -15,8 +15,8 @@ export default class ScheduleScreen extends React.Component {
       <LinearTextGradient
         style={styles.textTopicQuestion}
         locations={[0, 1]}
-        colors={['#bbe84a','#7bd834']}
-        start={{ x: 0, y: 0 }}
+        colors={['#7bd834', '#3e9e16']}
+        start={{ x: 1, y: 0 }}
         end={{ x: 0, y: 1 }}
         >
         ตารางกิจกรรม
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   },
   textTopicQuestion:{
     fontSize: 22,
-    fontFamily: Fonts.Kanit_Semibold,
+    fontFamily: Fonts.MosseThai_Bold,
     marginLeft: 25,
     marginTop: 25
   },

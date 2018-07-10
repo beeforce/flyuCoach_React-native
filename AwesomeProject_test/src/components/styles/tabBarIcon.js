@@ -1,5 +1,7 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
+import IcoMoonConfig from '../../selection.json';
+const Icon = createIconSetFromIcoMoon(IcoMoonConfig);
 import Colors from '../constants/Colors';
 
 export default class TabBarIcon extends React.Component {
@@ -7,8 +9,8 @@ export default class TabBarIcon extends React.Component {
     return (
       <Icon
         name={this.props.name}
-        size={23}
-        style={{ paddingBottom: -3 }}
+        size={20}
+        style={{ paddingBottom: -3, alignSelf: 'center' }}
         color={this.props.focused ? '#59aa08' : Colors.tabIconDefault}
       />
     );

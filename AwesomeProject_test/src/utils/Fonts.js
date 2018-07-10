@@ -14,5 +14,9 @@ export const Fonts = {
     Prompt_Medium: 'Prompt-Medium',
     PT_Sans_Narrow_Web: 'PT-Sans-Narrow-Web-Regular',
     WendyOneRegular: 'WendyOne-Regular',
-    Itim: 'Itim-Regular'
+    Itim: 'Itim-Regular',
+    MosseThai_Regular: 'MosseThai-Regular',
+    MosseThai_Bold: 'MosseThai-Bold',
+    MosseThai_Medium: 'MosseThai-Medium',
+    MosseThai_Extra_Bold: 'MosseThai-ExtraBold',
 }

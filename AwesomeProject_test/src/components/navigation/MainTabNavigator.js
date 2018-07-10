@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, Text } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator, HeaderBackButton } from 'react-navigation';
 import TabBarIcon from '../styles/tabBarIcon';
 import FeedScreen from '../screen/FeedScreen';
@@ -9,6 +9,7 @@ import QandAScreen from '../screen/QandAScreen';
 import ScheduleScreen from '../screen/ScheduleScreen';
 import ProfileScreen from '../screen/profileScreen';
 import addMoreQuestionScreen from '../screen/addMoreQuestionScreen';
+import Colors from '../constants/Colors';
 
 const navigationOptions = ({ navigation }) => ({
   headerLeft: <HeaderBackButton onPress={() => navigation.goBack(null)} />,
@@ -23,7 +24,11 @@ const FeedStack = createStackNavigator({
 
 //Feed app page
 FeedStack.navigationOptions = {
-  tabBarLabel: 'Feed',
+  tabBarLabel: ({focused}) => (
+    <Text style={{color: focused ? '#59aa08' : null, alignSelf: 'center', fontSize: 11, paddingBottom:2, paddingTop: -2}}>
+      Feed
+    </Text>
+  ),
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -38,7 +43,11 @@ const ScheduleStack = createStackNavigator({
 });
 
 ScheduleStack.navigationOptions = {
-  tabBarLabel: 'Activity',
+  tabBarLabel: ({focused}) => (
+    <Text style={{color: focused ? '#59aa08' : null, alignSelf: 'center', fontSize: 11, paddingBottom:2, paddingTop: -2}}>
+      Activity
+    </Text>
+  ),
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
     focused = {focused}
@@ -59,7 +68,11 @@ const QandAStack = createStackNavigator({
 });
 
 QandAStack.navigationOptions = {
-  tabBarLabel: 'Question',
+  tabBarLabel: ({focused}) => (
+    <Text style={{color: focused ? '#59aa08' : null, alignSelf: 'center', fontSize: 11, paddingBottom:2, paddingTop: -2}}>
+      Question
+    </Text>
+  ),
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -74,7 +87,11 @@ const VIPsStack = createStackNavigator({
 });
 
 VIPsStack.navigationOptions = {
-  tabBarLabel: 'Self Searching',
+  tabBarLabel: ({focused}) => (
+    <Text style={{color: focused ? '#59aa08' : null, alignSelf: 'center', fontSize: 11, paddingBottom:2, paddingTop: -2}}>
+      Self Finding
+    </Text>
+  ),
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -93,7 +110,11 @@ const ProfileStack = createStackNavigator({
 })
 
 ProfileStack.navigationOptions = {
-  tabBarLabel: 'Profile',
+  tabBarLabel: ({focused}) => (
+    <Text style={{color: focused ? '#59aa08' : null, alignSelf: 'center', fontSize: 11, paddingBottom:2, paddingTop:-2}}>
+      Profile
+    </Text>
+  ),
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
     focused = {focused}

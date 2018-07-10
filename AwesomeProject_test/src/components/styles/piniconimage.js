@@ -17,9 +17,9 @@ export default class PinIconImage extends React.Component {
     const { favorite } = this.state;
     return (
         <Icon
-            name= 'pin'
+            name= {favorite ? 'thumbtack2' : 'thumbtack'}
             color={favorite ? 'red' : '#2c3e50'}
-            size={18}
+            size={17}
             style={{ padding: 10 }}
             onPress={() => this.setState({ favorite: !favorite })}
             />

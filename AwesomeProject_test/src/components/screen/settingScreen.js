@@ -108,20 +108,20 @@ render() {
                 })
                 }}>
                 <LinearGradient colors={['#f7c042', '#f2892e','#f26304']} style={styles.goalButton} >
-                <Text style={{color: '#ffffff', fontWeight: 'bold', fontFamily: Fonts.Roboto_medium , margin: 10}}>แก้ไขภาพโปรไฟล์</Text>
+                <Text style={{color: '#ffffff', fontFamily: Fonts.MosseThai_Bold , margin: 10}}>แก้ไขภาพโปรไฟล์</Text>
                 </LinearGradient>
                 </TouchableOpacity>
                 </View>
 
                 <View style = {styles.contentcontainer}>
-                <View style = {{borderBottomWidth: 0.5, borderColor: '#c9c9c9',}}>
+                <View style = {{borderBottomWidth: 1, borderColor: '#c9c9c9',}}>
                 <View style = {styles.layouteachcontent} >
-                <View style = {{ flexDirection : 'row',}}>
-                <Text>Email</Text>
-                <Icon name="envelope" style={{ paddingLeft: 8, }} size={16} color = '#2c3e50'/>
+                <View style = {styles.viewoficonwithtext}>
+                <Text style = {styles.textwithIcon}>Email</Text>
+                <Icon name="envelope" style={styles.iconwithText} size={15} color = '#2c3e50'/>
                 </View>
                 <TextInput 
-                style = {{fontFamily:Fonts.Roboto_medium, fontWeight: 'bold',}}
+                style = {styles.textinput}
                 value= {this.state.email}
                 placeholderTextColor="#2c3e50"
                 keyboardType = "email-address"
@@ -133,14 +133,14 @@ render() {
                 </View>
                 </View>
 
-                <View style = {{borderBottomWidth: 0.5, borderColor: '#c9c9c9',}}>
+                <View style = {{borderBottomWidth: 1, borderColor: '#c9c9c9',}}>
                 <View style = {styles.layouteachcontent} >
-                <View style = {{ flexDirection : 'row',}}>
-                <Text>Phone Number</Text>
-                <Icon name="phone" style={{ paddingLeft: 8, }} size={16} color = '#2c3e50'/>
+                <View style = {styles.viewoficonwithtext}>
+                <Text style = {styles.textwithIcon}>Phone Number</Text>
+                <Icon name="phone" style={styles.iconwithText} size={15} color = '#2c3e50'/>
                 </View>
                 <TextInput 
-                style = {{fontFamily:Fonts.Roboto_medium, fontWeight: 'bold',}}
+                style = {styles.textinput}
                 value= {this.state.phonenumber}
                 placeholderTextColor="#2c3e50"
                 keyboardType = "numeric"
@@ -153,14 +153,14 @@ render() {
                 </View>
                 </View>
 
-                <View style = {{borderBottomWidth: 0.5, borderColor: '#c9c9c9',}}>
+                <View style = {{borderBottomWidth: 1, borderColor: '#c9c9c9',}}>
                 <View style = {styles.layouteachcontent} >
-                <View style = {{ flexDirection : 'row',}}>
-                <Text>Fullname</Text>
-                <Icon name="user" style={{ paddingLeft: 8, }} size={16} color = '#2c3e50'/>
+                <View style = {styles.viewoficonwithtext}>
+                <Text style = {styles.textwithIcon}>Fullname</Text>
+                <Icon name="user" style={styles.iconwithText} size={15} color = '#2c3e50'/>
                 </View>
                 <TextInput 
-                style = {{fontFamily:Fonts.Roboto_medium, fontWeight: 'bold',}}
+                style = {styles.textinput}
                 value= {this.state.Fullname}
                 placeholderTextColor="#2c3e50"
                 keyboardType = "default"
@@ -173,14 +173,14 @@ render() {
                 </View>
                 </View>
 
-                <View style = {{borderBottomWidth: 0.5, borderColor: '#c9c9c9',}}>
+                <View style = {{borderBottomWidth: 1, borderColor: '#c9c9c9',}}>
                 <View style = {styles.layouteachcontent} >
-                <View style = {{ flexDirection : 'row',}}>
-                <Text>Nickname</Text>
-                <Icon name="user" style={{ paddingLeft: 8, }} size={16} color = '#2c3e50'/>
+                <View style = {styles.viewoficonwithtext}>
+                <Text style = {styles.textwithIcon}>Nickname</Text>
+                <Icon name="user" style={styles.iconwithText} size={15} color = '#2c3e50'/>
                 </View>
                 <TextInput 
-                style = {{fontFamily:Fonts.Roboto_medium, fontWeight: 'bold',}}
+                style = {styles.textinput}
                 value= {this.state.Nickname}
                 placeholderTextColor="#2c3e50"
                 keyboardType = "default"
@@ -193,14 +193,14 @@ render() {
                 </View>
                 </View>
 
-                <View style = {{borderBottomWidth: 0.5, borderColor: '#c9c9c9',}}>
+                <View style = {{borderBottomWidth: 1, borderColor: '#c9c9c9',}}>
                 <View style = {styles.layouteachcontent} >
-                <View style = {{ flexDirection : 'row',}}>
-                <Text>Date of Birth</Text>
-                <Icon name="birthday-cake" style={{ paddingLeft: 8, }} size={16} color = '#2c3e50'/>
+                <View style = {styles.viewoficonwithtext}>
+                <Text style = {styles.textwithIcon}>Date of Birth</Text>
+                <Icon name="birthday-cake" style={styles.iconwithText} size={15} color = '#2c3e50'/>
                 </View>
                 <TextInput 
-                style = {{fontFamily:Fonts.Roboto_medium, fontWeight: 'bold',}}
+                style = {styles.textinput}
                 value= {this.state.Date_of_Birth}
                 placeholderTextColor="#2c3e50"
                 placeholder = "DD/MM/YYYY"
@@ -214,7 +214,7 @@ render() {
                 </View>
                 </View>
 
-                <View style = {{borderBottomWidth: 0.5, borderColor: '#c9c9c9',}}>
+                <View style = {{borderBottomWidth: 1, borderColor: '#c9c9c9',}}>
                 <View style = {{flexDirection: 'row'}}>
 
                 <View style = {{
@@ -223,12 +223,12 @@ render() {
                 marginTop: 10,
                 marginLeft: 15, 
                 marginRight: 15, }} >
-                <View style = {{ flexDirection : 'row',}}>
-                <Text>Province</Text>
-                <Icon name="map-marker-alt" style={{ paddingLeft: 8, }} size={16} color = '#2c3e50'/>
+                <View style = {styles.viewoficonwithtext}>
+                <Text style = {styles.textwithIcon}>Province</Text>
+                <Icon name="map-marker-alt" style={styles.iconwithText} size={15} color = '#2c3e50'/>
                 </View>
                 <TextInput 
-                style = {{fontFamily:Fonts.Roboto_medium, fontWeight: 'bold',}}
+                style = {styles.textinput}
                 value= {this.state.province}
                 placeholderTextColor="#2c3e50"
                 keyboardType = "default"
@@ -242,14 +242,14 @@ render() {
                 />
                 </View>
 
-                <View style = {{borderLeftWidth: 0.5, borderColor: '#c9c9c9',flex: 2}}>
+                <View style = {{borderLeftWidth: 1, borderColor: '#c9c9c9',flex: 2}}>
                 <View style = {styles.layouteachcontent} >
-                <View style = {{ flexDirection : 'row',}}>
-                <Text>School</Text>
-                <Icon name="school" style={{ paddingLeft: 8, }} size={16} color = '#2c3e50'/>
+                <View style = {styles.viewoficonwithtext}>
+                <Text style = {styles.textwithIcon}>School</Text>
+                <Icon name="school" style={styles.iconwithText} size={15} color = '#2c3e50'/>
                 </View>
                 <TextInput 
-                style = {{fontFamily:Fonts.Roboto_medium, fontWeight: 'bold',}}
+                style = {styles.textinput}
                 value= {this.state.school}
                 placeholderTextColor="#2c3e50"
                 keyboardType = "default"
@@ -267,14 +267,14 @@ render() {
                 </View>
                 </View>
 
-                <View style = {{borderBottomWidth: 0.5, borderColor: '#c9c9c9',}}>
+                <View style = {{borderBottomWidth: 1, borderColor: '#c9c9c9',}}>
                 <View style = {styles.layouteachcontent} >
-                <View style = {{ flexDirection : 'row',}}>
-                <Text>Goal</Text>
-                <Icon name="road" style={{ paddingLeft: 8, }} size={16} color = '#2c3e50'/>
+                <View style = {styles.viewoficonwithtext}>
+                <Text style = {styles.textwithIcon}>Goal</Text>
+                <Icon name="road" style={styles.iconwithText} size={15} color = '#2c3e50'/>
                 </View>
                 <TextInput 
-                style = {{fontFamily:Fonts.Roboto_medium, fontWeight: 'bold',}}
+                style = {styles.textinput}
                 value= {this.state.goal}
                 placeholderTextColor="#2c3e50"
                 keyboardType = "default"
@@ -287,11 +287,11 @@ render() {
                 </View>
               </View>
 
+              <TouchableOpacity>
                <LinearGradient colors={['#bbe84a','#7bd834', '#3e9e16']} style={styles.saveButton}>
-               <TouchableOpacity>
-                <Text style={{color: '#ffffff', fontWeight: 'bold', fontFamily: Fonts.Roboto_medium , textAlign:'center', alignSelf:'center'}}>บันทึกการแก้ไข</Text>
-                </TouchableOpacity>
+                <Text style={{color: '#ffffff', fontFamily: Fonts.MosseThai_Bold , textAlign:'center', alignSelf:'center'}}>บันทึกการแก้ไข</Text>
                 </LinearGradient>
+                </TouchableOpacity>
         </ScrollView>
         </View>
     );
@@ -338,7 +338,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.5, 
     borderColor: '#c9c9c9',
     alignSelf: 'center',
-    marginTop: 15,
+    marginTop: 25,
     backgroundColor: '#fff',
     shadowColor: '#000', 
     shadowOpacity : 0.24, 
@@ -347,8 +347,25 @@ const styles = StyleSheet.create({
   },
   layouteachcontent:{
     flexDirection: 'column',
-    marginTop: 10,
-    marginLeft: 15, 
-    marginRight: 15, 
+    paddingTop: 10,
+    paddingLeft: 15, 
+    paddingRight: 15, 
+  },
+  iconwithText:{
+    paddingLeft: 8, 
+    alignSelf:'center'
+  },
+  textwithIcon:{
+    alignSelf:'center',
+    fontSize: 16,
+    fontFamily: Fonts.MosseThai_Medium
+  },
+  viewoficonwithtext:{
+    flexDirection : 'row',
+    alignItems: 'baseline', 
+  },
+  textinput:{
+    fontFamily: Fonts.MosseThai_Bold, 
+    fontSize: 16
   }
 });

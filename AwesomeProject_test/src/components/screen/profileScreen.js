@@ -23,21 +23,22 @@ import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
 import IcoMoonConfig from '../../selection.json';
 import { Fonts } from '../../utils/Fonts';
 import LinearGradient from 'react-native-linear-gradient';
+import CardSwipe from '../styles/cardSwipe';
 
 
 const Icon = createIconSetFromIcoMoon(IcoMoonConfig);
 
 const ARTICLES = [
-  { id: "1", uri: require('../../images/image.jpg'), 
-  title: 'How to improve your english skill immediately', text: 'It plays a very important part in learning any language. Effective listening ensures understanding and it helps improve accuracy when speaking , among other things. How can you improve your listening skills? By listening actively, i.e. paying attention not only on what is said, but also how it is said. So, listen'},
-  { id: "2", uri: require('../../images/image.jpg'),
-   title: 'How to improve your english skill immediately', text: 'It plays a very important part in learning any language. Effective listening ensures understanding and it helps improve accuracy when speaking , among other things. How can you improve your listening skills? By listening actively, i.e. paying attention not only on what is said, but also how it is said. So, listen'},
-  { id: "3", uri: require('../../images/image.jpg'),
-   title: 'How to improve your english skill immediately', text: 'It plays a very important part in learning any language. Effective listening ensures understanding and it helps improve accuracy when speaking , among other things. How can you improve your listening skills? By listening actively, i.e. paying attention not only on what is said, but also how it is said. So, listen'},
-  { id: "4", uri: require('../../images/image.jpg'),
-   title: 'How to improve your english skill immediately', text: 'It plays a very important part in learning any language. Effective listening ensures understanding and it helps improve accuracy when speaking , among other things. How can you improve your listening skills? By listening actively, i.e. paying attention not only on what is said, but also how it is said. So, listen'},
-  { id: "5", uri: require('../../images/image.jpg'),
-   title: 'How to improve your english skill immediately', text: 'It plays a very important part in learning any language. Effective listening ensures understanding and it helps improve accuracy when speaking , among other things. How can you improve your listening skills? By listening actively, i.e. paying attention not only on what is said, but also how it is said. So, listen'},
+  { id: "1", uri: require('../../images/image.jpg'), date: '1/06/2561 18:30',
+   text: 'วันนี้มีการสอน Live สด เกี่ยวกับการเดาคำศัพท์ ที่เราไม่รู้ ติดตามดู Live ได้ตามช่องทางข้างล่างเลยจ้า ตอน 21:30 ห้ามพลาดนะจ๊ะ !'},
+  { id: "2", uri: require('../../images/image.jpg'), date: '2/06/2561 18:30',
+   text: 'วันนี้มีการสอน Live สด เกี่ยวกับการเดาคำศัพท์ ที่เราไม่รู้ ติดตามดู Live ได้ตามช่องทางข้างล่างเลยจ้า ตอน 21:30 ห้ามพลาดนะจ๊ะ !'},
+  { id: "3", uri: require('../../images/image.jpg'), date: '3/06/2561 18:30',
+   text: 'วันนี้มีการสอน Live สด เกี่ยวกับการเดาคำศัพท์ ที่เราไม่รู้ ติดตามดู Live ได้ตามช่องทางข้างล่างเลยจ้า ตอน 21:30 ห้ามพลาดนะจ๊ะ !'},
+  { id: "4", uri: require('../../images/image.jpg'), date: '4/06/2561 18:30',
+   text: 'It plays a very important part in learning any language. Effective listening ensures understanding and it helps improve accuracy when speaking '},
+  { id: "5", uri: require('../../images/image.jpg'), date: '5/06/2561 18:30',
+   text: 'วันนี้มีการสอน Live สด เกี่ยวกับการเดาคำศัพท์ ที่เราไม่รู้ ติดตามดู Live ได้ตามช่องทางข้างล่างเลยจ้า ตอน 21:30 ห้ามพลาดนะจ๊ะ !'},
 ]
 
 const ARTICLES_length = ARTICLES.length;
@@ -59,6 +60,9 @@ export default class ProfileScreen extends React.Component {
                   user:null,
                   Modalopen : false,
                   loading: true,
+                  mincard: true,
+                  maxcard: false,
+                  goalSuccess: false,
                 }
     
   } 
@@ -86,38 +90,61 @@ export default class ProfileScreen extends React.Component {
   //swipe right of card swipe
 swipeBottom = () => {
   if(this.state.cardIndex < ARTICLES_length-1){
-    this.setState({ cardIndex: this.state.cardIndex + 1 })
-}else{
-    this.swiper.disableBottomSwipe
-    this.swiper.goBackFromBottom();
-}
-};
-
-//swipe right of card swipe
-swipeBack = () => {
-  if(this.state.cardIndex === 0){
-    
-}
-else{
+    this.setState({ cardIndex: this.state.cardIndex + 1,
+                    maxcard: false })
+    if(this.state.cardIndex === 1){
+      this.setState({ mincard: false})
+    }
+    if(this.state.cardIndex === ARTICLES_length-1){
+      this.setState({ maxcard: true})
+    }
+} 
+  else{
     this.swiper.goBackFromTop();
-    this.setState({ cardIndex: this.state.cardIndex - 1 })
 }
 };
 
+// //swipe right of card swipe
+swipeBack = () => {
+    this.swiper.goBackFromTop();
 
-//swipe left of card swipe
+}
+
+swipeBackTofirst = () =>{
+  const cardindex_ = this.state.cardIndex;
+  console.log(cardindex_)
+  for(let i = 0; i <= cardindex_+1; i++){
+    this.swiper.goBackFromTop();
+    this.swiper.goBackFromTop();
+    console.log(i)
+  }
+
+}
+
+onSwiped = (cardIndex) =>{
+  this.setState({
+    cardIndex: cardIndex
+  })
+  const cardindex_ = this.state.cardIndex;
+    console.log(cardindex_);
+}
+
+
+// //swipe left of card swipe
 swipeTop = () => {
   console.log(this.state.cardIndex)
   if(this.state.cardIndex <= 0){
 
   }
   if (this.state.cardIndex === 0) {
-    this.swiper.goBackFromTop();
   }
   if (this.state.cardIndex > 0) {
+    if (this.state.cardIndex === 1) {
+      this.setState({ mincard: true})
+    }
     this.setState({ cardIndex: this.state.cardIndex - 1 })
     this.swiper.goBackFromTop();
-    this.swiper.goBackFromBottom();
+    this.swiper.goBackFromTop();
 }
 
 };
@@ -167,24 +194,46 @@ getImageTypeTips = (type) => {
     case "Announcement":
         return (<View 
         style={{ backgroundColor: '#ff9a16' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.1, height:SCREEN_WIDTH* 0.1, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.1 + SCREEN_WIDTH* 0.1)/2}}>
-        <Icon name="bullhorn-solid" style={{ alignSelf:'center',}} size={12} color = '#fff'/>
+        <Icon name="bullhorn-solid" style={{ alignSelf:'center',}} size={11} color = '#fff'/>
         </View>)
     case "Document":
     return (<View 
         style={{ backgroundColor: '#2ce018' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.1, height:SCREEN_WIDTH* 0.1, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.1 + SCREEN_WIDTH* 0.1)/2}}>
-        <Icon name="file-alt-solid" style={{ alignSelf:'center',}} size={12} color = '#fff'/>
+        <Icon name="file-alt-solid" style={{ alignSelf:'center',}} size={11} color = '#fff'/>
         </View>)
     case "English":
     return (<View 
-        style={{ backgroundColor: '#330ed3' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.1, height:SCREEN_WIDTH* 0.1, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.1 + SCREEN_WIDTH* 0.1)/2}}>
-         <Icon name="book-solid" style={{ alignSelf:'center'}} size={12} color = '#fff'/>
+        style={{ backgroundColor: '#0420f7' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.1, height:SCREEN_WIDTH* 0.1, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.1 + SCREEN_WIDTH* 0.1)/2}}>
+         <Icon name="book-solid" style={{ alignSelf:'center'}} size={11} color = '#fff'/>
         </View>)
     case "Quote":
     return (<View 
       style={{ backgroundColor: '#e81747' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.1, height:SCREEN_WIDTH* 0.1, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.1 + SCREEN_WIDTH* 0.1)/2}}>
-      <Icon name="heart-solid" style={{ alignSelf:'center'}} size={12} color = '#fff'/>
+      <Icon name="heart-solid" style={{ alignSelf:'center'}} size={11} color = '#fff'/>
       </View>)
 }
+}
+
+getTypeofTips = (type) =>{
+  switch (type){
+    case "Announcement":
+    return (<View style = {{borderColor: '#e67e22', borderRadius: 2, borderWidth: 1, alignSelf: 'flex-start'}}>
+            <Text style = {{paddingTop:2, paddingBottom:2, paddingHorizontal:5, color:'#e67e22', fontSize: 9, fontFamily: Fonts.MosseThai_Regular}}>Announcement</Text>
+            </View>)
+    case "Document":
+    return (<View style = {{borderColor: '#2ce018', borderRadius: 2, borderWidth: 1, alignSelf: 'flex-start'}}>
+             <Text style = {{paddingTop:2, paddingBottom:2, paddingHorizontal:5, color:'#2ce018', fontSize: 9, fontFamily: Fonts.MosseThai_Regular}}>Document</Text>
+             </View>)
+    case "English":
+    return (<View style = {{borderColor: '#0469f7', borderRadius: 2, borderWidth: 1, alignSelf: 'flex-start'}}>
+             <Text style = {{paddingTop:2, paddingBottom:2, paddingHorizontal:5, color:'#0469f7', fontSize: 9, fontFamily: Fonts.MosseThai_Regular}}>English</Text>
+             </View>)
+    case "Quote":
+    return (<View style = {{borderColor: '#e81747', borderRadius: 2, borderWidth: 1, alignSelf: 'flex-start'}}>
+             <Text style = {{paddingTop:2, paddingBottom:2, paddingHorizontal:5, color:'#e81747', fontSize: 9, fontFamily: Fonts.MosseThai_Regular}}>Quote</Text>
+             </View>)
+  }
+
 }
 
 
@@ -201,26 +250,24 @@ renderItemTips(item){
   <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline'}}>
 
   <View>
-  <View style = {{borderColor: '#e67e22', borderRadius: 2, borderWidth: 1, alignSelf: 'flex-start'}}>
-  <Text style = {{padding:2, color:'#e67e22', fontSize: 9,}}>{item.type}</Text>
-  </View>
+  {this.getTypeofTips(item.type)}
   </View>
   
   <View style = {{ flexDirection: 'row', alignItems: 'baseline', alignSelf: 'flex-end'}}>
   <View>
   <Icon name="clock2" style={{ padding:5, alignSelf:'center'}} size={11} color = '#000'/>
   </View>
-  <Text style = {{ color:'#000000', fontSize: 10, alignSelf:'center'}}>{item.date}</Text>
+  <Text style = {{ color:'#000000', fontSize: 10, alignSelf:'center', fontFamily: Fonts.MosseThai_Regular}}>{item.date}</Text>
   </View>
 
   </View>
 
-  <Text style = {{fontSize: 14, fontFamily: Fonts.Kanit, color: '#000', marginTop:5 }}>{item.title}</Text>
+  <Text style = {{fontSize: 14, fontFamily: Fonts.MosseThai_Medium, color: '#000', marginTop:5 }}>{item.title}</Text>
   {/* color = '#2c3e50' */}
   </View>
   </View>
   <View style = {{alignItems: 'flex-end'}}>
-  <Icon name= 'pin' color = 'red' size={16} style={{ padding: 10 }} />
+  <Icon name= 'thumbtack2' color = 'red' size={17} style={{ padding: 10 }} />
   </View>
   </View>
   </TouchableHighlight>
@@ -255,82 +302,13 @@ renderItemTips(item){
       </Modal>
 
       <Modal style = {{flex:1}} visible = {this.state.Modalopen} onRequestClose = {() => console.warn("this is close modal")}>
-                <TouchableHighlight style = {{margin:10}} onPress ={this._onCloseModal}>
-                <Image source = {require('../../images/icon_delete.png')} style = {{ width:20, height:20 }}/>
+                <View style ={{ padding:15}}>
+                <TouchableHighlight style = {{width:SCREEN_WIDTH * 0.065, height:SCREEN_WIDTH * 0.065,}} onPress ={this._onCloseModal}>
+                <Image source = {require('../../images/icon_delete.png')}
+                style = {{ width:SCREEN_WIDTH * 0.065, height:SCREEN_WIDTH * 0.05 }}/>
                 </TouchableHighlight>
-                <View style = {{flexDirection: 'row',marginLeft: SCREEN_WIDTH * 0.05, marginRight: SCREEN_WIDTH * 0.05, alignItems: 'baseline',justifyContent: 'space-between'}}>
-                <View style = {{flexDirection: 'row',alignItems: 'baseline'}}>
-                <Image resizeMode = 'stretch' source = {{uri: 'https://firebasestorage.googleapis.com/v0/b/test-fb2a3.appspot.com/o/dataImages%2FtipsTypeImages%2Ficon_annou.png?alt=media&token=b15cf403-ed6e-4e7c-90d9-353035ee3399'}} style={{ width:25, height:25, borderRadius:(25/2),}}></Image>
-                <Text style = {{marginLeft: 7, color:'#e67e22'}}>Announcement</Text>
                 </View>
-                <Text style = {{fontSize: 14, fontWeight: 'bold', color:'#000'}}>ย้อนกลับไปอ่านใหม่</Text>
-                </View>
-                <View style = {{flex:1, justifyContent: 'center' , flexDirection: 'column', alignItems: 'center',}}>
-                    <View style = {{flex:3,}}>
-                        <CardStack
-                        style={styles.content}
-                        renderNoMoreCards={() => <Text style={{fontWeight:'700', fontSize:18, color:'gray'}}>No more cards :(</Text>}
-                        disableLeftSwipe
-                        disableRightSwipe
-                        // onSwipedLeft={this.swipeLeft}
-                        // onSwipedRight = {this.swipeRight}
-                        onSwipedTop = {this.swipeTop}
-                        onSwipedBottom = {this.swipeBottom}
-                        horizontalverticalSwipe = {false}
-                        ref={swiper => {
-                          this.swiper = swiper
-                        }}
-                      >
-                      {ARTICLES.map((item) => {
-                        return (
-                        <Card style={[styles.card, styles.card1]} key={item.id}>
-                        <View style = {{ flexDirection: 'row', marginTop: 7, marginRight: SCREEN_WIDTH* 0.15 }}>
-                        <Image source={require('../../images/icon_tips.png')} resizeMode={'contain'} style={{ height: 32, width: 32, borderRadius: 5, marginTop: 10, marginBottom:10, marginLeft:10}} />
-                        <Text style = {{fontSize: 18, fontWeight: 'bold', color: '#000000', marginTop: 7, marginLeft: 3}}>{item.id} {item.title}</Text>
-                        </View>
-                        <ImageBackground source={item.uri} resizeMode={'stretch'} style={{ height: 120, width: SCREEN_WIDTH* 0.8, justifyContent:'center', alignSelf: 'center', marginTop: 7}}>
-                        <Text style = {{fontSize: 18, fontWeight: 'bold', color: '#fff', marginHorizontal: 30, textAlign: 'center', 
-                        textShadowColor: 'rgba(0, 0, 0, 0.75)', textShadowOffset: {width: -1, height: 1}, textShadowRadius: 10}}>
-                        {item.title}</Text>
-                        </ImageBackground>
-                  
-                      <Text style = {{fontSize: 16, color: '#000000', marginHorizontal: SCREEN_WIDTH*0.05, marginTop: 5, marginBottom:15}}>{item.text}</Text>
-                        </Card>
-                      );
-                    })}
-                    </CardStack>
-                    </View>
-
-                    <View style={styles.buttonContainer}>
-                    <View>
-                      {/* <Text style = {{fontSize: 14, fontWeight: 'bold', color: '#ff4d4d',}}>Prev</Text> */}
-                      <TouchableOpacity style={styles.button} onPress={()=>{
-                        this.swiper.swipeTop()
-                      }}>
-                        <Image source={require('../../images/icon_left.png')} resizeMode={'contain'} style={{ height: 32, width: 32, borderRadius: 5 }} />
-                      </TouchableOpacity>
-                      </View>
-                      <View>
-                      <View style = {{flexDirection: 'row', alignItems:'center', alignSelf:'center'}}>
-                      <Text style = {{fontSize: 13, fontWeight: 'bold', color: '#4cd137'}}>{this.state.cardIndex +1 }/ </Text>
-                      <Text style = {{fontSize: 13, fontWeight: 'bold',}}>{ARTICLES_length} Cards</Text>
-                      </View>
-                      <Progress.Bar progress={(this.state.cardIndex + 1)/ ARTICLES_length} 
-                      width={SCREEN_WIDTH*0.5} height={15} 
-                      style = {{alignSelf: 'center', marginTop:10, borderRadius: 15, backgroundColor: '#3e9e16'}}
-                      color = "rgb(115, 214, 40)"/>
-                      </View>
-                      <View>
-                      {/* <Text style = {{fontSize: 14, fontWeight: 'bold', color: '#32ff7e',}}>Next</Text> */}
-                      <TouchableOpacity style={styles.button} onPress={()=>{
-                        this.swiper.swipeBottom();
-                      }}>
-                        <Image source={require('../../images/icon_right.png')} resizeMode={'contain'} style={{ height: 32, width: 32, borderRadius: 5 }} />
-                      </TouchableOpacity>
-                      </View>
-                    </View>
-
-                    </View>
+                <CardSwipe />
                 </Modal>
 
         <ScrollView
@@ -342,37 +320,47 @@ renderItemTips(item){
             )}  >
         <View style = {styles.profileImagecontent}>
         <Image source={require('../../images/image.jpg')} style={ styles.profileImage } />
-        <Text style = {{padding:8, fontFamily:Fonts.Roboto_Regular, color: '#000'}}>matoyza007@gmail.com</Text>
+        <Text style = {{padding:8, fontFamily:Fonts.MosseThai_Medium, color: '#000'}}>matoyza007@gmail.com</Text>
         </View>
     
         <View style = {styles.cardviewcontent}>
           <View style = {{ flexDirection: 'row', marginLeft:15, marginRight: 15, 
           marginTop: 15, marginBottom: 15, justifyContent: 'space-between', alignItems: 'baseline'}} >
           <View style = {{ flexDirection: 'column', alignSelf: 'flex-start'}}>
-          <Text style = {{ margin:2, fontWeight: 'bold', fontFamily: Fonts.Roboto_medium, color: '#000'}}>Matoy Sukhuvimonpanich (Toy)</Text>
-          <Text style = {{ margin:2, fontFamily: Fonts.Roboto_medium, color: '#000'}}>Uttaradit, Uttaradit school</Text>
+          <Text style = {{ margin:2, fontFamily: Fonts.MosseThai_Bold, color: '#000'}}>Matoy Sukhuvimonpanich (Toy)</Text>
+          <Text style = {{ margin:2, fontFamily: Fonts.MosseThai_Medium, color: '#000'}}>Uttaradit, Uttaradit school</Text>
           </View>
           <View style = {{ flexDirection: 'column', alignItems: 'baseline', alignSelf: 'flex-end'}}>
-          <Text style = {{margin:2, color:'#000', fontSize: 12}}>แก้ไขข้อมูล</Text>
+          <Text style = {{margin:2, color:'#000', fontSize: 12, fontFamily:Fonts.MosseThai_Medium}}>แก้ไขข้อมูล</Text>
           <TouchableOpacity style={{ paddingRight:5, alignSelf: 'center'}}
           onPress={() => this.props.navigation.push('Profile2')}>
-          <Icon name="edit" size={27} color = '#000'/></TouchableOpacity>
+          <Icon name="edit2" size={22} color = '#000'/></TouchableOpacity>
           </View>
           </View>
         </View>
 
-        <Text style = {{alignSelf: 'center', fontWeight: 'bold', fontFamily: Fonts.Roboto_medium, color: '#000'}}>เป้าหมายของเรา</Text>
-        <LinearGradient colors={['#f7c042', '#f2892e','#f26304']} style = {styles.goalButton}>
+        <Text style = {{alignSelf: 'center', fontFamily: Fonts.MosseThai_Medium, color: '#000'}}>เป้าหมายของเรา</Text>
+        <View style = {{alignSelf: 'center'}}>
+        <LinearGradient 
+        colors= {!this.state.goalSuccess ? ['#f7c042', '#f2892e','#f26304'] : ['#bbe84a','#7bd834', '#3e9e16'] }
+        style = {styles.goalButton}>
           <View style = {{flexDirection: 'row', justifyContent: 'space-between'}}>
-          <Text style={{color: '#ffffff', fontWeight: 'bold', fontFamily: Fonts.Roboto_medium ,margin: 15}}>วิศวกรโยธา มช.</Text>
+          <Text style={{color: '#ffffff', fontFamily: Fonts.MosseThai_Bold ,alignSelf: 'center', paddingLeft:20, paddingRight:20}}>วิศวกรโยธา มช.</Text>
+          <TouchableOpacity onPress = {()=>{
+            this.setState({
+              goalSuccess: true
+            })
+          }}>
           <LinearGradient colors={['#bbe84a','#7bd834', '#3e9e16']} style = {{backgroundColor: '#44bd32', width:50, height:50, borderRadius:25, justifyContent:'center', 
-          alignItems:'center', shadowColor: '#000', shadowOpacity : 0.24, shadowRadius: 3, elevation: 3, }}>
+          alignItems:'center' }}>
           <Image source={require('../../images/check_white.png')} style={{ width: 20, height:20}} />
           </LinearGradient>
+          </TouchableOpacity>
           </View>
         </LinearGradient>
+        </View>
       
-        <Text style = {{ marginLeft: 20, marginBottom: 10, fontWeight: 'bold', marginTop: 15, marginLeft: 15, color: '#000'}}>
+        <Text style = {{ marginLeft: 20, marginBottom: 10, fontFamily:Fonts.MosseThai_Bold, marginTop: 15, marginLeft: 15, color: '#000'}}>
         Your Pins ( {amountpin} )</Text>
         <View style = {styles.pincontent}>
         <FlatList data = {this.state.dataTips} keyExtractor={this._keyExtractor}
@@ -435,8 +423,8 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   card:{
-    width: SCREEN_WIDTH* 0.9,
-    height: SCREEN_HEIGHT* 0.65,
+    width: SCREEN_WIDTH* 0.8,
+    height: SCREEN_HEIGHT* 0.6,
     backgroundColor: '#fff',
     borderRadius: 5,
     borderColor: '#000000',
@@ -450,12 +438,12 @@ const styles = StyleSheet.create({
   card1: {
     backgroundColor: '#fff',
     borderColor: '#000000',
-    borderWidth: 0.5,
+    borderWidth: 0.75,
   },
   buttonContainer:{
     width:SCREEN_WIDTH*0.9,
     height: SCREEN_HEIGHT* 0.125,
-    flexDirection:'row',
+    flexDirection:'column',
     justifyContent: 'space-around',
     marginBottom: 20,
   },
@@ -506,9 +494,7 @@ const styles = StyleSheet.create({
   },
   goalButton:{
     backgroundColor: '#e67e22',
-    alignSelf: 'center',
-    width: 250,
-    height: 50,
+    alignSelf: 'flex-start',
     borderRadius: 27,
     marginTop: 8,
     shadowColor: '#000', 
