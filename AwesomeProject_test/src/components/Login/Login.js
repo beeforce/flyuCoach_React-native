@@ -350,7 +350,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: windowWidth,
     overflow: 'hidden',
-    height: windowHeight * 0.66,
+    height: windowHeight * 0.63,
   },
   background: {
     borderRadius: (windowHeight+windowWidth) /2,
@@ -362,7 +362,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   image: {
-    height: windowHeight * 0.66,
+    height: windowHeight * 0.63,
     width: windowWidth,
     position: 'absolute',
     bottom: 0,

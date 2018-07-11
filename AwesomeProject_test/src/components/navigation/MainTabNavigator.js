@@ -9,7 +9,7 @@ import QandAScreen from '../screen/QandAScreen';
 import ScheduleScreen from '../screen/ScheduleScreen';
 import ProfileScreen from '../screen/profileScreen';
 import addMoreQuestionScreen from '../screen/addMoreQuestionScreen';
-import Colors from '../constants/Colors';
+import { Fonts } from '../../utils/Fonts';
 
 const navigationOptions = ({ navigation }) => ({
   headerLeft: <HeaderBackButton onPress={() => navigation.goBack(null)} />,
@@ -25,7 +25,7 @@ const FeedStack = createStackNavigator({
 //Feed app page
 FeedStack.navigationOptions = {
   tabBarLabel: ({focused}) => (
-    <Text style={{color: focused ? '#59aa08' : null, alignSelf: 'center', fontSize: 11, paddingBottom:2, paddingTop: -2}}>
+    <Text style={{color: focused ? '#59aa08' : null, alignSelf: 'center', fontSize: 11, fontFamily: Fonts.MosseThai_Medium ,paddingBottom:2, paddingTop: -3}}>
       Feed
     </Text>
   ),
@@ -44,7 +44,7 @@ const ScheduleStack = createStackNavigator({
 
 ScheduleStack.navigationOptions = {
   tabBarLabel: ({focused}) => (
-    <Text style={{color: focused ? '#59aa08' : null, alignSelf: 'center', fontSize: 11, paddingBottom:2, paddingTop: -2}}>
+    <Text style={{color: focused ? '#59aa08' : null, alignSelf: 'center', fontSize: 11, fontFamily: Fonts.MosseThai_Medium ,paddingBottom:2, paddingTop: -3}}>
       Activity
     </Text>
   ),
@@ -69,7 +69,7 @@ const QandAStack = createStackNavigator({
 
 QandAStack.navigationOptions = {
   tabBarLabel: ({focused}) => (
-    <Text style={{color: focused ? '#59aa08' : null, alignSelf: 'center', fontSize: 11, paddingBottom:2, paddingTop: -2}}>
+    <Text style={{color: focused ? '#59aa08' : null, alignSelf: 'center', fontSize: 11, fontFamily: Fonts.MosseThai_Medium ,paddingBottom:2, paddingTop: -3}}>
       Question
     </Text>
   ),
@@ -88,7 +88,7 @@ const VIPsStack = createStackNavigator({
 
 VIPsStack.navigationOptions = {
   tabBarLabel: ({focused}) => (
-    <Text style={{color: focused ? '#59aa08' : null, alignSelf: 'center', fontSize: 11, paddingBottom:2, paddingTop: -2}}>
+    <Text style={{color: focused ? '#59aa08' : null, alignSelf: 'center', fontSize: 11, fontFamily: Fonts.MosseThai_Medium ,paddingBottom:2, paddingTop: -3}}>
       Self Finding
     </Text>
   ),
@@ -111,7 +111,7 @@ const ProfileStack = createStackNavigator({
 
 ProfileStack.navigationOptions = {
   tabBarLabel: ({focused}) => (
-    <Text style={{color: focused ? '#59aa08' : null, alignSelf: 'center', fontSize: 11, paddingBottom:2, paddingTop:-2}}>
+    <Text style={{color: focused ? '#59aa08' : null, alignSelf: 'center', fontSize: 11, fontFamily: Fonts.MosseThai_Medium ,paddingBottom:2, paddingTop: -3}}>
       Profile
     </Text>
   ),
