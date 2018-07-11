@@ -1,10 +1,8 @@
 import React from 'react';
 import {
-  Image,
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   TouchableHighlight,
   ActivityIndicator,
   AsyncStorage,
@@ -15,7 +13,6 @@ import {
   ImageBackground,
   FlatList,
   Modal,
-  Platform
 } from 'react-native';
 import * as firebase from 'firebase';
 import Swiper from 'react-native-swiper';
@@ -361,13 +358,7 @@ renderItemTips(item){
         </View>
       </Modal>
       <Modal style = {{flex:1}} visible = {this.state.Modalopen} onRequestClose = {() => console.warn("this is close modal")}>
-                <View style ={{ padding:15, backgroundColor: '#EEEEEE'}}>
-                <TouchableHighlight style = {{width:SCREEN_WIDTH * 0.065, height:SCREEN_WIDTH * 0.065,}} onPress ={this._onCloseModal}>
-                <Image source = {require('../../images/icon_delete.png')}
-                style = {{ width:SCREEN_WIDTH * 0.065, height:SCREEN_WIDTH * 0.05 }}/>
-                </TouchableHighlight>
-                </View>
-                <CardSwipe />
+                <CardSwipe _onCloseModal = {this._onCloseModal}/>
       </Modal>
 
                 <View style={{ flex: 1 }}>

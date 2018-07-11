@@ -154,7 +154,7 @@ class CardSwipe extends Component {
                     </Animated.View>
                 )
             }
-            else {
+            if (i == this.state.currentIndex+1) {
 
                 return (
                     <Animated.View key={item.id}
@@ -166,8 +166,21 @@ class CardSwipe extends Component {
                         </View>
                     </Animated.View>
                 )
-
             }
+            // else {
+
+            //     return (
+            //         <Animated.View key={item.id}
+
+            //         >
+            //              <View style={styles.card2}>
+
+            //              {this.renderCard(ARTICLES[i])}
+            //             </View>
+            //         </Animated.View>
+            //     )
+
+            // }
         }).reverse()
 
     }
@@ -219,7 +232,12 @@ class CardSwipe extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style = {{flexDirection: 'row', alignItems: 'baseline',justifyContent: 'space-between'}}>
+            <View style ={{ paddingTop:15, paddingBottom:5, backgroundColor: '#EEEEEE'}}>
+                <TouchableHighlight style = {{alignSelf: 'flex-start'}} onPress ={this.props._onCloseModal}>
+                <Icon name="times" style={{ padding:5, alignSelf:'center'}} size={23} color = '#000'/>
+                </TouchableHighlight>
+                </View>
+                <View style = {{flexDirection: 'row', alignItems: 'baseline',justifyContent: 'space-between', paddingHorizontal: SCREEN_WIDTH * 0.025}}>
                 <View style = {{flexDirection: 'row',alignItems: 'baseline', alignSelf: 'center'}}>
                 <View 
                 style={{ backgroundColor: '#ff9a16' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.08, height:SCREEN_WIDTH* 0.08, borderRadius: (SCREEN_WIDTH* 0.08 + SCREEN_WIDTH* 0.08)/2}}>
@@ -288,7 +306,7 @@ export default CardSwipe;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingHorizontal: SCREEN_WIDTH * 0.075,
+        paddingHorizontal: SCREEN_WIDTH * 0.05,
         paddingBottom: SCREEN_HEIGHT * 0.05,
         backgroundColor: '#EEEEEE'
     },
@@ -300,28 +318,27 @@ const styles = StyleSheet.create({
         paddingHorizontal: SCREEN_WIDTH * 0.01, 
         backgroundColor: 'white', 
         alignSelf: 'center',
-        borderColor: '#000000',
-        borderWidth: 0.5,
         shadowColor: '#000000', 
-        shadowOpacity : 0.24, 
-        shadowRadius: 3, 
-        elevation: 3, 
+        shadowOpacity : 0.24,
+        shadowRadius: 5, 
+        elevation: 5, 
     },
     card2: {
         flex: 1, 
         position: 'absolute', 
         height: SCREEN_HEIGHT * 0.65, 
-        width: SCREEN_WIDTH * 0.83, 
+        width: SCREEN_WIDTH * 0.81, 
         paddingHorizontal: 20,
         backgroundColor: 'white', 
         paddingHorizontal: SCREEN_WIDTH * 0.01, 
         alignSelf: 'center',
-        borderColor: '#000000',
-        borderWidth: 0.5,
-        marginTop: 7,
-        shadowColor: '#000000', 
-        shadowOpacity : 0.24, 
-        shadowRadius: 3, 
+        marginTop: 10,
+        shadowOffset:{  width: 10,  height: 10,  },
+        shadowColor: 'black',
+        shadowOpacity: 1.0,
+        // shadowColor: '#000000', 
+        // shadowOpacity : 0.24, 
+        // shadowRadius: 3, 
         elevation: 3, 
         // shadowColor: '#000000', 
         // shadowOpacity : 0.24, 
@@ -331,7 +348,6 @@ const styles = StyleSheet.create({
     },
     card3: {
         flex: 1,
-        marginTop: 7,
         position: 'absolute', 
         height: SCREEN_HEIGHT * 0.65, 
         width: SCREEN_WIDTH * 0.85, 
@@ -339,8 +355,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'white', 
         paddingHorizontal: SCREEN_WIDTH * 0.01, 
         alignSelf: 'center',
-        borderColor: '#000000',
-        borderWidth: 0.5,
         shadowColor: '#000000', 
         shadowOpacity : 0.24, 
         shadowRadius: 5, 

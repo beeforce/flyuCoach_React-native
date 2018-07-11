@@ -263,7 +263,7 @@ class Login extends Component {
       <View style={styles.searchSection}>
       <View style={{ justifyContent: 'center', borderWidth: 2, alignSelf: 'center',
       borderColor: '#2c3e50', width:windowWidth* 0.09, height:windowWidth* 0.09, borderRadius: (windowWidth* 0.09 + windowWidth* 0.09)/2}}>
-      <Icon name="user-alt" style={{alignSelf:'center'}} size={16} color = '#2c3e50'/>
+      <Icon name="user-alt" style={{alignSelf:'center',padding: 2}} size={16} color = '#2c3e50'/>
       </View>
       <TextInput style={styles.inputtextstyle}
       placeholder="Email Address"
@@ -279,7 +279,7 @@ class Login extends Component {
       <View style={styles.searchSection}>
       <View style={{ justifyContent: 'center', borderWidth: 2, alignSelf: 'center',
       borderColor: '#2c3e50', width:windowWidth* 0.09, height:windowWidth* 0.09, borderRadius: (windowWidth* 0.09 + windowWidth* 0.09)/2}}>
-      <Icon name="lock" style={{ alignSelf:'center'}} size={16} color = '#2c3e50'/>
+      <Icon name="lock" style={{ alignSelf:'center', padding: 2}} size={16} color = '#2c3e50'/>
       </View>
       <TextInput style={styles.inputtextstyle}
        placeholder="Password"
@@ -367,7 +367,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     marginLeft: 100,
-    backgroundColor: '#daffc4'
+    backgroundColor: 'rgb(235, 249, 229)'
   },
   contentContainer:{
     flex:1
