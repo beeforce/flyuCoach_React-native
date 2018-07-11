@@ -33,7 +33,7 @@ ShowHideTextComponentView = () =>{
         <View>
         <LinearGradient colors={['#f94560', '#d1213b', '#870c1e']} style = {styles.container}>
         <TouchableHighlight onPress={this.ShowHideTextComponentView} style = {{borderRadius: 10}} underlayColor = 'transparent'>
-        <View style = {{flexDirection: 'row', alignItems: 'baseline',justifyContent: 'space-between', marginTop:10, marginBottom:10}}>
+        <View style = {{flexDirection: 'row', alignItems: 'baseline',justifyContent: 'space-between', paddingTop:13, paddingBottom:13}}>
         <Text style={styles.questionTitle}>{this.props.title}</Text>
         <Icon
         name= 'caret-down'
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
         alignSelf:'flex-start',
         color: '#fff', 
         marginLeft: 15, 
-        lineHeight: 15,
+        lineHeight: 20,
         padding: 5, 
         fontFamily: Fonts.MosseThai_Medium,
         fontSize: 15

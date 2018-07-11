@@ -361,7 +361,7 @@ renderItemTips(item){
         </View>
       </Modal>
       <Modal style = {{flex:1}} visible = {this.state.Modalopen} onRequestClose = {() => console.warn("this is close modal")}>
-                <View style ={{ padding:15}}>
+                <View style ={{ padding:15, backgroundColor: '#EEEEEE'}}>
                 <TouchableHighlight style = {{width:SCREEN_WIDTH * 0.065, height:SCREEN_WIDTH * 0.065,}} onPress ={this._onCloseModal}>
                 <Image source = {require('../../images/icon_delete.png')}
                 style = {{ width:SCREEN_WIDTH * 0.065, height:SCREEN_WIDTH * 0.05 }}/>

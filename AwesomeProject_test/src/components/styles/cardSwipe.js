@@ -78,7 +78,7 @@ class CardSwipe extends Component {
                     }
                     Animated.timing(this.swipedCardPosition, {
                         toValue: ({ x: 0, y: 0 }),
-                        duration: 400
+                        duration: 200
                     }).start(() => {
 
                         this.setState({ currentIndex: this.state.currentIndex - 1 })
@@ -86,11 +86,11 @@ class CardSwipe extends Component {
 
                     })
                 }
-                else if (-gestureState.dy > 50 && -gestureState.vy > 0 && this.state.currentIndex < ARTICLES.length - 1) {
+                else if (-gestureState.dy > 150 && -gestureState.vy > 0 && this.state.currentIndex < ARTICLES.length - 1) {
 
                   Animated.timing(this.position, {
                       toValue: ({ x: 0, y: -SCREEN_HEIGHT }),
-                      duration: 400
+                      duration: 200
                   }).start(() => {
 
                       this.setState({ currentIndex: this.state.currentIndex + 1 })
@@ -128,7 +128,7 @@ class CardSwipe extends Component {
                     <Animated.View key={item.id} style={this.swipedCardPosition.getLayout()}
                         {...this.PanResponder.panHandlers}
                     >
-                        <View style={styles.card2}>
+                        <View style={styles.card3}>
 
                          {this.renderCard(ARTICLES[i])}
                             
@@ -180,9 +180,6 @@ class CardSwipe extends Component {
         <Icon name="clock2" style={{ padding:5, alignSelf:'center'}} size={11} color = '#000'/>
         <Text style = {{ color:'#000000', fontSize: 11, alignSelf:'center',fontFamily: Fonts.MosseThai_Medium,}}>{item.date}</Text>
         </View>
-        <View>
-        <Icon name= 'thumbtack2' color = 'red' size={16} style={{alignSelf:'flex-end',padding: 5}} />
-        </View>
         </View>
         <Text style = {{paddingHorizontal: SCREEN_WIDTH * 0.04 ,fontSize: 20, color: '#000000', fontFamily: Fonts.MosseThai_Medium, paddingTop: 5, paddingBottom:15, lineHeight: 30}}>{item.text}</Text>
         <Image source={item.uri} resizeMode={'stretch'} style={{paddingHorizontal: 20, height: SCREEN_WIDTH* 0.45, width: SCREEN_WIDTH* 0.75, justifyContent:'center', alignSelf: 'center', marginTop: 7}}>
@@ -206,6 +203,19 @@ class CardSwipe extends Component {
       
       }
 
+      renderTextGobacktoFirstcard() {
+          if (!this.state.disablerollBack){
+          return(
+            <TouchableOpacity onPress = {this.swipeBackTofirst} disabled={this.state.disablerollBack}>
+            <Text style = {{fontSize: 15, fontFamily: Fonts.MosseThai_Bold, color:'#000', paddingTop:3}}>ย้อนกลับไปอ่านใหม่</Text>
+            </TouchableOpacity>
+            );
+        }else{
+            return null;
+        }
+          
+      }
+
     render() {
         return (
             <View style={styles.container}>
@@ -217,10 +227,7 @@ class CardSwipe extends Component {
                 </View>
                 <Text style = {{paddingLeft: 7, color:'#e67e22', fontSize: 16, alignSelf:'center', justifyContent:'center', fontFamily: Fonts.MosseThai_Medium}}>Announcement</Text>
                 </View>
-                <TouchableOpacity onPress = {this.swipeBackTofirst} disabled={this.state.disablerollBack}>
-                <Text style = {this.state.disablerollBack ? {fontSize: 15, fontFamily: Fonts.MosseThai_Bold, color:'#9D9FA2', paddingTop:3} : 
-                            {fontSize: 15, fontFamily: Fonts.MosseThai_Bold, color:'#000', paddingTop:3}}>ย้อนกลับไปอ่านใหม่</Text>
-                </TouchableOpacity>
+                {this.renderTextGobacktoFirstcard()}
                 </View>
             <View style = {{flex:3, paddingTop: 5}}>
             {this.renderArticles()}
@@ -243,7 +250,7 @@ class CardSwipe extends Component {
                 if (this.state.currentIndex > 0){
                 Animated.timing(this.swipedCardPosition, {
                 toValue: ({ x: 0, y: 0 }),
-                duration: 400
+                duration: 100
                 }).start(() => {
                 this.setState({ currentIndex: this.state.currentIndex - 1 })
                 this.swipedCardPosition.setValue({ x: 0, y: -SCREEN_HEIGHT })
@@ -256,7 +263,7 @@ class CardSwipe extends Component {
                 if (this.state.currentIndex < ARTICLES.length - 1){
                 Animated.timing(this.position, {
                 toValue: ({ x: 0, y: -SCREEN_HEIGHT }),
-                duration: 400
+                duration: 100
                 }).start(() => {
                 this.setState({ currentIndex: this.state.currentIndex + 1 })
                 this.position.setValue({ x: 0, y: 0 })
@@ -282,7 +289,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: SCREEN_WIDTH * 0.075,
-        marginBottom: SCREEN_HEIGHT * 0.05,
+        paddingBottom: SCREEN_HEIGHT * 0.05,
+        backgroundColor: '#EEEEEE'
     },
     card1: {
         flex: 1, 
@@ -293,16 +301,37 @@ const styles = StyleSheet.create({
         backgroundColor: 'white', 
         alignSelf: 'center',
         borderColor: '#000000',
-        borderWidth: 0.65,
-        borderRadius: 5,
+        borderWidth: 0.5,
+        shadowColor: '#000000', 
+        shadowOpacity : 0.24, 
+        shadowRadius: 3, 
+        elevation: 3, 
+    },
+    card2: {
+        flex: 1, 
+        position: 'absolute', 
+        height: SCREEN_HEIGHT * 0.65, 
+        width: SCREEN_WIDTH * 0.83, 
+        paddingHorizontal: 20,
+        backgroundColor: 'white', 
+        paddingHorizontal: SCREEN_WIDTH * 0.01, 
+        alignSelf: 'center',
+        borderColor: '#000000',
+        borderWidth: 0.5,
+        marginTop: 7,
+        shadowColor: '#000000', 
+        shadowOpacity : 0.24, 
+        shadowRadius: 3, 
+        elevation: 3, 
         // shadowColor: '#000000', 
         // shadowOpacity : 0.24, 
         // shadowRadius: 3, 
         // borderRadius: 5, 
         // elevation: 3, 
     },
-    card2: {
-        flex: 1, 
+    card3: {
+        flex: 1,
+        marginTop: 7,
         position: 'absolute', 
         height: SCREEN_HEIGHT * 0.65, 
         width: SCREEN_WIDTH * 0.85, 
@@ -311,11 +340,10 @@ const styles = StyleSheet.create({
         paddingHorizontal: SCREEN_WIDTH * 0.01, 
         alignSelf: 'center',
         borderColor: '#000000',
-        borderWidth: 0.65,
-        // shadowColor: '#000000', 
-        // shadowOpacity : 0.24, 
-        // shadowRadius: 3, 
-        // borderRadius: 5, 
-        // elevation: 3, 
+        borderWidth: 0.5,
+        shadowColor: '#000000', 
+        shadowOpacity : 0.24, 
+        shadowRadius: 5, 
+        elevation: 3, 
     }
 });
