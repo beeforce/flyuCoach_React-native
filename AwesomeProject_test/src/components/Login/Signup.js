@@ -1,27 +1,37 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, TextInput, TouchableOpacity, Dimensions, ImageBackground, Platform, SafeAreaView  } from 'react-native'
+import { Text, StyleSheet, View, TextInput, 
+  TouchableOpacity, Dimensions, Image, 
+  Platform, ScrollView, Animated, ActivityIndicator  } from 'react-native'
 import * as firebase from 'firebase';
+import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
+import IcoMoonConfig from '../../selection.json';
+const Icon = createIconSetFromIcoMoon(IcoMoonConfig);
+import { Fonts } from '../../utils/Fonts';
+import LinearGradient from 'react-native-linear-gradient';
 
+var ImagePicker = require('react-native-image-picker');
 
 //timezone
 var moment = require('moment-timezone');
+
+var options = {
+  title: 'Select Photo',
+  storageOptions: {
+    skipBackup: true,
+    path: 'images'
+  }
+};
 
 
 class Signup extends Component {
 
   static navigationOptions = {
-    title: 'Signup',
-    headerStyle: {
-      backgroundColor: '#f4511e',
-    },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
+    headerStyle: {backgroundColor: '#f2f6fc', elevation: 0, shadowOpacity: 0},
+    style: { elevation: 0 }
   };
 
 
-  componentWillMount() {
+  componentDidUpdate() {
     setInterval( () => {
       this.setState({
         curTime : moment().tz("Asia/Bangkok").format()
@@ -31,10 +41,21 @@ class Signup extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { email: '' };
-        this.state = { password: ''};
-        this.state = { repassword: ''};
-        this.state = { isLoading: true};
+        this.state = {
+                  email:'',
+                  password: '',
+                  repassword: '',
+                  phonenumber: '',
+                  Fullname: '',
+                  Nickname: '',
+                  Date_of_Birth: '',
+                  province:'',
+                  school:'',
+                  goal:'',
+                  user:null,
+                  pickImage: false,
+                  isLoading: false
+                }
       }
 
     signUpUser = (email, password) =>{
@@ -108,88 +129,389 @@ class Signup extends Component {
           return true;
         }
       }
+
+      renderProfileImage() {
+        if(this.state.pickImage){
+          return(
+            <Image source={this.state.avatarSource} style={ styles.profileImage } />
+          )
+        }else{
+          return(
+            <View style={ styles.profileImageView }>
+            <TouchableOpacity onPress = {()=> {
+                  ImagePicker.showImagePicker(options, (response) => {
+                  console.log('Response = ', response);
+
+                  if (response.didCancel) {
+                    console.log('User cancelled image picker');
+                  }
+                  else if (response.error) {
+                    console.log('ImagePicker Error: ', response.error);
+                  }
+                  else if (response.customButton) {
+                    console.log('User tapped custom button: ', response.customButton);
+                  }
+                  else {
+                    let source = { uri: response.uri };
+
+                    // You can also display the image using data:
+                    // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+                    this.setState({
+                      avatarSource: source,
+                      pickImage: true
+                    });
+                  }
+                })
+                }}>
+                <Icon name="camera" style={{alignSelf: 'center', paddingBottom: 3}} size={18} color = '#fff'/>
+                <Text style ={{fontFamily: Fonts.MosseThai_Medium, fontSize: 12, color: '#fff'}}>อัพโหลด</Text>
+                </TouchableOpacity>
+            </View>
+          )
+        }
+      }
   
 
     render() {
+      if(this.state.isLoading){
+        return(
+          <View style={{flex: 1, justifyContent: 'center', alignItems:'center', backgroundColor: '#f2f6fc', overflow: 'hidden',}}>
+             <ActivityIndicator size="large" color="#0000ff" style = {{ alignSelf: 'center' , flex: 1}} />
+       </View>
+        )
+      }
       return (
-        <View style = {styles.container}>
-        <ImageBackground source={require('../../images/image2.jpg')}
-        style = {{width:windowWidth, height:windowHeight}}>
-        <View style = {{marginTop:15}}>
-            <TextInput style={styles.inputtextstyle}
-            placeholder="Enter your email"
-            placeholderTextColor="#ffffff"
-            underlineColorAndroid="transparent"
-            onChangeText={(email) => this.setState({email})}
-            value={this.state.email}
-            keyboardType = "email-address"
-            returnKeyType = "next"
-            onSubmitEditing = {() => this.passwordInput.focus()}
-            ></TextInput>
-            <TextInput style={styles.inputtextstyle}
-            placeholder="Enter your password"
-            placeholderTextColor="#ffffff"
-            underlineColorAndroid="transparent"
-            onChangeText={(password) => this.setState({password})}
-            value={this.state.password}
-            returnKeyType = "next"
-            onSubmitEditing = {() => this.repasswordInput.focus()}
-            secureTextEntry
-            ref = {(input) => this.passwordInput = input}
-            ></TextInput>
-            <TextInput style={styles.inputtextstyle}
-            placeholder="Enter your password again"
-            placeholderTextColor="#ffffff"
-            underlineColorAndroid="transparent"
-            onChangeText={(repassword) => this.setState({repassword})}
-            value={this.state.repassword}
-            returnKeyType = "go"
-            secureTextEntry
-            ref = {(input) => this.repasswordInput = input}
-            ></TextInput>
-            </View>
-            <View style = {{marginTop:15}}>
-            <TouchableOpacity style={styles.LoginButton}
-            onPress = {() => this.signUpUser(this.state.email, this.state.password)}
-            ><Text style={styles.LoginTextstyle}>Sign up!</Text></TouchableOpacity>
-            </View>
-            </ImageBackground>
+        <View style={styles.container}>
+        <ScrollView
+            scrollEventThrottle={16}
+            onScroll={Animated.event(
+            [
+              { nativeEvent: { contentOffset: { y: this.scrollY } } }
+            ]
+            )}  >
+
+             <View style = {{justifyContent: 'center'}}>
+              {this.renderProfileImage()}
+                </View>
+
+                <View style = {styles.contentcontainer}>
+                <View style = {{borderBottomWidth: 1, borderColor: '#c9c9c9',}}>
+                <View style = {styles.layouteachcontent} >
+                <View style = {styles.viewoficonwithtext}>
+                <Text style = {styles.textwithIcon}>Email</Text>
+                <Icon name="envelope" style={styles.iconwithText} size={15} color = '#2c3e50'/>
+                </View>
+                <TextInput 
+                style = {styles.textinput}
+                placeholder="ใส่อีเมลของเรา"
+                placeholderTextColor="#d81a36"
+                value= {this.state.email}
+                keyboardType = "email-address"
+                returnKeyType = "next"
+                underlineColorAndroid="transparent"
+                onChangeText={(email) => this.setState({email})}
+                onSubmitEditing = {() => this.password.focus()}
+                />
+                </View>
+                </View>
+
+                <View style = {{borderBottomWidth: 1, borderColor: '#c9c9c9',}}>
+                <View style = {styles.layouteachcontent} >
+                <View style = {styles.viewoficonwithtext}>
+                <Text style = {styles.textwithIcon}>Password</Text>
+                <Icon name="lock" style={styles.iconwithText} size={15} color = '#2c3e50'/>
+                </View>
+                <TextInput 
+                style = {styles.textinput}
+                placeholder="ใส่รหัสผ่านของเรา"
+                placeholderTextColor="#d81a36"
+                value= {this.state.password}
+                keyboardType = "default"
+                returnKeyType = "next"
+                underlineColorAndroid="transparent"
+                onChangeText={(password) => this.setState({password})}
+                ref = {(input) => this.password = input}
+                onSubmitEditing = {() => this.repassword.focus()}
+                secureTextEntry
+                />
+                </View>
+                </View>
+
+                <View style = {{borderBottomWidth: 1, borderColor: '#c9c9c9',}}>
+                <View style = {styles.layouteachcontent} >
+                <View style = {styles.viewoficonwithtext}>
+                <Text style = {styles.textwithIcon}>Confirm Password</Text>
+                <Icon name="lock" style={styles.iconwithText} size={15} color = '#2c3e50'/>
+                </View>
+                <TextInput 
+                style = {styles.textinput}
+                placeholder="ใส่รหัสผ่านของเราอีกครั้ง"
+                placeholderTextColor="#d81a36"
+                value= {this.state.repassword}
+                keyboardType = "default"
+                returnKeyType = "next"
+                underlineColorAndroid="transparent"
+                onChangeText={(repassword) => this.setState({repassword})}
+                ref = {(input) => this.repassword = input}
+                onSubmitEditing = {() => this.phonenumber.focus()}
+                secureTextEntry
+                />
+                </View>
+                </View>
+
+                <View style = {{borderBottomWidth: 1, borderColor: '#c9c9c9',}}>
+                <View style = {styles.layouteachcontent} >
+                <View style = {styles.viewoficonwithtext}>
+                <Text style = {styles.textwithIcon}>Phone Number</Text>
+                <Icon name="phone" style={styles.iconwithText} size={15} color = '#2c3e50'/>
+                </View>
+                <TextInput 
+                style = {styles.textinput}
+                placeholder="ใส่เบอร์โทรศัพท์"
+                placeholderTextColor="#d81a36"
+                value= {this.state.phonenumber}
+                keyboardType = "numeric"
+                returnKeyType = "next"
+                underlineColorAndroid="transparent"
+                onChangeText={(phonenumber) => this.setState({phonenumber})}
+                ref = {(input) => this.phonenumber = input}
+                onSubmitEditing = {() => this.Fullname.focus()}
+                />
+                </View>
+                </View>
+
+                <View style = {{borderBottomWidth: 1, borderColor: '#c9c9c9',}}>
+                <View style = {styles.layouteachcontent} >
+                <View style = {styles.viewoficonwithtext}>
+                <Text style = {styles.textwithIcon}>Fullname</Text>
+                <Icon name="user" style={styles.iconwithText} size={15} color = '#2c3e50'/>
+                </View>
+                <TextInput 
+                style = {styles.textinput}
+                placeholder="ใส่ชื่อ นามสกุล"
+                placeholderTextColor="#d81a36"
+                value= {this.state.Fullname}
+                keyboardType = "default"
+                returnKeyType = "next"
+                underlineColorAndroid="transparent"
+                onChangeText={(Fullname) => this.setState({Fullname})}
+                ref = {(input) => this.Fullname = input}
+                onSubmitEditing = {() => this.Nickname.focus()}
+                />
+                </View>
+                </View>
+
+                <View style = {{borderBottomWidth: 1, borderColor: '#c9c9c9',}}>
+                <View style = {styles.layouteachcontent} >
+                <View style = {styles.viewoficonwithtext}>
+                <Text style = {styles.textwithIcon}>Nickname</Text>
+                <Icon name="user" style={styles.iconwithText} size={15} color = '#2c3e50'/>
+                </View>
+                <TextInput 
+                style = {styles.textinput}
+                placeholder="ใส่ชื่อเล่น"
+                placeholderTextColor="#d81a36"
+                value= {this.state.Nickname}
+                keyboardType = "default"
+                returnKeyType = "next"
+                underlineColorAndroid="transparent"
+                onChangeText={(Nickname) => this.setState({Nickname})}
+                ref = {(input) => this.Nickname = input}
+                onSubmitEditing = {() => this.Date_of_Birth.focus()}
+                />
+                </View>
+                </View>
+
+                <View style = {{borderBottomWidth: 1, borderColor: '#c9c9c9',}}>
+                <View style = {styles.layouteachcontent} >
+                <View style = {styles.viewoficonwithtext}>
+                <Text style = {styles.textwithIcon}>Date of Birth</Text>
+                <Icon name="birthday-cake" style={styles.iconwithText} size={15} color = '#2c3e50'/>
+                </View>
+                <TextInput 
+                style = {styles.textinput}
+                placeholder="ใส่วันเดือนปีเกิด(พศ)"
+                placeholderTextColor="#d81a36"
+                value= {this.state.Date_of_Birth}
+                keyboardType = "numeric"
+                returnKeyType = "next"
+                underlineColorAndroid="transparent"
+                onChangeText={(Date_of_Birth) => this.setState({Date_of_Birth})}
+                ref = {(input) => this.Date_of_Birth = input}
+                onSubmitEditing = {() => this.province.focus()}
+                />
+                </View>
+                </View>
+
+                <View style = {{borderBottomWidth: 1, borderColor: '#c9c9c9',}}>
+                <View style = {{flexDirection: 'row'}}>
+
+                <View style = {{
+                flex: 1,
+                flexDirection: 'column',
+                marginTop: 10,
+                marginLeft: 15, 
+                marginRight: 15, }} >
+                <View style = {styles.viewoficonwithtext}>
+                <Text style = {styles.textwithIcon}>Province</Text>
+                <Icon name="map-marker-alt" style={styles.iconwithText} size={15} color = '#2c3e50'/>
+                </View>
+                <TextInput 
+                style = {styles.textinput}
+                placeholder="เลือกจังหวัด"
+                placeholderTextColor="#d81a36"
+                value= {this.state.province}
+                keyboardType = "default"
+                returnKeyType = "next"
+                underlineColorAndroid="transparent"
+                onChangeText={(province) => this.setState({province})}
+                ref = {(input) => this.province = input}
+                onSubmitEditing = {() => this.School.focus()}
+                multiline
+                blurOnSubmit={true}
+                />
+                </View>
+
+                <View style = {{borderLeftWidth: 1, borderColor: '#c9c9c9',flex: 2}}>
+                <View style = {styles.layouteachcontent} >
+                <View style = {styles.viewoficonwithtext}>
+                <Text style = {styles.textwithIcon}>School</Text>
+                <Icon name="school" style={styles.iconwithText} size={15} color = '#2c3e50'/>
+                </View>
+                <TextInput 
+                style = {styles.textinput}
+                placeholder="เลือกโรงเรียน"
+                placeholderTextColor="#d81a36"
+                value= {this.state.school}
+                keyboardType = "default"
+                returnKeyType = "next"
+                underlineColorAndroid="transparent"
+                onChangeText={(school) => this.setState({school})}
+                ref = {(input) => this.School = input}
+                onSubmitEditing = {() => this.goal.focus()}
+                multiline
+                blurOnSubmit={true}
+                />
+                </View>
+                </View>
+
+                </View>
+                </View>
+
+                <View style = {{borderBottomWidth: 1, borderColor: '#c9c9c9',}}>
+                <View style = {styles.layouteachcontent} >
+                <View style = {styles.viewoficonwithtext}>
+                <Text style = {styles.textwithIcon}>Goal</Text>
+                <Icon name="road" style={styles.iconwithText} size={15} color = '#2c3e50'/>
+                </View>
+                <TextInput 
+                style = {styles.textinput}
+                placeholder="ใส่เป้าหมายในชีวิต"
+                placeholderTextColor="#d81a36"
+                value= {this.state.goal}
+                keyboardType = "default"
+                returnKeyType = "done"
+                underlineColorAndroid="transparent"
+                onChangeText={(goal) => this.setState({goal})}
+                ref = {(input) => this.goal = input}
+                />
+                </View>
+                </View>
+              </View>
+
+              <TouchableOpacity onPress={() => {
+                // this.props.navigation.goBack(null)
+                this.setState({
+                  isLoading: true
+                })
+              }}>
+               <LinearGradient colors={['#bbe84a','#7bd834', '#3e9e16']} style={styles.saveButton}>
+                <Text style={{color: '#ffffff', fontFamily: Fonts.MosseThai_Bold , textAlign:'center', alignSelf:'center'}}>ยืนยันการสร้างบัญชี</Text>
+                </LinearGradient>
+                </TouchableOpacity>
+        </ScrollView>
         </View>
       )
     }
   }
 
-  const windowWidth = Dimensions.get('window').width;
-  const windowHeight = Dimensions.get('window').height;
+  const SCREEN_WIDTH = Dimensions.get('window').width;
+  const SCREEN_Height = Dimensions.get('window').height;
 
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#7bed9f',
+      backgroundColor: '#f2f6fc',
+      overflow: 'hidden',
     },
-    inputtextstyle:{
-        marginTop: 10,
-        height: 50,
-        marginHorizontal: 40,
-        paddingLeft: 10,
-        backgroundColor: '#2ed573',
-        color: '#ffffff',
-        borderRadius: 10,
-        fontSize: 16,
-    },
-    LoginButton:{
-      marginTop: 10,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#9b59b6',
-      marginHorizontal: 40,
+    saveButton:{
+      backgroundColor: '#A3CB38',
+      width: SCREEN_WIDTH * 0.75,
       height: 50,
-      borderRadius: 10,
+      alignSelf: 'center',
+      borderRadius: 27,
+      marginLeft: 20,
+      marginTop: 15,
+      marginBottom: 30,
+      justifyContent: 'center',
+      shadowColor: '#000', 
+      shadowOpacity : 0.24, 
+      shadowRadius: 10, 
+      elevation: 3,
     },
-    LoginTextstyle:{
-      color: '#ffffff',
-      fontWeight: 'bold',
+    profileImage:{
+      width:SCREEN_WIDTH* 0.25,
+      height:SCREEN_WIDTH* 0.25,
+      borderRadius:(SCREEN_WIDTH* 0.25)/2,
     },
+    profileImageView:{
+      width:SCREEN_WIDTH* 0.25,
+      height:SCREEN_WIDTH* 0.25,
+      borderRadius:(SCREEN_WIDTH* 0.25)/2,
+      backgroundColor: '#3d3d3d',
+      alignSelf: 'center',
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    contentcontainer:{
+      width: SCREEN_WIDTH * 0.85,
+      borderWidth: 0.5, 
+      borderColor: '#c9c9c9',
+      alignSelf: 'center',
+      marginTop: 25,
+      backgroundColor: '#fff',
+      shadowColor: '#000', 
+      shadowOpacity : 0.24, 
+      shadowRadius: 3, 
+      elevation: 3,
+    },
+    layouteachcontent:{
+      flexDirection: 'column',
+      paddingTop: 10,
+      paddingLeft: 15, 
+      paddingRight: 15, 
+    },
+    iconwithText:{
+      paddingLeft: 8, 
+      alignSelf:'center'
+    },
+    textwithIcon:{
+      alignSelf:'center',
+      fontSize: 16,
+      fontFamily: Fonts.MosseThai_Medium
+    },
+    viewoficonwithtext:{
+      flexDirection : 'row',
+      alignItems: 'baseline', 
+      alignSelf: 'flex-start'
+    },
+    textinput:{
+      fontFamily: Fonts.MosseThai_Bold, 
+      fontSize: 14,
+      paddingTop: -11,
+      paddingLeft: -1,
+    }
 });
 
 export default Signup;

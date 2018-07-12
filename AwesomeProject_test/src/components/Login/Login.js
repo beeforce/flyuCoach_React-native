@@ -4,7 +4,7 @@ import * as firebase from 'firebase';
 import { createStackNavigator } from 'react-navigation';
 import Signup from '../Login/Signup';
 import RootNavigation from '../navigation/RootNavigation';
-import AwesomeButton from 'react-native-really-awesome-button/src/themes/rick';
+import ForgetPassword from '../Login/ForgetPassword';
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
 import IcoMoonConfig from '../../selection.json';
 const Icon = createIconSetFromIcoMoon(IcoMoonConfig);
@@ -40,7 +40,7 @@ class Login extends Component {
     header: null,
   }
 
-  componentWillMount() {
+  componentDidMount() {
     setInterval( () => {
       this.setState({
         curTime : moment().tz("Asia/Bangkok").format()
@@ -122,7 +122,7 @@ class Login extends Component {
               .then((data) => {
                 const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
                 // firebase.auth().signInWithCredential(credential)
-                firebase.auth().signInAndRetrieveDataWithCredential(credential)
+                firebase.auth().signInWithCredential(credential)
                 .then((user) => {
                             firebase.auth().onAuthStateChanged((user) => {
                               if(user != null){
@@ -148,7 +148,11 @@ class Login extends Component {
               });
             }
           },
-        );
+        ).catch((error) => {
+          if (AccessToken.getCurrentAccessToken() != null) {
+            LoginManager.getInstance().logOut();
+          }
+        })
     };
 
     // async loginWithFacebook(){
@@ -328,7 +332,8 @@ class Login extends Component {
         </View>
         <View style={styles.footer}>
         <View style = {{flexDirection: 'row', justifyContent: 'space-between'}} >
-        <TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => this.props.navigation.push('ForgetPassword')}>
         <Text style={{color: '#c44569', fontSize: 16, fontFamily: Fonts.MosseThai_Bold , paddingLeft:15, paddingBottom: 20}}>Forget Password</Text></TouchableOpacity>
         <TouchableOpacity
         onPress={() => this.props.navigation.push('Signup')}>
@@ -424,6 +429,7 @@ const RootStack = createStackNavigator({
     Login: Login,
     Signup: Signup,
     Homepage: RootNavigation,
+    ForgetPassword: ForgetPassword,
 
   }
 );

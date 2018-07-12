@@ -24,10 +24,7 @@ var ImagePicker = require('react-native-image-picker');
 
 // More info on all the options is below in the README...just some common use cases shown here
 var options = {
-  title: 'Select Avatar',
-  customButtons: [
-    {name: 'fb', title: 'Choose Photo from Facebook'},
-  ],
+  title: 'Select Photo',
   storageOptions: {
     skipBackup: true,
     path: 'images'
@@ -49,8 +46,6 @@ export default class SettingsScreen extends React.Component {
                   school:'Uttaradit School',
                   goal:'วิศวกรโยธา มช.',
                   user:null,
-                  Modalopen : true,
-                  loading: true,
                   pickImage: false,
                 }
     
@@ -287,7 +282,7 @@ render() {
                 </View>
               </View>
 
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => this.props.navigation.goBack(null)}>
                <LinearGradient colors={['#bbe84a','#7bd834', '#3e9e16']} style={styles.saveButton}>
                 <Text style={{color: '#ffffff', fontFamily: Fonts.MosseThai_Bold , textAlign:'center', alignSelf:'center'}}>บันทึกการแก้ไข</Text>
                 </LinearGradient>

@@ -313,7 +313,7 @@ const styles = StyleSheet.create({
     card1: {
         flex: 1, 
         position: 'absolute', 
-        height: SCREEN_HEIGHT * 0.6, 
+        height: SCREEN_HEIGHT * 0.635, 
         width: SCREEN_WIDTH * 0.85,
         paddingHorizontal: SCREEN_WIDTH * 0.01, 
         backgroundColor: 'white', 
@@ -326,7 +326,7 @@ const styles = StyleSheet.create({
     card2: {
         flex: 1, 
         position: 'absolute', 
-        height: SCREEN_HEIGHT * 0.6, 
+        height: SCREEN_HEIGHT * 0.635, 
         width: SCREEN_WIDTH * 0.81, 
         paddingHorizontal: 20,
         backgroundColor: 'white', 
@@ -349,7 +349,7 @@ const styles = StyleSheet.create({
     card3: {
         flex: 1,
         position: 'absolute', 
-        height: SCREEN_HEIGHT * 0.6, 
+        height: SCREEN_HEIGHT * 0.635, 
         width: SCREEN_WIDTH * 0.85, 
         paddingHorizontal: 20,
         backgroundColor: 'white', 

@@ -61,7 +61,7 @@ export default class addMoreQuestionScreen extends Component {
       </View>
 
         <View style = {{ flex: 1,}}>
-      <TouchableOpacity style={styles.submitButton}
+      <TouchableOpacity style={styles.submitButton} onPress={() => this.props.navigation.goBack(null)}
         >
         <LinearGradient colors={['#afe03e', '#368c0b']} style = {{flex: 1, borderRadius: 27,justifyContent: 'center'}}>
           <Text style={styles.submitTextstyle}>ส่งคำถาม</Text>
