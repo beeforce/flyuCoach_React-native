@@ -262,7 +262,7 @@ render() {
                 </View>
                 </View>
 
-                <View style = {{borderBottomWidth: 1, borderColor: '#c9c9c9',}}>
+                <View style = {{paddingBottom: 5}}>
                 <View style = {styles.layouteachcontent} >
                 <View style = {styles.viewoficonwithtext}>
                 <Text style = {styles.textwithIcon}>Goal</Text>
@@ -330,10 +330,9 @@ const styles = StyleSheet.create({
   },
   contentcontainer:{
     width: SCREEN_WIDTH * 0.9,
-    borderWidth: 0.5, 
-    borderColor: '#c9c9c9',
     alignSelf: 'center',
     marginTop: 25,
+    borderRadius: 5,
     backgroundColor: '#fff',
     shadowColor: '#000', 
     shadowOpacity : 0.24, 
@@ -361,6 +360,8 @@ const styles = StyleSheet.create({
   },
   textinput:{
     fontFamily: Fonts.MosseThai_Bold, 
-    fontSize: 16
+    fontSize: 16,
+    paddingTop: -11,
+    paddingLeft: -1,
   }
 });

@@ -122,7 +122,7 @@ class Login extends Component {
               .then((data) => {
                 const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
                 // firebase.auth().signInWithCredential(credential)
-                firebase.auth().signInWithCredential(credential)
+                firebase.auth().signInAndRetrieveDataWithCredential(credential)
                 .then((user) => {
                             firebase.auth().onAuthStateChanged((user) => {
                               if(user != null){
