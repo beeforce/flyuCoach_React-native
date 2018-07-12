@@ -3,6 +3,7 @@ package com.awesomeproject_test;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.kishanjvaghela.cardview.RNCardViewPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import iyegoroff.RNTextGradient.RNTextGradientPackage;
@@ -41,6 +42,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+          new RNCardViewPackage(),
           new RNTextGradientPackage(),
           new LinearGradientPackage(),
           new RNTextGradientPackage(),

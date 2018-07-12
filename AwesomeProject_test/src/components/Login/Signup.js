@@ -399,7 +399,7 @@ class Signup extends Component {
                 </View>
                 </View>
 
-                <View style = {{borderBottomWidth: 1, borderColor: '#c9c9c9',}}>
+                <View style = {{paddingBottom: 5}}>
                 <View style = {styles.layouteachcontent} >
                 <View style = {styles.viewoficonwithtext}>
                 <Text style = {styles.textwithIcon}>Goal</Text>
@@ -421,10 +421,10 @@ class Signup extends Component {
               </View>
 
               <TouchableOpacity onPress={() => {
-                // this.props.navigation.goBack(null)
-                this.setState({
-                  isLoading: true
-                })
+                this.props.navigation.goBack(null)
+                // this.setState({
+                //   isLoading: true
+                // })
               }}>
                <LinearGradient colors={['#bbe84a','#7bd834', '#3e9e16']} style={styles.saveButton}>
                 <Text style={{color: '#ffffff', fontFamily: Fonts.MosseThai_Bold , textAlign:'center', alignSelf:'center'}}>ยืนยันการสร้างบัญชี</Text>
@@ -455,15 +455,14 @@ class Signup extends Component {
       marginTop: 15,
       marginBottom: 30,
       justifyContent: 'center',
-      shadowColor: '#000', 
-      shadowOpacity : 0.24, 
-      shadowRadius: 10, 
-      elevation: 3,
     },
     profileImage:{
       width:SCREEN_WIDTH* 0.25,
       height:SCREEN_WIDTH* 0.25,
       borderRadius:(SCREEN_WIDTH* 0.25)/2,
+      alignSelf: 'center',
+      alignItems: 'center',
+      justifyContent: 'center'
     },
     profileImageView:{
       width:SCREEN_WIDTH* 0.25,
@@ -475,11 +474,10 @@ class Signup extends Component {
       justifyContent: 'center'
     },
     contentcontainer:{
-      width: SCREEN_WIDTH * 0.85,
-      borderWidth: 0.5, 
-      borderColor: '#c9c9c9',
+      width: SCREEN_WIDTH * 0.88,
       alignSelf: 'center',
       marginTop: 25,
+      borderRadius: 5,
       backgroundColor: '#fff',
       shadowColor: '#000', 
       shadowOpacity : 0.24, 

@@ -140,6 +140,7 @@
 		78D3151298BC4886A812E3F0 /* MosseThai-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D781B9ACD777452B925D6C83 /* MosseThai-Medium.otf */; };
 		1676E46440134088A1FCF14A /* MosseThai-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C092D8D6CBED4D1AA86882E1 /* MosseThai-Regular.otf */; };
 		4210F5278DC4418994AED4EC /* MosseThai-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 14EEB4DD77FE49B4A73FE563 /* MosseThai-Thin.otf */; };
+		7DF1940D548B4669B8447994 /* libRNCardView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 858FB273ABB848E5828FC6BD /* libRNCardView.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -553,6 +554,8 @@
 		D781B9ACD777452B925D6C83 /* MosseThai-Medium.otf */ = {isa = PBXFileReference; name = "MosseThai-Medium.otf"; path = "../assets/fonts/MosseThai-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		C092D8D6CBED4D1AA86882E1 /* MosseThai-Regular.otf */ = {isa = PBXFileReference; name = "MosseThai-Regular.otf"; path = "../assets/fonts/MosseThai-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		14EEB4DD77FE49B4A73FE563 /* MosseThai-Thin.otf */ = {isa = PBXFileReference; name = "MosseThai-Thin.otf"; path = "../assets/fonts/MosseThai-Thin.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9AD6E25D1EF44E48A22456AA /* RNCardView.xcodeproj */ = {isa = PBXFileReference; name = "RNCardView.xcodeproj"; path = "../node_modules/react-native-cardview/ios/RNCardView.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		858FB273ABB848E5828FC6BD /* libRNCardView.a */ = {isa = PBXFileReference; name = "libRNCardView.a"; path = "libRNCardView.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -586,6 +589,7 @@
 				7E5946030AE340368D241DF5 /* libRCTFBSDK.a in Frameworks */,
 				9BDBF8C409004E31B654ADAD /* libBVLinearGradient.a in Frameworks */,
 				80B0A39288F6416A83919CD0 /* libRNTextGradient.a in Frameworks */,
+				7DF1940D548B4669B8447994 /* libRNCardView.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -777,6 +781,7 @@
 				53DDFA4C8EE341BD9D466A70 /* RCTFBSDK.xcodeproj */,
 				B754844D85094DCC94B1F0AE /* BVLinearGradient.xcodeproj */,
 				4EB66EDCA14547409E89368B /* RNTextGradient.xcodeproj */,
+				9AD6E25D1EF44E48A22456AA /* RNCardView.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1613,6 +1618,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1621,6 +1627,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-fbsdk\ios\RCTFBSDK/**",
 					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 					"$(SRCROOT)\..\node_modules\react-native-text-gradient\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-cardview\ios",
 				);
 			};
 			name = Debug;
@@ -1646,6 +1653,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1654,6 +1662,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-fbsdk\ios\RCTFBSDK/**",
 					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 					"$(SRCROOT)\..\node_modules\react-native-text-gradient\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-cardview\ios",
 				);
 			};
 			name = Release;
@@ -1680,6 +1689,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-fbsdk\ios\RCTFBSDK/**",
 					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 					"$(SRCROOT)\..\node_modules\react-native-text-gradient\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-cardview\ios",
 				);
 			};
 			name = Debug;
@@ -1705,6 +1715,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-fbsdk\ios\RCTFBSDK/**",
 					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 					"$(SRCROOT)\..\node_modules\react-native-text-gradient\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-cardview\ios",
 				);
 			};
 			name = Release;
@@ -1739,6 +1750,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1747,6 +1759,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-fbsdk\ios\RCTFBSDK/**",
 					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 					"$(SRCROOT)\..\node_modules\react-native-text-gradient\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-cardview\ios",
 				);
 			};
 			name = Debug;
@@ -1781,6 +1794,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1789,6 +1803,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-fbsdk\ios\RCTFBSDK/**",
 					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 					"$(SRCROOT)\..\node_modules\react-native-text-gradient\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-cardview\ios",
 				);
 			};
 			name = Release;
@@ -1822,6 +1837,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1830,6 +1846,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-fbsdk\ios\RCTFBSDK/**",
 					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 					"$(SRCROOT)\..\node_modules\react-native-text-gradient\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-cardview\ios",
 				);
 			};
 			name = Debug;
@@ -1863,6 +1880,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1871,6 +1889,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-fbsdk\ios\RCTFBSDK/**",
 					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 					"$(SRCROOT)\..\node_modules\react-native-text-gradient\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-cardview\ios",
 				);
 			};
 			name = Release;
