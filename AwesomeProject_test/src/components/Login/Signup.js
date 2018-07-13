@@ -289,7 +289,6 @@ class Signup extends Component {
                 ref = {(input) => this.phonenumberref = input}
                 onSubmitEditing = {() => this.Fullnameref.focus()}
                 value= {this.state.phonenumber}
-                blurOnSubmit={false}
                 />
                 </View>
                 </View>
@@ -311,7 +310,6 @@ class Signup extends Component {
                 ref = {(input) => this.Fullnameref = input}
                 onSubmitEditing = {() => this.Nicknameref.focus()}
                 value= {this.state.Fullname}
-                blurOnSubmit={false}
                 />
                 </View>
                 </View>
@@ -333,7 +331,6 @@ class Signup extends Component {
                 ref = {(input) => this.Nicknameref = input}
                 onSubmitEditing = {() => this.Date_of_Birthref.focus()}
                 value= {this.state.Nickname}
-                blurOnSubmit={false}
                 />
                 </View>
                 </View>
