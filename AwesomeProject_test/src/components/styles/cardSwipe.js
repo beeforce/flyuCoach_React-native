@@ -88,17 +88,17 @@ class CardSwipe extends Component {
                 }
                 else if (-gestureState.dy > 150 && -gestureState.vy > 0 && this.state.currentIndex < ARTICLES.length - 1) {
 
-                  Animated.timing(this.position, {
-                      toValue: ({ x: 0, y: -SCREEN_HEIGHT }),
-                      duration: 200
+                Animated.timing(this.position, {
+                    toValue: ({ x: 0, y: -SCREEN_HEIGHT }),
+                    duration: 200
                   }).start(() => {
 
-                      this.setState({ currentIndex: this.state.currentIndex + 1 })
-                      this.position.setValue({ x: 0, y: 0 })
-                      if (this.state.currentIndex + 1 === ARTICLES_length){
-                        this.setState({
-                            disablerollBack: false
-                            })
+                this.setState({ currentIndex: this.state.currentIndex + 1 })
+                this.position.setValue({ x: 0, y: 0 })
+                if (this.state.currentIndex + 1 === ARTICLES_length){
+                this.setState({
+                        disablerollBack: false
+                        })
                     }
                   })
               }
@@ -232,8 +232,8 @@ class CardSwipe extends Component {
     render() {
         return (
             <View style={styles.container}>
-            <View style ={{ paddingTop:15, paddingBottom:5, backgroundColor: '#EEEEEE'}}>
-                <TouchableHighlight style = {{alignSelf: 'flex-start'}} onPress ={this.props._onCloseModal}>
+            <View style ={{ paddingTop:15, backgroundColor: '#EEEEEE'}}>
+                <TouchableHighlight style = {{alignSelf: 'flex-start'}} onPress ={this.props._onCloseModal} underlayColor = 'transparent'>
                 <Icon name="times" style={{ padding:5, alignSelf:'center'}} size={23} color = '#000'/>
                 </TouchableHighlight>
                 </View>
@@ -247,7 +247,7 @@ class CardSwipe extends Component {
                 </View>
                 {this.renderTextGobacktoFirstcard()}
                 </View>
-            <View style = {{flex:3, paddingTop: 5}}>
+            <View style = {{flex:3, paddingTop: 10}}>
             {this.renderArticles()}
             </View>
             <View style = {{flexDirection: 'row', alignItems:'center', alignSelf:'center', paddingBottom:3}}>
@@ -259,7 +259,7 @@ class CardSwipe extends Component {
                 style = {{alignSelf: 'center', borderRadius: 15, backgroundColor: '#3e9e16',}}
                 color = "rgb(115, 214, 40)"/>
                 <View style = {{flexDirection: 'row', justifyContent: 'space-between'}}>
-                <TouchableOpacity style={styles.button} onPress={ () =>{
+                <TouchableOpacity onPress={ () =>{
                 if (this.state.currentIndex === ARTICLES_length-1){
                     this.setState({
                         disablerollBack: true
@@ -268,20 +268,20 @@ class CardSwipe extends Component {
                 if (this.state.currentIndex > 0){
                 Animated.timing(this.swipedCardPosition, {
                 toValue: ({ x: 0, y: 0 }),
-                duration: 100
+                duration: 150
                 }).start(() => {
                 this.setState({ currentIndex: this.state.currentIndex - 1 })
                 this.swipedCardPosition.setValue({ x: 0, y: -SCREEN_HEIGHT })
                         })
                     }
                 }}>
-                <Image source={require('../../images/icon_arrow_left.png')} resizeMode={'contain'} style={{ height: 25, width: 25, }} />
+                <Image source={require('../../images/icon_arrow_left.png')} resizeMode={'contain'} style={{ height: 25, width: 25, padding:15 }} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={()=>{
+                <TouchableOpacity onPress={()=>{
                 if (this.state.currentIndex < ARTICLES.length - 1){
                 Animated.timing(this.position, {
                 toValue: ({ x: 0, y: -SCREEN_HEIGHT }),
-                duration: 100
+                duration: 150
                 }).start(() => {
                 this.setState({ currentIndex: this.state.currentIndex + 1 })
                 this.position.setValue({ x: 0, y: 0 })
@@ -293,7 +293,7 @@ class CardSwipe extends Component {
                  })
                     }
                 }}>
-                <Image source={require('../../images/icon_arrow_right.png')} resizeMode={'contain'} style={{ height: 25, width: 25}} />
+                <Image source={require('../../images/icon_arrow_right.png')} resizeMode={'contain'} style={{ height: 25, width: 25, padding: 15}} />
                 </TouchableOpacity>
                 </View>
            
@@ -313,7 +313,7 @@ const styles = StyleSheet.create({
     card1: {
         flex: 1, 
         position: 'absolute', 
-        height: SCREEN_HEIGHT * 0.635, 
+        height: SCREEN_HEIGHT * 0.63, 
         width: SCREEN_WIDTH * 0.85,
         paddingHorizontal: SCREEN_WIDTH * 0.01, 
         backgroundColor: 'white', 
@@ -326,7 +326,7 @@ const styles = StyleSheet.create({
     card2: {
         flex: 1, 
         position: 'absolute', 
-        height: SCREEN_HEIGHT * 0.635, 
+        height: SCREEN_HEIGHT * 0.63, 
         width: SCREEN_WIDTH * 0.81, 
         paddingHorizontal: 20,
         backgroundColor: 'white', 
@@ -349,7 +349,7 @@ const styles = StyleSheet.create({
     card3: {
         flex: 1,
         position: 'absolute', 
-        height: SCREEN_HEIGHT * 0.635, 
+        height: SCREEN_HEIGHT * 0.63, 
         width: SCREEN_WIDTH * 0.85, 
         paddingHorizontal: 20,
         backgroundColor: 'white', 

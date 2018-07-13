@@ -17,13 +17,12 @@ import {
   Animated
 } from 'react-native';
 import * as firebase from 'firebase';
-import CardStack, { Card } from 'react-native-card-stack-swiper';
-import * as Progress from 'react-native-progress';
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
 import IcoMoonConfig from '../../selection.json';
 import { Fonts } from '../../utils/Fonts';
 import LinearGradient from 'react-native-linear-gradient';
 import CardSwipe from '../styles/cardSwipe';
+import AwesomeAlert from 'react-native-awesome-alerts';
 
 
 const Icon = createIconSetFromIcoMoon(IcoMoonConfig);
@@ -63,9 +62,22 @@ export default class ProfileScreen extends React.Component {
                   mincard: true,
                   maxcard: false,
                   goalSuccess: false,
+                  showAlert: false
                 }
     
   } 
+
+  showAlert = () => {
+    this.setState({
+      showAlert: true
+    });
+  };
+ 
+  hideAlert = () => {
+    this.setState({
+      showAlert: false
+    });
+  };
 
   componentDidMount(){
     // start listening for firebase updates
@@ -285,9 +297,10 @@ renderItemTips(item){
 
 
   render() {
+    const {goalSuccess} = this.state;
+    const {showAlert} = this.state;
     return (
       <View>
-
       <Modal
         transparent={true}
         animationType={'none'}
@@ -341,13 +354,11 @@ renderItemTips(item){
           <View style = {{flexDirection: 'row', justifyContent: 'space-between'}}>
           <Text style={{color: '#ffffff', fontFamily: Fonts.MosseThai_Bold ,alignSelf: 'center', paddingLeft:20, paddingRight:20}}>วิศวกรโยธา มช.</Text>
           <TouchableOpacity onPress = {()=>{
-            this.setState({
-              goalSuccess: true
-            })
+            this.showAlert();
           }}>
-          <LinearGradient colors={['#bbe84a','#7bd834', '#3e9e16']} style = {{backgroundColor: '#44bd32', width:50, height:50, borderRadius:25, justifyContent:'center', 
+          <LinearGradient colors={!this.state.goalSuccess ? ['#bbe84a','#7bd834', '#3e9e16'] : ['#f7c042', '#f2892e','#f26304']} style = {{backgroundColor: '#44bd32', width:50, height:50, borderRadius:25, justifyContent:'center', 
           alignItems:'center' }}>
-          <Image source={require('../../images/check_white.png')} style={{ width: 20, height:20}} />
+          <Image source={!this.state.goalSuccess ? require('../../images/check_white.png') : require('../../images/cancel_white.png')} style={{ width: 20, height:20}} />
           </LinearGradient>
           </TouchableOpacity>
           </View>
@@ -361,6 +372,38 @@ renderItemTips(item){
                         renderItem = {({item}) => this.renderItemTips(item)} />
         </View>
         </ScrollView>
+
+        <AwesomeAlert
+          show={showAlert}
+          showProgress={false}
+          title="เดี๋ยวก่อน !"
+          message="น้องๆ แน่ใจแล้วว่าจะเปลี่ยนสถานะของเป้าหมายหรือไม่"
+          closeOnTouchOutside={false}
+          closeOnHardwareBackPress={false}
+          showCancelButton={true}
+          showConfirmButton={true}
+          cancelText="ยกเลิก"
+          confirmText="ต้องการเปลี่ยน"
+          confirmButtonColor="#7bd834"
+          cancelButtonColor="#DD6B55"
+          messageStyle = {{fontFamily: Fonts.MosseThai_Medium, textAlign: 'center',
+                           color: '#2f3640', fontSize: 15 }}
+          titleStyle = {{fontFamily: Fonts.MosseThai_Bold,
+                           color: '#2f3640', fontSize: 19 }}
+          cancelButtonTextStyle = {{fontFamily: Fonts.MosseThai_Medium, textAlign: 'center',
+                           color: '#fff', fontSize: 14 }}
+          confirmButtonTextStyle = {{fontFamily: Fonts.MosseThai_Medium, textAlign: 'center',
+                           color: '#fff', fontSize: 14 }}
+          onCancelPressed={() => {
+            this.hideAlert();
+          }}
+          onConfirmPressed={() => {
+            this.hideAlert();
+            this.setState({
+              goalSuccess: !goalSuccess
+            })
+          }}
+        />
         </View>
     );
   }
@@ -439,7 +482,7 @@ const styles = StyleSheet.create({
     height: SCREEN_HEIGHT* 0.125,
     flexDirection:'column',
     justifyContent: 'space-around',
-    marginBottom: 20,
+    marginBottom: 10,
   },
   button:{
     shadowColor: 'rgba(0,0,0,0.3)',

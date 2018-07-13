@@ -347,6 +347,7 @@ const styles = StyleSheet.create({
   },
   iconwithText:{
     paddingLeft: 8, 
+    paddingTop: 1, 
     alignSelf:'center'
   },
   textwithIcon:{

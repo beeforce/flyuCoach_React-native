@@ -30,15 +30,6 @@ class Signup extends Component {
     style: { elevation: 0 }
   };
 
-
-  componentDidUpdate() {
-    setInterval( () => {
-      this.setState({
-        curTime : moment().tz("Asia/Bangkok").format()
-      })
-    },1000)
-  }
-
     constructor(props) {
         super(props);
         this.state = {
@@ -52,10 +43,24 @@ class Signup extends Component {
                   province:'',
                   school:'',
                   goal:'',
+                  curTime: '',
                   user:null,
                   pickImage: false,
                   isLoading: false
                 }
+      }
+
+
+      settime = () =>{
+        setInterval( () => {
+          this.setState({
+            curTime : moment().tz("Asia/Bangkok").format()
+          })
+        },1000)
+      }
+
+      componentDidMount() {
+        this.settime
       }
 
     signUpUser = (email, password) =>{
@@ -171,6 +176,13 @@ class Signup extends Component {
           )
         }
       }
+
+      focusFullnameInput() {
+        this.Fullnameref._root.focus();
+    }
+      focusNicknameInput() {
+        this.Nicknameref._root.focus();
+    }
   
 
     render() {
@@ -206,12 +218,12 @@ class Signup extends Component {
                 style = {styles.textinput}
                 placeholder="ใส่อีเมลของเรา"
                 placeholderTextColor="#d81a36"
-                value= {this.state.email}
                 keyboardType = "email-address"
                 returnKeyType = "next"
                 underlineColorAndroid="transparent"
                 onChangeText={(email) => this.setState({email})}
-                onSubmitEditing = {() => this.password.focus()}
+                onSubmitEditing = {() => this.passwordref.focus()}
+                value= {this.state.email}
                 />
                 </View>
                 </View>
@@ -226,14 +238,14 @@ class Signup extends Component {
                 style = {styles.textinput}
                 placeholder="ใส่รหัสผ่านของเรา"
                 placeholderTextColor="#d81a36"
-                value= {this.state.password}
                 keyboardType = "default"
                 returnKeyType = "next"
                 underlineColorAndroid="transparent"
                 onChangeText={(password) => this.setState({password})}
-                ref = {(input) => this.password = input}
-                onSubmitEditing = {() => this.repassword.focus()}
+                ref = {(input) => this.passwordref = input}
+                onSubmitEditing = {() => this.repasswordref.focus()}
                 secureTextEntry
+                value= {this.state.password}
                 />
                 </View>
                 </View>
@@ -248,14 +260,14 @@ class Signup extends Component {
                 style = {styles.textinput}
                 placeholder="ใส่รหัสผ่านของเราอีกครั้ง"
                 placeholderTextColor="#d81a36"
-                value= {this.state.repassword}
                 keyboardType = "default"
                 returnKeyType = "next"
                 underlineColorAndroid="transparent"
                 onChangeText={(repassword) => this.setState({repassword})}
-                ref = {(input) => this.repassword = input}
-                onSubmitEditing = {() => this.phonenumber.focus()}
+                ref = {(input) => this.repasswordref = input}
+                onSubmitEditing = {() => this.phonenumberref.focus()}
                 secureTextEntry
+                value= {this.state.repassword}
                 />
                 </View>
                 </View>
@@ -270,13 +282,14 @@ class Signup extends Component {
                 style = {styles.textinput}
                 placeholder="ใส่เบอร์โทรศัพท์"
                 placeholderTextColor="#d81a36"
-                value= {this.state.phonenumber}
                 keyboardType = "numeric"
                 returnKeyType = "next"
                 underlineColorAndroid="transparent"
                 onChangeText={(phonenumber) => this.setState({phonenumber})}
-                ref = {(input) => this.phonenumber = input}
-                onSubmitEditing = {() => this.Fullname.focus()}
+                ref = {(input) => this.phonenumberref = input}
+                onSubmitEditing = {() => this.Fullnameref.focus()}
+                value= {this.state.phonenumber}
+                blurOnSubmit={false}
                 />
                 </View>
                 </View>
@@ -291,13 +304,14 @@ class Signup extends Component {
                 style = {styles.textinput}
                 placeholder="ใส่ชื่อ นามสกุล"
                 placeholderTextColor="#d81a36"
-                value= {this.state.Fullname}
                 keyboardType = "default"
                 returnKeyType = "next"
                 underlineColorAndroid="transparent"
                 onChangeText={(Fullname) => this.setState({Fullname})}
-                ref = {(input) => this.Fullname = input}
-                onSubmitEditing = {() => this.Nickname.focus()}
+                ref = {(input) => this.Fullnameref = input}
+                onSubmitEditing = {() => this.Nicknameref.focus()}
+                value= {this.state.Fullname}
+                blurOnSubmit={false}
                 />
                 </View>
                 </View>
@@ -312,13 +326,14 @@ class Signup extends Component {
                 style = {styles.textinput}
                 placeholder="ใส่ชื่อเล่น"
                 placeholderTextColor="#d81a36"
-                value= {this.state.Nickname}
                 keyboardType = "default"
                 returnKeyType = "next"
                 underlineColorAndroid="transparent"
                 onChangeText={(Nickname) => this.setState({Nickname})}
-                ref = {(input) => this.Nickname = input}
-                onSubmitEditing = {() => this.Date_of_Birth.focus()}
+                ref = {(input) => this.Nicknameref = input}
+                onSubmitEditing = {() => this.Date_of_Birthref.focus()}
+                value= {this.state.Nickname}
+                blurOnSubmit={false}
                 />
                 </View>
                 </View>
@@ -338,8 +353,8 @@ class Signup extends Component {
                 returnKeyType = "next"
                 underlineColorAndroid="transparent"
                 onChangeText={(Date_of_Birth) => this.setState({Date_of_Birth})}
-                ref = {(input) => this.Date_of_Birth = input}
-                onSubmitEditing = {() => this.province.focus()}
+                ref = {(input) => this.Date_of_Birthref = input}
+                onSubmitEditing = {() => this.provinceref.focus()}
                 />
                 </View>
                 </View>
@@ -366,8 +381,8 @@ class Signup extends Component {
                 returnKeyType = "next"
                 underlineColorAndroid="transparent"
                 onChangeText={(province) => this.setState({province})}
-                ref = {(input) => this.province = input}
-                onSubmitEditing = {() => this.School.focus()}
+                ref = {(input) => this.provinceref = input}
+                onSubmitEditing = {() => this.Schoolref.focus()}
                 multiline
                 blurOnSubmit={true}
                 />
@@ -388,8 +403,8 @@ class Signup extends Component {
                 returnKeyType = "next"
                 underlineColorAndroid="transparent"
                 onChangeText={(school) => this.setState({school})}
-                ref = {(input) => this.School = input}
-                onSubmitEditing = {() => this.goal.focus()}
+                ref = {(input) => this.Schoolref = input}
+                onSubmitEditing = {() => this.goalref.focus()}
                 multiline
                 blurOnSubmit={true}
                 />
@@ -414,7 +429,7 @@ class Signup extends Component {
                 returnKeyType = "done"
                 underlineColorAndroid="transparent"
                 onChangeText={(goal) => this.setState({goal})}
-                ref = {(input) => this.goal = input}
+                ref = {(input) => this.goalref = input}
                 />
                 </View>
                 </View>
@@ -491,7 +506,8 @@ class Signup extends Component {
       paddingRight: 15, 
     },
     iconwithText:{
-      paddingLeft: 8, 
+      paddingLeft: 8,
+      paddingTop: 1, 
       alignSelf:'center'
     },
     textwithIcon:{

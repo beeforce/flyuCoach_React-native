@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, Dimensions, TextInput, TouchableOpacity } from 'react-native'
+import { Text, StyleSheet, View, Dimensions, TextInput, TouchableOpacity,Image } from 'react-native'
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons'
 import IcoMoonConfig from '../../selection.json'
 const Icon = createIconSetFromIcoMoon(IcoMoonConfig)
 import { Fonts } from '../../utils/Fonts'
 import LinearGradient from 'react-native-linear-gradient';
+
+const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default class ForgetPassword extends Component {
   static navigationOptions = {
@@ -30,6 +32,17 @@ export default class ForgetPassword extends Component {
           <Text style = {{fontFamily: Fonts.MosseThai_Extra_Bold, fontSize: 19, marginTop: 20, alignSelf: 'center', color: '#6da835'}}>ส่งลิงค์เข้าอีเมลเรียบร้อยแล้ว</Text>
           
           <Text style = {{fontFamily: Fonts.MosseThai_Regular, fontSize: 14, marginTop: 10, alignSelf: 'center', textAlign: 'center'}}>คุณสามารถเข้าไปเปลี่ยนพาสเวิร์ดใหม่{"\n"}ได้ผ่านทางอีเมลได้ทันที</Text>
+          <View style={{position: 'absolute',
+                        top: 75,
+                        width: 28,
+                        height: 28,
+                        borderRadius: 14,
+                        left: SCREEN_WIDTH * 0.515,
+                        backgroundColor: 'red'}}>
+          <LinearGradient colors={!this.state.goalSuccess ? ['#bbe84a','#7bd834', '#3e9e16'] : ['#f7c042', '#f2892e','#f26304']} style = {{ flex:1, justifyContent:'center',borderRadius: 14, alignItems:'center' }}>
+          <Image source={!this.state.goalSuccess ? require('../../images/check_white.png') : require('../../images/cancel_white.png')} style={{ width: 15, height:14}} />
+          </LinearGradient>
+        </View>
           </View>
   
           <View style = {styles.bottomContent}>
@@ -78,7 +91,6 @@ export default class ForgetPassword extends Component {
   }
 }
 
-const SCREEN_WIDTH = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   container: {
     flex: 1,

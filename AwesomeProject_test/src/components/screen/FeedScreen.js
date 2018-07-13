@@ -153,7 +153,7 @@ _keyExtractor = (item, index) => item._key;
 renderItem(item){
   return(
   <View style = {{ flex: 1, marginTop: 15, borderBottomWidth: 0.5, borderColor: '#c9c9c9', backgroundColor: '#fff' }}>
-  <TouchableHighlight onPress={() => this._pressRow(item.id)}>
+  <TouchableHighlight onPress={() => this._pressRow(item.id)} underlayColor = 'transparent'>
   <View style = {{ flex: 1, flexDirection: 'row', marginLeft:20, marginRight: 20, marginBottom: 15,}} >
   {this.getImageTypeTips(item.type)}
   <View style = {{flex: 1, flexDirection: 'column', marginLeft: 10}}>
@@ -303,7 +303,7 @@ getTypeofTips = (type) =>{
 renderItemTips(item){
     return(
   <View style = {styles.cardviewcontent}>
-  <TouchableHighlight onPress={() => this._pressRow(item.id)}>
+  <TouchableHighlight onPress={() => this._pressRow(item.id)} underlayColor = '#EEEEEE'>
   <View style = {{ flex: 1, flexDirection: 'column', marginTop: 15, marginBottom: 10, marginLeft: 10, marginRight: 20,}} >
   <View style = {{ flex: 1, flexDirection: 'row', justifyContent: 'center'}} >
   {this.getImageTypeTips(item.type)}
