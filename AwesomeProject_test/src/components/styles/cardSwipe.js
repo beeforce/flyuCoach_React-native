@@ -30,8 +30,6 @@ const ARTICLES = [
      text: 'วันนี้มีการสอน Live สด เกี่ยวกับการเดาคำศัพท์ ที่เราไม่รู้ ติดตามดู Live ได้ตามช่องทางข้างล่างเลยจ้า ตอน 21:30 ห้ามพลาดนะจ๊ะ !'},
     { id: "4", uri: require('../../images/image.jpg'), date: '4/06/2561 18:30',
      text: 'It plays a very important part in learning any language. Effective listening ensures understanding and it helps improve accuracy when speaking '},
-    { id: "5", uri: require('../../images/image.jpg'), date: '5/06/2561 18:30',
-     text: 'วันนี้มีการสอน Live สด เกี่ยวกับการเดาคำศัพท์ ที่เราไม่รู้ ติดตามดู Live ได้ตามช่องทางข้างล่างเลยจ้า ตอน 21:30 ห้ามพลาดนะจ๊ะ !'},
   ]
 
 const ARTICLES_length = ARTICLES.length;
@@ -42,6 +40,9 @@ class CardSwipe extends Component {
         super(props)
 
         this.position = new Animated.ValueXY()
+        this.position2 = new Animated.ValueXY({ x: 0 , y: 10})
+        this.position3 = new Animated.ValueXY({ x: 0 , y: 20})
+        this.position4 = new Animated.ValueXY({ x: 0 , y: 30})
         this.swipedCardPosition = new Animated.ValueXY({ x: 0, y: -SCREEN_HEIGHT })
         this.state = {
             currentIndex: 0,
@@ -88,19 +89,10 @@ class CardSwipe extends Component {
                 }
                 else if (-gestureState.dy > 150 && -gestureState.vy > 0 && this.state.currentIndex < ARTICLES.length - 1) {
 
-                Animated.timing(this.position, {
-                    toValue: ({ x: 0, y: -SCREEN_HEIGHT }),
-                    duration: 200
-                  }).start(() => {
-
-                this.setState({ currentIndex: this.state.currentIndex + 1 })
-                this.position.setValue({ x: 0, y: 0 })
-                if (this.state.currentIndex + 1 === ARTICLES_length){
-                this.setState({
-                        disablerollBack: false
-                        })
-                    }
-                  })
+                    Animated.timing(this.position, {
+                        toValue: ({ x: 0, y: -SCREEN_HEIGHT }),
+                        duration: 200,
+                      }).start(this.goNextpage)
               }
                 else {
                     Animated.parallel([
@@ -158,9 +150,37 @@ class CardSwipe extends Component {
 
                 return (
                     <Animated.View key={item.id}
+                    style={this.position2.getLayout()}
 
                     >
                          <View style={styles.card2}>
+
+                         {this.renderCard(ARTICLES[i])}
+                        </View>
+                    </Animated.View>
+                )
+            }
+
+            if (i == this.state.currentIndex+2) {
+
+                return (
+                    <Animated.View key={item.id}
+                     style={this.position3.getLayout()}
+                    >
+                         <View style={styles.card4}>
+                         {this.renderCard(ARTICLES[i])}
+                        </View>
+                    </Animated.View>
+                )
+            }
+
+            if (i == this.state.currentIndex+3) {
+
+                return (
+                    <Animated.View key={item.id}
+                    style={this.position4.getLayout()}
+                    >
+                         <View style={styles.card5}>
 
                          {this.renderCard(ARTICLES[i])}
                         </View>
@@ -195,8 +215,8 @@ class CardSwipe extends Component {
         </View>
         </View>
         <Text style = {{paddingHorizontal: SCREEN_WIDTH * 0.04 ,fontSize: 20, color: '#000000', fontFamily: Fonts.MosseThai_Medium, paddingTop: 5, paddingBottom:15, lineHeight: 30}}>{item.text}</Text>
-        <Image source={item.uri} resizeMode={'stretch'} style={{paddingHorizontal: 20, height: SCREEN_WIDTH* 0.45, width: SCREEN_WIDTH* 0.75, justifyContent:'center', alignSelf: 'center', marginTop: 7}}>
-        </Image>
+        {/* <Image source={item.uri} resizeMode={'stretch'} style={{paddingHorizontal: 20, height: SCREEN_WIDTH* 0.45, width: SCREEN_WIDTH* 0.75, justifyContent:'center', alignSelf: 'center', marginTop: 7}}>
+        </Image> */}
         </View>
         );
 
@@ -226,8 +246,28 @@ class CardSwipe extends Component {
         }else{
             return null;
         }
-          
       }
+
+      goNextpage = () =>{
+        this.setState({ currentIndex: this.state.currentIndex + 1 })
+        if (this.state.currentIndex + 1 === ARTICLES_length){
+        this.setState({
+            disablerollBack: false
+            })
+      }
+      this.position.setValue({ x: 0, y: 25 })
+      Animated.spring(this.position, {
+        toValue: ({ x: 0, y: 0 }),
+        friction: 15,
+        tension: 100,
+      }).start(() => {
+        this.position.setValue({ x: 0, y: 0 })
+      })
+    }
+
+    goPreviouspage = () =>{
+
+    }
 
     render() {
         return (
@@ -251,11 +291,12 @@ class CardSwipe extends Component {
             {this.renderArticles()}
             </View>
             <View style = {{flexDirection: 'row', alignItems:'center', alignSelf:'center', paddingBottom:3}}>
-                <Text style = {{fontSize: 12, fontFamily: Fonts.MosseThai_Bold, color: '#4cd137'}}>{this.state.currentIndex + 1 }/ </Text>
+                <Text style = {{fontSize: 12, fontFamily: Fonts.MosseThai_Bold, color: '#4cd137'}}>{this.state.currentIndex + 1 }/</Text>
                 <Text style = {{fontSize: 12, fontFamily: Fonts.MosseThai_Bold}}>{ARTICLES_length} Cards</Text>
                 </View>
                 <Progress.Bar progress={(this.state.currentIndex + 1)/ ARTICLES_length} 
-                width={SCREEN_WIDTH*0.6} height={15} 
+                width={SCREEN_WIDTH*0.6} height={15}
+                borderWidth = {0}
                 style = {{alignSelf: 'center', borderRadius: 15, backgroundColor: '#3e9e16',}}
                 color = "rgb(115, 214, 40)"/>
                 <View style = {{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -279,19 +320,11 @@ class CardSwipe extends Component {
                 </TouchableOpacity>
                 <TouchableOpacity onPress={()=>{
                 if (this.state.currentIndex < ARTICLES.length - 1){
-                Animated.timing(this.position, {
-                toValue: ({ x: 0, y: -SCREEN_HEIGHT }),
-                duration: 150
-                }).start(() => {
-                this.setState({ currentIndex: this.state.currentIndex + 1 })
-                this.position.setValue({ x: 0, y: 0 })
-                if (this.state.currentIndex + 1 === ARTICLES_length){
-                    this.setState({
-                        disablerollBack: false
-                        })
+                    Animated.timing(this.position, {
+                    toValue: ({ x: 0, y: -SCREEN_HEIGHT }),
+                    duration: 200,
+                  }).start(this.goNextpage)
                 }
-                 })
-                    }
                 }}>
                 <Image source={require('../../images/icon_arrow_right.png')} resizeMode={'contain'} style={{ height: 25, width: 25, padding: 15}} />
                 </TouchableOpacity>
@@ -310,54 +343,76 @@ const styles = StyleSheet.create({
         paddingBottom: SCREEN_HEIGHT * 0.05,
         backgroundColor: '#EEEEEE'
     },
-    card1: {
-        flex: 1, 
+    card1: { 
+        flex: 1,
         position: 'absolute', 
-        height: SCREEN_HEIGHT * 0.63, 
+        height: SCREEN_HEIGHT * 0.6, 
         width: SCREEN_WIDTH * 0.85,
         paddingHorizontal: SCREEN_WIDTH * 0.01, 
         backgroundColor: 'white', 
+        shadowOffset: {width: 4, height: 4},
         alignSelf: 'center',
         shadowColor: '#000000', 
         shadowOpacity : 0.24,
         shadowRadius: 3, 
-        elevation: 3, 
+        elevation: 3.15, 
     },
     card2: {
-        flex: 1, 
         position: 'absolute', 
-        height: SCREEN_HEIGHT * 0.63, 
+        height: SCREEN_HEIGHT * 0.6, 
         width: SCREEN_WIDTH * 0.81, 
         paddingHorizontal: 20,
         backgroundColor: 'white', 
         paddingHorizontal: SCREEN_WIDTH * 0.01, 
+        // marginTop: 10,
+        shadowOffset: {width: 4, height: 4},
         alignSelf: 'center',
-        marginTop: 10,
-        shadowOffset:{  width: 10,  height: 10,  },
+        shadowRadius: 3, 
+        shadowColor: '#000000', 
+        shadowOpacity: 0.24,
+        elevation: 3.1
+    },
+    card4: {
+        position: 'absolute', 
+        height: SCREEN_HEIGHT * 0.6, 
+        width: SCREEN_WIDTH * 0.77, 
+        paddingHorizontal: 20,
+        backgroundColor: 'white', 
+        paddingHorizontal: SCREEN_WIDTH * 0.01, 
+        // marginTop: 20,
+        alignSelf: 'center',
+        shadowOffset: {width: 4, height: 4},
+        shadowRadius: 3, 
+        shadowColor: '#000000', 
+        shadowOpacity: 0.24,
+        elevation: 3.05, 
+    },
+    card5: {
+        position: 'absolute', 
+        height: SCREEN_HEIGHT * 0.6, 
+        width: SCREEN_WIDTH * 0.73, 
+        paddingHorizontal: 20,
+        backgroundColor: 'white', 
+        paddingHorizontal: SCREEN_WIDTH * 0.01, 
+        alignSelf: 'center',
+        shadowOffset: {width: 4, height: 4},
         shadowColor: 'black',
-        shadowOpacity: 1.0,
-        // shadowColor: '#000000', 
-        // shadowOpacity : 0.24, 
-        // shadowRadius: 3, 
-        elevation: 2, 
-        // shadowColor: '#000000', 
-        // shadowOpacity : 0.24, 
-        // shadowRadius: 3, 
-        // borderRadius: 5, 
-        // elevation: 3, 
+        shadowOpacity: 2.4,
+        elevation: 3, 
     },
     card3: {
         flex: 1,
         position: 'absolute', 
-        height: SCREEN_HEIGHT * 0.63, 
+        height: SCREEN_HEIGHT * 0.6, 
         width: SCREEN_WIDTH * 0.85, 
         paddingHorizontal: 20,
         backgroundColor: 'white', 
         paddingHorizontal: SCREEN_WIDTH * 0.01, 
         alignSelf: 'center',
+        shadowOffset: {width: 4, height: 4},
         shadowColor: '#000000', 
         shadowOpacity : 0.24, 
-        shadowRadius: 5, 
-        elevation: 3, 
+        shadowRadius: 3, 
+        elevation: 3.15, 
     }
 });
