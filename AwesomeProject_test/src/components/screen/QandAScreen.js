@@ -89,7 +89,7 @@ searchText = (e) => {
       height: 45,
       margin: 3,
       marginHorizontal: 25,}}>
-      <Icon name="search" style={{ paddingRight: 10,alignSelf:'center'}} size={22} color = '#2c3e50'/>
+      <Icon name="search" style={{ paddingRight: 10,alignSelf:'center', paddingTop:2}} size={22} color = '#2c3e50'/>
       <TextInput style = {styles.inputtextstyle}
                   onChangeText={(text) => this.searchText(text)}
       ></TextInput>
@@ -119,7 +119,7 @@ searchText = (e) => {
                           width: 0
                         }
                       }}
-                      onPress={() => this.props.navigation.push('addQuestion')}
+                      onPress={() => this.props.navigation.push('addQuestion',{ hideTabBar: true })}
              />
       
       </View>

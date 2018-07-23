@@ -340,7 +340,7 @@ renderItemTips(item){
           <View style = {{ flexDirection: 'column', alignItems: 'baseline', alignSelf: 'flex-end'}}>
           <Text style = {{margin:2, color:'#000', fontSize: 12, fontFamily:Fonts.MosseThai_Medium}}>แก้ไขข้อมูล</Text>
           <TouchableOpacity style={{ paddingRight:5, alignSelf: 'center'}}
-          onPress={() => this.props.navigation.push('Profile2')}>
+          onPress={() => this.props.navigation.push('Profile2',{ hideTabBar: true })}>
           <Icon name="edit2" size={22} color = '#000'/></TouchableOpacity>
           </View>
           </View>

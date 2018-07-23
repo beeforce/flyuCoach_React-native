@@ -1,6 +1,6 @@
 import React from 'react';
 import { Platform, Text } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator, HeaderBackButton } from 'react-navigation';
+import { createStackNavigator, createBottomTabNavigator, TabBarBottom, HeaderBackButton } from 'react-navigation';
 import TabBarIcon from '../styles/tabBarIcon';
 import FeedScreen from '../screen/FeedScreen';
 import VIPsScreen from '../screen/VIPsScreen';
@@ -9,6 +9,7 @@ import QandAScreen from '../screen/QandAScreen';
 import ScheduleScreen from '../screen/ScheduleScreen';
 import ProfileScreen from '../screen/profileScreen';
 import addMoreQuestionScreen from '../screen/addMoreQuestionScreen';
+import SelffindingScreen from '../screen/SelffindingScreen';
 import { Fonts } from '../../utils/Fonts';
 
 const navigationOptions = ({ navigation }) => ({
@@ -84,6 +85,7 @@ QandAStack.navigationOptions = {
 //VIP page
 const VIPsStack = createStackNavigator({
   VIPs: VIPsScreen,
+  Selffinding: SelffindingScreen
 });
 
 VIPsStack.navigationOptions = {
@@ -105,8 +107,8 @@ const ProfileStack = createStackNavigator({
   Profile: ProfileScreen,
   Profile2: {
 		screen: SettingsScreen,
-		navigationOptions
-	}
+    navigationOptions
+  },
 })
 
 ProfileStack.navigationOptions = {
@@ -120,7 +122,7 @@ ProfileStack.navigationOptions = {
     focused = {focused}
     name= "address-card"
     />
-  ),
+  )
 };
 
 export default createBottomTabNavigator({
@@ -129,4 +131,21 @@ export default createBottomTabNavigator({
   QandAStack,
   VIPsStack,
   ProfileStack,
-});
+},
+{
+  navigationOptions: ({ navigation }) => {
+    const { routeName, routes } = navigation.state;
+    let params = routes && routes[1] && routes[1].params;
+    return {
+      tabBarVisible:
+        params && params.hideTabBar != null ? !params.hideTabBar : true,
+      swipeEnabled:
+        params && params.hideTabBar != null ? !params.hideTabBar : true
+    };
+  },
+  // tabBarComponent: TabBarBottom,
+  // tabBarPosition: "bottom",
+  // animationEnabled: true,
+  // swipeEnabled: true
+} 
+);

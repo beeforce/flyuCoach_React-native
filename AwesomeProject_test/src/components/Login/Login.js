@@ -63,41 +63,42 @@ class Login extends Component {
 
 
   loginFirebase = (email, password) => {
-    if(!this.validate(email)){
-      Alert.alert('Error !',
-          'Your email is not correct',);
-    }
-    else if(this.state.password.length <= 5){
-      Alert.alert('Error !',
-          'Your password is too shot',);
-    }else{
-      try {
-        firebase.auth().signInWithEmailAndPassword(email,password).then(function (user) {
-          console.log(user);
-          (user) => this.setState({isLoading: true})
-        }).then((user) => {
-          firebase.auth().onAuthStateChanged((user) => {
-                if(user != null){
-                    console.log(user)
-                    firebase.database().ref('User').child('Login').child('Firebase').child(user.uid).set({
-                      Login_time: this.state.curTime,
-                    });
-                    this.props.navigation.navigate('Homepage', {
-                      uid: user.uid,
+    this.props.navigation.navigate('Homepage')
+    // if(!this.validate(email)){
+    //   Alert.alert('Error !',
+    //       'Your email is not correct',);
+    // }
+    // else if(this.state.password.length <= 5){
+    //   Alert.alert('Error !',
+    //       'Your password is too shot',);
+    // }else{
+    //   try {
+    //     firebase.auth().signInWithEmailAndPassword(email,password).then(function (user) {
+    //       console.log(user);
+    //       (user) => this.setState({isLoading: true})
+    //     }).then((user) => {
+    //       firebase.auth().onAuthStateChanged((user) => {
+    //             if(user != null){
+    //                 console.log(user)
+    //                 firebase.database().ref('User').child('Login').child('Firebase').child(user.uid).set({
+    //                   Login_time: this.state.curTime,
+    //                 });
+    //                 this.props.navigation.navigate('Homepage', {
+    //                   uid: user.uid,
 
-                    });
-                }
-            })
-        }).catch((error) => {
-          Alert.alert('Error !',
-          'Your email or password is not correct',);
-        })
+    //                 });
+    //             }
+    //         })
+    //     }).catch((error) => {
+    //       Alert.alert('Error !',
+    //       'Your email or password is not correct',);
+    //     })
           
-      } catch (error) {
-        console.log(error.toString());
-        Alert.alert('Error !',error.toString());
-      }
-    }
+    //   } catch (error) {
+    //     console.log(error.toString());
+    //     Alert.alert('Error !',error.toString());
+    //   }
+    // }
   }
 
   validate = (text) => {
