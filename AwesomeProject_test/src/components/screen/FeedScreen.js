@@ -87,20 +87,20 @@ export default class FeedScreen extends React.Component {
     this.listenForFeature(this.featuresRef);
     this.listenForTips(this.tipsRef);
     // user id from firebase
-//     const userId = firebase.auth().currentUser.uid;
-//     firebase.database().ref(`User/Firebase/${userId}/email`).on('value', snapshot => {
-//     this.setState({email: snapshot.val()})
-//  })
+    const userId = firebase.auth().currentUser.uid;
+    firebase.database().ref(`User/Firebase/${userId}/email`).on('value', snapshot => {
+    this.setState({email: snapshot.val()})
+ })
   }
 
   componentWillMount() {
-    // AsyncStorage.getItem('userData').then((user_data_json) => {
-    //   let userData = JSON.parse(user_data_json);
-    //   this.setState({
-    //     user: userData,
-    //     active:'true',
-    //   });
-    // });
+    AsyncStorage.getItem('userData').then((user_data_json) => {
+      let userData = JSON.parse(user_data_json);
+      this.setState({
+        user: userData,
+        active:'true',
+      });
+    });
 
     this.listenForAds(this.AdsRef);
 
