@@ -21,15 +21,33 @@ import { Fonts } from '../../utils/Fonts';
 const SCREEN_HEIGHT = Dimensions.get("window").height
 const SCREEN_WIDTH = Dimensions.get("window").width
 
+var currentIndex = 0;
+
 const ARTICLES = [
     { id: "1", uri: require('../../images/image.jpg'), date: '1/06/2561 18:30',
      text: 'วันนี้มีการสอน Live สด เกี่ยวกับการเดาคำศัพท์ ที่เราไม่รู้ ติดตามดู Live ได้ตามช่องทางข้างล่างเลยจ้า ตอน 21:30 ห้ามพลาดนะจ๊ะ !'},
-    { id: "2", uri: require('../../images/image.jpg'), date: '2/06/2561 18:30',
+    { id: "2", uri: require('../../images/image.jpg'), date: '1/06/2561 18:30',
      text: 'วันนี้มีการสอน Live สด เกี่ยวกับการเดาคำศัพท์ ที่เราไม่รู้ ติดตามดู Live ได้ตามช่องทางข้างล่างเลยจ้า ตอน 21:30 ห้ามพลาดนะจ๊ะ !'},
-    { id: "3", uri: require('../../images/image.jpg'), date: '3/06/2561 18:30',
+    { id: "3", uri: require('../../images/image.jpg'), date: '1/06/2561 18:30',
      text: 'วันนี้มีการสอน Live สด เกี่ยวกับการเดาคำศัพท์ ที่เราไม่รู้ ติดตามดู Live ได้ตามช่องทางข้างล่างเลยจ้า ตอน 21:30 ห้ามพลาดนะจ๊ะ !'},
-    { id: "4", uri: require('../../images/image.jpg'), date: '4/06/2561 18:30',
+    { id: "4", uri: require('../../images/image.jpg'), date: '1/06/2561 18:30',
      text: 'It plays a very important part in learning any language. Effective listening ensures understanding and it helps improve accuracy when speaking '},
+    { id: "5", uri: require('../../images/image.jpg'), date: '1/06/2561 18:30',
+     text: 'วันนี้มีการสอน Live สด เกี่ยวกับการเดาคำศัพท์ ที่เราไม่รู้ ติดตามดู Live ได้ตามช่องทางข้างล่างเลยจ้า ตอน 21:30 ห้ามพลาดนะจ๊ะ !'},
+    { id: "6", uri: require('../../images/image.jpg'), date: '1/06/2561 18:30',
+     text: 'วันนี้มีการสอน Live สด เกี่ยวกับการเดาคำศัพท์ ที่เราไม่รู้ ติดตามดู Live ได้ตามช่องทางข้างล่างเลยจ้า ตอน 21:30 ห้ามพลาดนะจ๊ะ !'},
+    { id: "7", uri: require('../../images/image.jpg'), date: '1/06/2561 18:30',
+     text: 'วันนี้มีการสอน Live สด เกี่ยวกับการเดาคำศัพท์ ที่เราไม่รู้ ติดตามดู Live ได้ตามช่องทางข้างล่างเลยจ้า ตอน 21:30 ห้ามพลาดนะจ๊ะ !'},
+     { id: "8", uri: require('../../images/image.jpg'), date: '1/06/2561 18:30',
+     text: 'วันนี้มีการสอน Live สด เกี่ยวกับการเดาคำศัพท์ ที่เราไม่รู้ ติดตามดู Live ได้ตามช่องทางข้างล่างเลยจ้า ตอน 21:30 ห้ามพลาดนะจ๊ะ !'},
+     { id: "9", uri: require('../../images/image.jpg'), date: '1/06/2561 18:30',
+     text: 'It plays a very important part in learning any language. Effective listening ensures understanding and it helps improve accuracy when speaking '},
+    { id: "10", uri: require('../../images/image.jpg'), date: '1/06/2561 18:30',
+     text: 'วันนี้มีการสอน Live สด เกี่ยวกับการเดาคำศัพท์ ที่เราไม่รู้ ติดตามดู Live ได้ตามช่องทางข้างล่างเลยจ้า ตอน 21:30 ห้ามพลาดนะจ๊ะ !'},
+    { id: "11", uri: require('../../images/image.jpg'), date: '1/06/2561 18:30',
+     text: 'วันนี้มีการสอน Live สด เกี่ยวกับการเดาคำศัพท์ ที่เราไม่รู้ ติดตามดู Live ได้ตามช่องทางข้างล่างเลยจ้า ตอน 21:30 ห้ามพลาดนะจ๊ะ !'},
+    { id: "12", uri: require('../../images/image.jpg'), date: '1/06/2561 18:30',
+     text: 'วันนี้มีการสอน Live สด เกี่ยวกับการเดาคำศัพท์ ที่เราไม่รู้ ติดตามดู Live ได้ตามช่องทางข้างล่างเลยจ้า ตอน 21:30 ห้ามพลาดนะจ๊ะ !'},
   ]
 
 const ARTICLES_length = ARTICLES.length;
@@ -39,6 +57,8 @@ class CardSwipe extends Component {
     constructor(props) {
         super(props)
 
+        this.remainindex = currentIndex - ARTICLES_length;
+        this.lastCountindex = ARTICLES_length % 4;
         this.position = new Animated.ValueXY()
         this.position2 = new Animated.ValueXY({ x: 0 , y: 10})
         this.position3 = new Animated.ValueXY({ x: 0 , y: 20})
@@ -46,7 +66,8 @@ class CardSwipe extends Component {
         this.swipedCardPosition = new Animated.ValueXY({ x: 0, y: -SCREEN_HEIGHT })
         this.state = {
             currentIndex: 0,
-            disablerollBack: true
+            disablerollBack: true,
+            disableButtonwhensetState: false,
         }
 
     }
@@ -76,6 +97,11 @@ class CardSwipe extends Component {
                         this.setState({
                             disablerollBack: true
                             })
+                    }
+                    if(this.state.currentIndex % 4 === 0){
+                        this.remainindex = -1;
+                    }else{
+                        this.remainindex--;
                     }
                     Animated.timing(this.swipedCardPosition, {
                         toValue: ({ x: 0, y: 0 }),
@@ -113,79 +139,260 @@ class CardSwipe extends Component {
     renderArticles = () => {
 
         return ARTICLES.map((item, i) => {
+            if(this.remainindex <= -4){
+                this.remainindex = -4;
+                if (i == this.state.currentIndex - 1) {
 
-            if (i == this.state.currentIndex - 1) {
+                    return (
+                        <Animated.View key={item.id} style={this.swipedCardPosition.getLayout()}
+                            {...this.PanResponder.panHandlers}
+                        >
+                            <View style={styles.card3}>
+    
+                             {this.renderCard(ARTICLES[i])}
+                                
+                            </View>
+                        </Animated.View>
+                    )
+                }
+                else if (i < this.state.currentIndex) {
+                    return null
+                }
+                if (i == this.state.currentIndex) {
+    
+                    return (
+    
+                        <Animated.View key={item.id} style={this.position.getLayout()}
+                            {...this.PanResponder.panHandlers}
+                        >
+                             <View style={styles.card1}>
+    
+                               {this.renderCard(ARTICLES[i])}
+    
+                            </View>
+                        </Animated.View>
+                    )
+                }
+                if (i == this.state.currentIndex+1) {
+    
+                    return (
+                        <Animated.View key={item.id}
+                        style={this.position2.getLayout()}
+    
+                        >
+                             <View style={styles.card2}>
+    
+                             {this.renderCard(ARTICLES[i])}
+                            </View>
+                        </Animated.View>
+                    )
+                }
+    
+                if (i == this.state.currentIndex+2) {
+    
+                    return (
+                        <Animated.View key={item.id}
+                         style={this.position3.getLayout()}
+                        >
+                             <View style={styles.card4}>
+                             {this.renderCard(ARTICLES[i])}
+                            </View>
+                        </Animated.View>
+                    )
+                }
+    
+                if (i == this.state.currentIndex+3) {
+    
+                    return (
+                        <Animated.View key={item.id}
+                        style={this.position4.getLayout()}
+                        >
+                             <View style={styles.card5}>
+    
+                             {this.renderCard(ARTICLES[i])}
+                            </View>
+                        </Animated.View>
+                    )
+                }
+            
 
-                return (
-                    <Animated.View key={item.id} style={this.swipedCardPosition.getLayout()}
-                        {...this.PanResponder.panHandlers}
-                    >
-                        <View style={styles.card3}>
-
-                         {this.renderCard(ARTICLES[i])}
-                            
-                        </View>
-                    </Animated.View>
-                )
             }
-            else if (i < this.state.currentIndex) {
-                return null
+            else if (this.remainindex === -3){
+                if (i == this.state.currentIndex - 1) {
+
+                    return (
+                        <Animated.View key={item.id} style={this.swipedCardPosition.getLayout()}
+                            {...this.PanResponder.panHandlers}
+                        >
+                            <View style={styles.card3}>
+    
+                             {this.renderCard(ARTICLES[i])}
+                                
+                            </View>
+                        </Animated.View>
+                    )
+                }
+                else if (i < this.state.currentIndex) {
+                    return null
+                }
+                if (i == this.state.currentIndex) {
+    
+                    return (
+    
+                        <Animated.View key={item.id} style={this.position.getLayout()}
+                            {...this.PanResponder.panHandlers}
+                        >
+                             <View style={styles.card1}>
+    
+                               {this.renderCard(ARTICLES[i])}
+    
+                            </View>
+                        </Animated.View>
+                    )
+                }
+                if (i == this.state.currentIndex+1) {
+    
+                    return (
+                        <Animated.View key={item.id}
+                        style={this.position2.getLayout()}
+    
+                        >
+                             <View style={styles.card2}>
+    
+                             {this.renderCard(ARTICLES[i])}
+                            </View>
+                        </Animated.View>
+                    )
+                }
+    
+                if (i == this.state.currentIndex+2) {
+    
+                    return (
+                        <Animated.View key={item.id}
+                         style={this.position3.getLayout()}
+                        >
+                             <View style={styles.card4}>
+                             {this.renderCard(ARTICLES[i])}
+                            </View>
+                        </Animated.View>
+                    )
+                }
             }
-            if (i == this.state.currentIndex) {
+            else if (this.remainindex === -2){
+                if (i == this.state.currentIndex - 1) {
 
-                return (
-
-                    <Animated.View key={item.id} style={this.position.getLayout()}
-                        {...this.PanResponder.panHandlers}
-                    >
-                         <View style={styles.card1}>
-
-                           {this.renderCard(ARTICLES[i])}
-
-                        </View>
-                    </Animated.View>
-                )
+                    return (
+                        <Animated.View key={item.id} style={this.swipedCardPosition.getLayout()}
+                            {...this.PanResponder.panHandlers}
+                        >
+                            <View style={styles.card3}>
+    
+                             {this.renderCard(ARTICLES[i])}
+                                
+                            </View>
+                        </Animated.View>
+                    )
+                }
+                else if (i < this.state.currentIndex) {
+                    return null
+                }
+                if (i == this.state.currentIndex) {
+    
+                    return (
+    
+                        <Animated.View key={item.id} style={this.position.getLayout()}
+                            {...this.PanResponder.panHandlers}
+                        >
+                             <View style={styles.card1}>
+    
+                               {this.renderCard(ARTICLES[i])}
+    
+                            </View>
+                        </Animated.View>
+                    )
+                }
+                if (i == this.state.currentIndex+1) {
+    
+                    return (
+                        <Animated.View key={item.id}
+                        style={this.position2.getLayout()}
+    
+                        >
+                             <View style={styles.card2}>
+    
+                             {this.renderCard(ARTICLES[i])}
+                            </View>
+                        </Animated.View>
+                    )
+                }
             }
-            if (i == this.state.currentIndex+1) {
+            else if (this.remainindex === -2){
+                if (i == this.state.currentIndex - 1) {
 
-                return (
-                    <Animated.View key={item.id}
-                    style={this.position2.getLayout()}
-
-                    >
-                         <View style={styles.card2}>
-
-                         {this.renderCard(ARTICLES[i])}
-                        </View>
-                    </Animated.View>
-                )
+                    return (
+                        <Animated.View key={item.id} style={this.swipedCardPosition.getLayout()}
+                            {...this.PanResponder.panHandlers}
+                        >
+                            <View style={styles.card3}>
+    
+                             {this.renderCard(ARTICLES[i])}
+                                
+                            </View>
+                        </Animated.View>
+                    )
+                }
+                else if (i < this.state.currentIndex) {
+                    return null
+                }
+                if (i == this.state.currentIndex) {
+    
+                    return (
+    
+                        <Animated.View key={item.id} style={this.position.getLayout()}
+                            {...this.PanResponder.panHandlers}
+                        >
+                             <View style={styles.card1}>
+    
+                               {this.renderCard(ARTICLES[i])}
+    
+                            </View>
+                        </Animated.View>
+                    )
+                }
             }
+            else if (this.remainindex === -1){
+                if (i == this.state.currentIndex - 1) {
 
-            if (i == this.state.currentIndex+2) {
-
-                return (
-                    <Animated.View key={item.id}
-                     style={this.position3.getLayout()}
-                    >
-                         <View style={styles.card4}>
-                         {this.renderCard(ARTICLES[i])}
-                        </View>
-                    </Animated.View>
-                )
-            }
-
-            if (i == this.state.currentIndex+3) {
-
-                return (
-                    <Animated.View key={item.id}
-                    style={this.position4.getLayout()}
-                    >
-                         <View style={styles.card5}>
-
-                         {this.renderCard(ARTICLES[i])}
-                        </View>
-                    </Animated.View>
-                )
+                    return (
+                        <Animated.View key={item.id} style={this.swipedCardPosition.getLayout()}
+                            {...this.PanResponder.panHandlers}
+                        >
+                            <View style={styles.card3}>
+    
+                             {this.renderCard(ARTICLES[i])}
+                                
+                            </View>
+                        </Animated.View>
+                    )
+                }
+                else if (i < this.state.currentIndex) {
+                    return null
+                }
+                if (i == this.state.currentIndex) {
+    
+                    return (
+    
+                        <Animated.View key={item.id} style={this.position.getLayout()}
+                            {...this.PanResponder.panHandlers}
+                        >
+                             <View style={styles.card1}>
+    
+                               {this.renderCard(ARTICLES[i])}
+    
+                            </View>
+                        </Animated.View>
+                    )
+                }
             }
             // else {
 
@@ -224,6 +431,7 @@ class CardSwipe extends Component {
 
     swipeBackTofirst = () =>{
         if (this.state.currentIndex > 0){
+            this.remainindex = -4;
             Animated.timing(this.position, {
                 toValue: ({ x: 0, y: -SCREEN_HEIGHT }),
                 duration: 400
@@ -249,7 +457,12 @@ class CardSwipe extends Component {
       }
 
       goNextpage = () =>{
-        this.setState({ currentIndex: this.state.currentIndex + 1 })
+        this.remainindex++;
+        if (this.remainindex === 0){
+            this.remainindex = this.state.currentIndex - ARTICLES_length-1;
+        }
+        this.setState({ currentIndex: this.state.currentIndex + 1,
+                        disableButtonwhensetState: false })
         if (this.state.currentIndex + 1 === ARTICLES_length){
         this.setState({
             disablerollBack: false
@@ -307,6 +520,11 @@ class CardSwipe extends Component {
                         })
                 }
                 if (this.state.currentIndex > 0){
+                    if(this.state.currentIndex % 4 === 0){
+                        this.remainindex = -1;
+                    }else{
+                        this.remainindex--;
+                    }
                 Animated.timing(this.swipedCardPosition, {
                 toValue: ({ x: 0, y: 0 }),
                 duration: 150
@@ -318,8 +536,11 @@ class CardSwipe extends Component {
                 }}>
                 <Image source={require('../../images/icon_arrow_left.png')} resizeMode={'contain'} style={{ height: 25, width: 25, padding:15 }} />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={()=>{
+                { this.state.disableButtonwhensetState === false ? <TouchableOpacity disabled = {this.state.disableButtonwhensetState} onPress={()=>{
                 if (this.state.currentIndex < ARTICLES.length - 1){
+                    this.setState({
+                        disableButtonwhensetState: true
+                    })
                     Animated.timing(this.position, {
                     toValue: ({ x: 0, y: -SCREEN_HEIGHT }),
                     duration: 200,
@@ -327,7 +548,7 @@ class CardSwipe extends Component {
                 }
                 }}>
                 <Image source={require('../../images/icon_arrow_right.png')} resizeMode={'contain'} style={{ height: 25, width: 25, padding: 15}} />
-                </TouchableOpacity>
+                </TouchableOpacity> : null}
                 </View>
            
             </View>

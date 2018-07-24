@@ -42,6 +42,26 @@ const QuestionList = [
 const QuestionList_length = QuestionList.length;
 
 
+
+class ChoiceYesorNoButton extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+                  onPress : false,
+                }
+    
+  } 
+
+  render() {
+    return (
+      <TouchableHighlight style = {[styles.cardviewcontentQuestion,{flex:0.14,}]} underlayColor = 'transparent' onPress = {this.props.onPress}>
+                    <Text style = {styles.textTitleQuestion}>{this.props.text}</Text>
+                    </TouchableHighlight>
+    )
+  }
+}
+
 class LogoTitle extends React.Component {
 
   render() {
@@ -67,6 +87,7 @@ export default class SelffindingScreen extends Component {
     super(props);
     this.position = new Animated.ValueXY()
     this.position2 = new Animated.ValueXY()
+    this.swipedCardPosition = new Animated.ValueXY({ x: -SCREEN_WIDTH, y: 0 })
     this.state = {
                   mainView : true,
                   questionView: false,
@@ -150,14 +171,14 @@ export default class SelffindingScreen extends Component {
         </View>
   
         </View>
-        <View style = {{ flex: 0.18,}}>
+        <View style = {{ flex: 0.15,}}>
           <TouchableOpacity style={styles.submitButton} onPress= {this.goFinishpageWithresult} >
             <LinearGradient colors={['#afe03e', '#368c0b']} style = {{flex: 1, borderRadius: 27,justifyContent: 'center'}}>
               <Text style={styles.submitTextstyle}>ดูผลลัพธ์ของตัวเอง</Text>
             </LinearGradient>
             </TouchableOpacity>
           </View>
-          <View style = {{ flex: 0.18,}}>
+          <View style = {{ flex: 0.15,}}>
           <TouchableOpacity style={styles.submitButton} onPress={this.closeMainpage}>
             <LinearGradient colors={['#f7c042', '#f2892e','#f26304']} style = {{flex: 1, borderRadius: 27,justifyContent: 'center'}}>
               <Text style={styles.submitTextstyle}>ประเมินใหม่อีกครั้ง</Text>
@@ -216,6 +237,55 @@ export default class SelffindingScreen extends Component {
 
   renderArticles =() =>{
     return QuestionList.map((item, i) => {
+      if (i == this.state.currentIndex - 1) {
+        if (item.type === 'yesorno'){
+          return (
+            <Animated.View key={item.id} style={this.swipedCardPosition.getLayout()}>
+                  <View style = {{flex: 1, position: 'absolute', 
+                    height: SCREEN_HEIGHT * 0.67, 
+                    width: SCREEN_WIDTH,}}>
+                <View style = {[styles.cardviewcontentQuestion,{ flex: 0.55, paddingHorizontal: windowWidth *0.1}]}>
+                <Text style = {styles.textTitleQuestion}>{item.title}</Text>
+                </View>
+                <ChoiceYesorNoButton onPress = {this.onPressAnswer} text = "ใช่"/>
+                <ChoiceYesorNoButton onPress = {this.onPressAnswer} text = "ไม่ใช่"/>
+                <View style = {{flex: 0.14}}></View>
+                </View>
+                </Animated.View>
+                )
+        } else {
+        return (
+            <Animated.View key={item.id} style={this.swipedCardPosition.getLayout()}>
+                <View style = {{flex: 1, position: 'absolute', 
+                    height: SCREEN_HEIGHT * 0.67, 
+                    width: SCREEN_WIDTH,}}>
+                <View style = {[styles.cardviewcontentQuestion,{ flex: 0.55, paddingHorizontal: windowWidth *0.1}]}>
+                <Text style = {styles.textTitleQuestion}>{item.title}</Text>
+                </View>
+                <View style = {{flex:0.14, flexDirection: 'row',  marginHorizontal: windowWidth * 0.05,}}>
+                <TouchableHighlight style = {[styles.cardviewcontentQuestionmultichoice,{flex:1, marginRight: 3}]} underlayColor = 'transparent' onPress = {this.onPressAnswer}>
+                <Text style = {styles.textanswermultichoice}>1.ไม่จริงที่สุด</Text>
+                </TouchableHighlight>
+                <TouchableHighlight style = {[styles.cardviewcontentQuestionmultichoice,{flex:1, marginLeft: 3}]} underlayColor = 'transparent' onPress = {this.onPressAnswer}>
+                <Text style = {styles.textanswermultichoice}>2.ค่อนข้างไม่จริง</Text>
+                </TouchableHighlight>
+                </View>
+                <View style = {{flex:0.14, flexDirection: 'row',  marginHorizontal: windowWidth * 0.05,}}>
+                <TouchableHighlight style = {[styles.cardviewcontentQuestionmultichoice,{flex:1, marginRight: 3}]} underlayColor = 'transparent' onPress = {this.onPressAnswer}>
+                <Text style = {styles.textanswermultichoice}>3.เฉยๆ</Text>
+                </TouchableHighlight>
+                <TouchableHighlight style = {[styles.cardviewcontentQuestionmultichoice,{flex:1, marginLeft: 3}]} underlayColor = 'transparent' onPress = {this.onPressAnswer}>
+                <Text style = {styles.textanswermultichoice}>4.ค่อนข้างจริง</Text>
+                </TouchableHighlight>
+                </View>
+                <TouchableHighlight style = {[styles.cardviewcontentQuestion,{flex:0.14,}]}  underlayColor = 'transparent' onPress = {this.onPressAnswer}>
+                <Text style = {styles.textanswermultichoice}>5.จริงที่สุด</Text>
+                </TouchableHighlight>
+                </View>
+            </Animated.View>
+        )
+    }
+    }
         if (i < this.state.currentIndex) {
             return null
         }
@@ -229,12 +299,8 @@ export default class SelffindingScreen extends Component {
                     <View style = {[styles.cardviewcontentQuestion,{ flex: 0.55, paddingHorizontal: windowWidth *0.1}]}>
                     <Text style = {styles.textTitleQuestion}>{item.title}</Text>
                     </View>
-                    <TouchableHighlight style = {[styles.cardviewcontentQuestion,{flex:0.14,}]} underlayColor = 'transparent' onPress = {this.onPressAnswer}>
-                    <Text style = {styles.textTitleQuestion}>ใช่</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight style = {[styles.cardviewcontentQuestion,{flex:0.14,}]}  underlayColor = 'transparent' onPress = {this.onPressAnswer}>
-                    <Text style = {styles.textTitleQuestion}>ไม่ใช่</Text>
-                    </TouchableHighlight>
+                    <ChoiceYesorNoButton onPress = {this.onPressAnswer} text = "ใช่"/>
+                    <ChoiceYesorNoButton onPress = {this.onPressAnswer} text = "ไม่ใช่"/>
                     <View style = {{flex: 0.14}}></View>
                     </View>
                     </Animated.View>
@@ -284,6 +350,21 @@ export default class SelffindingScreen extends Component {
     })
   }
 
+  PreviousAnswer = () =>{
+  if (this.state.currentIndex > 0){
+    Animated.timing(this.swipedCardPosition, {
+    toValue: ({ x: 0, y: 0 }),
+    duration: 150
+    }).start(() => {
+    this.setState({ currentIndex: this.state.currentIndex - 1 })
+    this.swipedCardPosition.setValue({ x: -SCREEN_WIDTH, y: 0 })
+    const {currentIndex} = this.state;
+    const index = currentIndex+1;
+    this.props.navigation.setParams({ title: 'ข้อที่ '+index })
+            })
+        }
+    }
+
   onPressAnswer = () =>{
     if (this.state.currentIndex < QuestionList.length - 1){
       Animated.timing(this.position, {
@@ -299,6 +380,17 @@ export default class SelffindingScreen extends Component {
   }).start(
       this.goFinishpage
   )
+  }
+  }
+
+  nextAnswerpage = () =>{
+    if (this.state.currentIndex < QuestionList.length - 1){
+      Animated.timing(this.position, {
+      toValue: ({ x: -SCREEN_WIDTH, y: 0 }),
+      duration: 150,
+  }).start(
+      this.goNextpage
+    )
   }
   }
   goNextpage = () =>{
@@ -346,10 +438,10 @@ export default class SelffindingScreen extends Component {
         style = {{alignSelf: 'center', borderRadius: 15, backgroundColor: '#3e9e16',}}
         color = "rgb(115, 214, 40)"/>
         <View style = {{flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: windowWidth * 0.05}}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress = {this.PreviousAnswer}>
         <Image source={require('../../images/icon_arrow_left.png')} resizeMode={'contain'} style={{ height: 25, width: 25, padding:15 }} />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress = {this.nextAnswerpage}>
         <Image source={require('../../images/icon_arrow_right.png')} resizeMode={'contain'} style={{ height: 25, width: 25, padding: 15}} />
         </TouchableOpacity>
         </View>
