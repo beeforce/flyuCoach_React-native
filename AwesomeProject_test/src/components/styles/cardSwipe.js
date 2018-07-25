@@ -417,11 +417,11 @@ class CardSwipe extends Component {
         <View>
         <View style = {{ flexDirection: 'row', paddingTop: 10, justifyContent: 'space-between', paddingHorizontal: SCREEN_WIDTH * 0.015}}>
         <View style = {{ flexDirection: 'row', alignItems: 'baseline', alignSelf: 'flex-start' }}>  
-        <Icon name="clock2" style={{ padding:5, alignSelf:'center'}} size={11} color = '#000'/>
-        <Text style = {{ color:'#000000', fontSize: 11, alignSelf:'center',fontFamily: Fonts.MosseThai_Medium,}}>{item.date}</Text>
+        <Icon name="clock2" style={{ padding:5, alignSelf:'center'}} size={11} color = '#434343'/>
+        <Text style = {{ color:'#434343', fontSize: 11, alignSelf:'center',fontFamily: Fonts.MosseThai_Medium,}}>{item.date}</Text>
         </View>
         </View>
-        <Text style = {{paddingHorizontal: SCREEN_WIDTH * 0.04 ,fontSize: 20, color: '#000000', fontFamily: Fonts.MosseThai_Medium, paddingTop: 5, paddingBottom:15, lineHeight: 30}}>{item.text}</Text>
+        <Text style = {{paddingHorizontal: SCREEN_WIDTH * 0.04 ,fontSize: 20, color: '#484848', fontFamily: Fonts.MosseThai_Medium, paddingTop: 5, paddingBottom:15, lineHeight: 30}}>{item.text}</Text>
         {/* <Image source={item.uri} resizeMode={'stretch'} style={{paddingHorizontal: 20, height: SCREEN_WIDTH* 0.45, width: SCREEN_WIDTH* 0.75, justifyContent:'center', alignSelf: 'center', marginTop: 7}}>
         </Image> */}
         </View>
@@ -485,7 +485,7 @@ class CardSwipe extends Component {
     render() {
         return (
             <View style={styles.container}>
-            <View style ={{ paddingTop:15, backgroundColor: '#EEEEEE'}}>
+            <View style ={{ paddingTop:15, backgroundColor: '#f6f6f6'}}>
                 <TouchableHighlight style = {{alignSelf: 'flex-start'}} onPress ={this.props._onCloseModal} underlayColor = 'transparent'>
                 <Icon name="times" style={{ padding:5, alignSelf:'center'}} size={23} color = '#000'/>
                 </TouchableHighlight>
@@ -493,10 +493,10 @@ class CardSwipe extends Component {
                 <View style = {{flexDirection: 'row', alignItems: 'baseline',justifyContent: 'space-between', paddingHorizontal: SCREEN_WIDTH * 0.025}}>
                 <View style = {{flexDirection: 'row',alignItems: 'baseline', alignSelf: 'center'}}>
                 <View 
-                style={{ backgroundColor: '#ff9a16' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.08, height:SCREEN_WIDTH* 0.08, borderRadius: (SCREEN_WIDTH* 0.08 + SCREEN_WIDTH* 0.08)/2}}>
+                style={{ backgroundColor: '#f5a623' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.08, height:SCREEN_WIDTH* 0.08, borderRadius: (SCREEN_WIDTH* 0.08 + SCREEN_WIDTH* 0.08)/2}}>
                 <Icon name="bullhorn-solid" style={{ alignSelf:'center',}} size={11} color = '#fff'/>
                 </View>
-                <Text style = {{paddingLeft: 7, color:'#e67e22', fontSize: 16, alignSelf:'center', justifyContent:'center', fontFamily: Fonts.MosseThai_Medium}}>Announcement</Text>
+                <Text style = {{paddingLeft: 7, color:'#f5a623', fontSize: 16, alignSelf:'center', justifyContent:'center', fontFamily: Fonts.MosseThai_Medium}}>Announcement</Text>
                 </View>
                 {this.renderTextGobacktoFirstcard()}
                 </View>
@@ -504,14 +504,14 @@ class CardSwipe extends Component {
             {this.renderArticles()}
             </View>
             <View style = {{flexDirection: 'row', alignItems:'center', alignSelf:'center', paddingBottom:3}}>
-                <Text style = {{fontSize: 12, fontFamily: Fonts.MosseThai_Bold, color: '#4cd137'}}>{this.state.currentIndex + 1 }/</Text>
-                <Text style = {{fontSize: 12, fontFamily: Fonts.MosseThai_Bold}}>{ARTICLES_length} Cards</Text>
+                <Text style = {{fontSize: 12, fontFamily: Fonts.MosseThai_Bold, color: '#417505'}}>{this.state.currentIndex + 1 }</Text>
+                <Text style = {{fontSize: 12, fontFamily: Fonts.MosseThai_Bold}}>/{ARTICLES_length} Cards</Text>
                 </View>
                 <Progress.Bar progress={(this.state.currentIndex + 1)/ ARTICLES_length} 
                 width={SCREEN_WIDTH*0.6} height={15}
                 borderWidth = {0}
-                style = {{alignSelf: 'center', borderRadius: 15, backgroundColor: '#3e9e16',}}
-                color = "rgb(115, 214, 40)"/>
+                style = {{alignSelf: 'center', borderRadius: 15, backgroundColor: '#264303',}}
+                color = 'rgb(126,211,33)'/>
                 <View style = {{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <TouchableOpacity onPress={ () =>{
                 if (this.state.currentIndex === ARTICLES_length-1){
@@ -562,7 +562,7 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingHorizontal: SCREEN_WIDTH * 0.05,
         paddingBottom: SCREEN_HEIGHT * 0.05,
-        backgroundColor: '#EEEEEE'
+        backgroundColor: '#f6f6f6'
     },
     card1: { 
         flex: 1,

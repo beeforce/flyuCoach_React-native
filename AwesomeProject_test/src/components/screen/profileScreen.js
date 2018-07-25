@@ -205,23 +205,23 @@ getImageTypeTips = (type) => {
   switch (type) {
     case "Announcement":
         return (<View 
-        style={{ backgroundColor: '#ff9a16' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.1, height:SCREEN_WIDTH* 0.1, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.1 + SCREEN_WIDTH* 0.1)/2}}>
-        <Icon name="bullhorn-solid" style={{ alignSelf:'center',}} size={11} color = '#fff'/>
+        style={{ backgroundColor: '#f5a623' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.09, height:SCREEN_WIDTH* 0.09, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.09 + SCREEN_WIDTH* 0.09)/2}}>
+        <Icon name="bullhorn-solid" style={{ alignSelf:'center',}} size={12} color = '#fff'/>
         </View>)
     case "Document":
     return (<View 
-        style={{ backgroundColor: '#2ce018' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.1, height:SCREEN_WIDTH* 0.1, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.1 + SCREEN_WIDTH* 0.1)/2}}>
-        <Icon name="file-alt-solid" style={{ alignSelf:'center',}} size={11} color = '#fff'/>
+        style={{ backgroundColor: '#2ce018' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.09, height:SCREEN_WIDTH* 0.09, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.09 + SCREEN_WIDTH* 0.09)/2}}>
+        <Icon name="file-alt-solid" style={{ alignSelf:'center',}} size={12} color = '#fff'/>
         </View>)
     case "English":
     return (<View 
-        style={{ backgroundColor: '#0420f7' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.1, height:SCREEN_WIDTH* 0.1, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.1 + SCREEN_WIDTH* 0.1)/2}}>
-         <Icon name="book-solid" style={{ alignSelf:'center'}} size={11} color = '#fff'/>
+        style={{ backgroundColor: '#4c18f2' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.09, height:SCREEN_WIDTH* 0.09, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.09 + SCREEN_WIDTH* 0.09)/2}}>
+         <Icon name="book-solid" style={{ alignSelf:'center'}} size={12} color = '#fff'/>
         </View>)
     case "Quote":
     return (<View 
-      style={{ backgroundColor: '#e81747' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.1, height:SCREEN_WIDTH* 0.1, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.1 + SCREEN_WIDTH* 0.1)/2}}>
-      <Icon name="heart-solid" style={{ alignSelf:'center'}} size={11} color = '#fff'/>
+      style={{ backgroundColor: '#ff6161' ,justifyContent: 'center', width:SCREEN_WIDTH* 0.09, height:SCREEN_WIDTH* 0.09, marginLeft: 10, borderRadius: (SCREEN_WIDTH* 0.09 + SCREEN_WIDTH* 0.09)/2}}>
+      <Icon name="heart-solid" style={{ alignSelf:'center'}} size={12} color = '#fff'/>
       </View>)
 }
 }
@@ -229,20 +229,20 @@ getImageTypeTips = (type) => {
 getTypeofTips = (type) =>{
   switch (type){
     case "Announcement":
-    return (<View style = {{borderColor: '#e67e22', borderRadius: 2, borderWidth: 1, alignSelf: 'flex-start'}}>
-            <Text style = {{paddingTop:2, paddingBottom:2, paddingHorizontal:5, color:'#e67e22', fontSize: 9, fontFamily: Fonts.MosseThai_Regular}}>Announcement</Text>
+    return (<View style = {{borderColor: '#f5a623', borderRadius: 2, borderWidth: 1, alignSelf: 'flex-start'}}>
+            <Text style = {{paddingTop:2, paddingBottom:2, paddingHorizontal:5, color:'#f5a623', fontSize: 9, fontFamily: Fonts.MosseThai_Regular}}>Announcement</Text>
             </View>)
     case "Document":
     return (<View style = {{borderColor: '#2ce018', borderRadius: 2, borderWidth: 1, alignSelf: 'flex-start'}}>
              <Text style = {{paddingTop:2, paddingBottom:2, paddingHorizontal:5, color:'#2ce018', fontSize: 9, fontFamily: Fonts.MosseThai_Regular}}>Document</Text>
              </View>)
     case "English":
-    return (<View style = {{borderColor: '#0469f7', borderRadius: 2, borderWidth: 1, alignSelf: 'flex-start'}}>
-             <Text style = {{paddingTop:2, paddingBottom:2, paddingHorizontal:5, color:'#0469f7', fontSize: 9, fontFamily: Fonts.MosseThai_Regular}}>English</Text>
+    return (<View style = {{borderColor: '#2832df', borderRadius: 2, borderWidth: 1, alignSelf: 'flex-start'}}>
+             <Text style = {{paddingTop:2, paddingBottom:2, paddingHorizontal:5, color:'#2832df', fontSize: 9, fontFamily: Fonts.MosseThai_Regular}}>English</Text>
              </View>)
     case "Quote":
-    return (<View style = {{borderColor: '#e81747', borderRadius: 2, borderWidth: 1, alignSelf: 'flex-start'}}>
-             <Text style = {{paddingTop:2, paddingBottom:2, paddingHorizontal:5, color:'#e81747', fontSize: 9, fontFamily: Fonts.MosseThai_Regular}}>Quote</Text>
+    return (<View style = {{borderColor: '#fd1b37', borderRadius: 2, borderWidth: 1, alignSelf: 'flex-start'}}>
+             <Text style = {{paddingTop:2, paddingBottom:2, paddingHorizontal:5, color:'#fd1b37', fontSize: 9, fontFamily: Fonts.MosseThai_Regular}}>Quote</Text>
              </View>)
   }
 
@@ -267,14 +267,14 @@ renderItemTips(item){
   
   <View style = {{ flexDirection: 'row', alignItems: 'baseline', alignSelf: 'flex-end'}}>
   <View>
-  <Icon name="clock2" style={{ padding:5, alignSelf:'center'}} size={11} color = '#000'/>
+  <Icon name="clock2" style={{ padding:5, alignSelf:'center'}} size={11} color = '#484848'/>
   </View>
-  <Text style = {{ color:'#000000', fontSize: 10, alignSelf:'center', fontFamily: Fonts.MosseThai_Regular}}>{item.date}</Text>
-  </View>
-
+  <Text style = {{ color:'#484848', fontSize: 10, alignSelf:'center', fontFamily: Fonts.MosseThai_Regular}}>{item.date}</Text>
   </View>
 
-  <Text style = {{fontSize: 14, fontFamily: Fonts.MosseThai_Medium, color: '#000', marginTop:5 }}>{item.title}</Text>
+  </View>
+
+  <Text style = {{fontSize: 14, fontFamily: Fonts.MosseThai_Medium, color: '#484747', marginTop:5 }}>{item.title}</Text>
   {/* color = '#2c3e50' */}
   </View>
   </View>
@@ -300,7 +300,7 @@ renderItemTips(item){
     const {goalSuccess} = this.state;
     const {showAlert} = this.state;
     return (
-      <View>
+      <View style = {styles.container}>
       <Modal
         transparent={true}
         animationType={'none'}
@@ -325,20 +325,22 @@ renderItemTips(item){
               { nativeEvent: { contentOffset: { y: this.scrollY } } }
             ]
             )}  >
+        <LinearGradient colors={['#ffffff','#e7e7e7']} style = {{width: SCREEN_WIDTH}}>
         <View style = {styles.profileImagecontent}>
         <Image source={require('../../images/image.jpg')} style={ styles.profileImage } />
-        <Text style = {{padding:8, fontFamily:Fonts.MosseThai_Medium, color: '#000'}}>matoyza007@gmail.com</Text>
+        <Text style = {{padding:8, fontFamily:Fonts.MosseThai_Medium, color: '#4a4a4a'}}>matoyza007@gmail.com</Text>
         </View>
+        </LinearGradient>
     
         <View style = {styles.cardviewcontent}>
           <View style = {{ flexDirection: 'row', marginLeft:15, marginRight: 15, 
           marginTop: 15, marginBottom: 15, justifyContent: 'space-between', alignItems: 'baseline'}} >
           <View style = {{ flexDirection: 'column', alignSelf: 'flex-start'}}>
-          <Text style = {{ margin:2, fontFamily: Fonts.MosseThai_Bold, color: '#000'}}>Matoy Sukhuvimonpanich (Toy)</Text>
-          <Text style = {{ margin:2, fontFamily: Fonts.MosseThai_Medium, color: '#000'}}>Uttaradit, Uttaradit school</Text>
+          <Text style = {{ margin:2, fontFamily: Fonts.MosseThai_Bold, color: '#4a4a4a'}}>Matoy Sukhuvimonpanich (Toy)</Text>
+          <Text style = {{ margin:2, fontFamily: Fonts.MosseThai_Medium, color: '#4a4a4a'}}>Uttaradit, Uttaradit school</Text>
           </View>
           <View style = {{ flexDirection: 'column', alignItems: 'baseline', alignSelf: 'flex-end'}}>
-          <Text style = {{margin:2, color:'#000', fontSize: 12, fontFamily:Fonts.MosseThai_Medium}}>แก้ไขข้อมูล</Text>
+          <Text style = {{margin:2, color:'#4a4a4a', fontSize: 12, fontFamily:Fonts.MosseThai_Medium}}>แก้ไขข้อมูล</Text>
           <TouchableOpacity style={{ paddingRight:5, alignSelf: 'center'}}
           onPress={() => this.props.navigation.push('Profile2',{ hideTabBar: true })}>
           <Icon name="edit2" size={22} color = '#000'/></TouchableOpacity>
@@ -346,17 +348,17 @@ renderItemTips(item){
           </View>
         </View>
 
-        <Text style = {{alignSelf: 'center', fontFamily: Fonts.MosseThai_Medium, color: '#000'}}>เป้าหมายของเรา</Text>
+        <Text style = {{alignSelf: 'center', fontFamily: Fonts.MosseThai_Medium, color: '#3a3a3a'}}>เป้าหมายของเรา</Text>
         <View style = {{alignSelf: 'center'}}>
         <LinearGradient 
-        colors= {!this.state.goalSuccess ? ['#f7c042', '#f2892e','#f26304'] : ['#bbe84a','#7bd834', '#3e9e16'] }
+        colors= {!this.state.goalSuccess ? ['#fad961', '#f76b1c'] : ['#b4ec51','#429321'] }
         style = {styles.goalButton}>
           <View style = {{flexDirection: 'row', justifyContent: 'space-between'}}>
           <Text style={{color: '#ffffff', fontFamily: Fonts.MosseThai_Bold ,alignSelf: 'center', paddingLeft:20, paddingRight:20}}>วิศวกรโยธา มช.</Text>
           <TouchableOpacity onPress = {()=>{
             this.showAlert();
           }}>
-          <LinearGradient colors={!this.state.goalSuccess ? ['#bbe84a','#7bd834', '#3e9e16'] : ['#f7c042', '#f2892e','#f26304']} style = {{backgroundColor: '#44bd32', width:50, height:50, borderRadius:25, justifyContent:'center', 
+          <LinearGradient colors={!this.state.goalSuccess ? ['#b4ec51','#429321'] : ['#fad961', '#f76b1c']} style = {{backgroundColor: '#44bd32', width:50, height:50, borderRadius:25, justifyContent:'center', 
           alignItems:'center' }}>
           <Image source={!this.state.goalSuccess ? require('../../images/check_white.png') : require('../../images/cancel_white.png')} style={{ width: 20, height:20}} />
           </LinearGradient>
@@ -365,7 +367,7 @@ renderItemTips(item){
         </LinearGradient>
         </View>
       
-        <Text style = {{ marginLeft: 20, marginBottom: 10, fontFamily:Fonts.MosseThai_Bold, marginTop: 15, marginLeft: 15, color: '#000'}}>
+        <Text style = {{ marginLeft: 20, marginBottom: 10, fontFamily:Fonts.MosseThai_Bold, marginTop: 15, marginLeft: 15, color: '#4a4a4a'}}>
         Your Pins ( {amountpin} )</Text>
         <View style = {styles.pincontent}>
         <FlatList data = {this.state.dataTips} keyExtractor={this._keyExtractor}
@@ -416,7 +418,7 @@ const SCREEN_WIDTH = Dimensions.get("window").width
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#EEEEEE'
+    backgroundColor: '#f6f6f6'
   },
   profileImagecontent:{
     marginTop: 25,
@@ -432,19 +434,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#9DD6EB'
-  },
-  cardviewcontent:{ 
-    flex: 1, 
-    overflow: 'hidden',
-    marginBottom: 15, 
-    marginLeft:20, 
-    marginRight: 20, 
-    shadowColor: '#000000', 
-    shadowOpacity : 0.24, 
-    shadowRadius: 3, 
-    backgroundColor: '#ffffff', 
-    borderRadius: 5, 
-    elevation: 3,
   },
   cardviewcontent2:{ 
     flex: 1, 
@@ -518,7 +507,6 @@ const styles = StyleSheet.create({
     borderRadius:(SCREEN_WIDTH* 0.3)/2,
   },
   cardviewcontent:{ 
-    marginTop: 5,
     marginBottom: 8,
     borderBottomWidth: 0.5,
     borderColor: '#c9c9c9',

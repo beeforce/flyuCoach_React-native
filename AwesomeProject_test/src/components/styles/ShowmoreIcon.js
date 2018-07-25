@@ -31,7 +31,7 @@ ShowHideTextComponentView = () =>{
     const { isShown } = this.state;
     return (
         <View>
-        <LinearGradient colors={['#f94560', '#d1213b', '#870c1e']} style = {styles.container}>
+        <LinearGradient colors={['#f5515f', '#9f041b']} style = {styles.container}>
         <TouchableHighlight onPress={this.ShowHideTextComponentView} style = {{borderRadius: 10}} underlayColor = 'transparent'>
         <View style = {{flexDirection: 'row', alignItems: 'baseline',justifyContent: 'space-between', paddingTop:13, paddingBottom:13}}>
         <Text style={styles.questionTitle}>{this.props.title}</Text>
@@ -45,7 +45,7 @@ ShowHideTextComponentView = () =>{
         </TouchableHighlight>
     </LinearGradient>
     {
-        this.state.isShown ? <LinearGradient colors={['#7fbc1c','#7fbc1c','#398918']} style = {{marginTop: 2, justifyContent: 'center', alignSelf: 'center', borderRadius: 10, marginHorizontal: 20}}>
+        this.state.isShown ? <LinearGradient colors={['#85be21','#429321']} style = {{marginTop: 2, justifyContent: 'center', alignSelf: 'center', borderRadius: 10, marginHorizontal: 20}}>
         <View style = {{alignSelf: 'flex-start', marginTop:10, marginLeft:20, marginBottom:13, marginRight:20}}>
         <Text style={styles.questionText}>{this.props.text}</Text>
         </View>

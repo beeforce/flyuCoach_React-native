@@ -102,8 +102,8 @@ render() {
                   }
                 })
                 }}>
-                <LinearGradient colors={['#f7c042', '#f2892e','#f26304']} style={styles.goalButton} >
-                <Text style={{color: '#ffffff', fontFamily: Fonts.MosseThai_Bold , margin: 10}}>แก้ไขภาพโปรไฟล์</Text>
+                <LinearGradient colors={['#fad961', '#f76b1c']} style={styles.goalButton} >
+                <Text style={{color: '#ffffff', fontFamily: Fonts.MosseThai_Bold , padding: 15}}>แก้ไขภาพโปรไฟล์</Text>
                 </LinearGradient>
                 </TouchableOpacity>
                 </View>
@@ -283,8 +283,8 @@ render() {
               </View>
 
               <TouchableOpacity onPress={() => this.props.navigation.goBack(null)}>
-               <LinearGradient colors={['#bbe84a','#7bd834', '#3e9e16']} style={styles.saveButton}>
-                <Text style={{color: '#ffffff', fontFamily: Fonts.MosseThai_Bold , textAlign:'center', alignSelf:'center'}}>บันทึกการแก้ไข</Text>
+               <LinearGradient colors={['#b4ec51','#429321']} style={styles.saveButton}>
+                <Text style={{color: '#ffffff', fontSize: 17,  fontFamily: Fonts.MosseThai_Bold , alignSelf:'center'}}>บันทึกการแก้ไข</Text>
                 </LinearGradient>
                 </TouchableOpacity>
         </ScrollView>
@@ -296,7 +296,7 @@ render() {
 const styles = StyleSheet.create({
   container: {
       flex: 1,
-      backgroundColor: '#EEEEEE',
+      backgroundColor: '#f6f6f6',
       overflow: 'hidden',
   },
   goalButton:{
@@ -307,7 +307,7 @@ const styles = StyleSheet.create({
   saveButton:{
     backgroundColor: '#A3CB38',
     width: SCREEN_WIDTH * 0.75,
-    height: 50,
+    height: SCREEN_WIDTH * 0.14,
     alignSelf: 'center',
     borderRadius: 27,
     marginLeft: 20,
@@ -348,12 +348,14 @@ const styles = StyleSheet.create({
   iconwithText:{
     paddingLeft: 8, 
     paddingTop: 1, 
-    alignSelf:'center'
+    alignSelf:'center',
+    color: '#626262'
   },
   textwithIcon:{
     alignSelf:'center',
     fontSize: 16,
-    fontFamily: Fonts.MosseThai_Medium
+    fontFamily: Fonts.MosseThai_Medium,
+    color: '#626262'
   },
   viewoficonwithtext:{
     flexDirection : 'row',

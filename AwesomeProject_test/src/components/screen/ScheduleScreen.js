@@ -11,13 +11,13 @@ export default class ScheduleScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView style={{flex:1, backgroundColor: '#fff'}}>
+      <ScrollView style={{flex:1, backgroundColor: '#f6f6f6'}}>
       <LinearTextGradient
         style={styles.textTopicQuestion}
         locations={[0, 1]}
-        colors={['#7bd834', '#3e9e16']}
-        start={{ x: 1, y: 0 }}
-        end={{ x: 0, y: 1 }}
+        colors={['#429321', '#b4ec51']}
+        start={{ x: 0, y: 1.5 }}
+        end={{ x: 0, y: 0.5 }}
         >
         ตารางกิจกรรม
         </LinearTextGradient>

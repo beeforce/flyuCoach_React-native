@@ -88,10 +88,10 @@ export default class VIPsScreen extends React.Component {
     </View>
     </View>
     {item.state === false ? 
-    <View style = {{flex: 1 , height: 60 ,backgroundColor: '#9b041d', marginTop: 10, justifyContent: 'center'}}>
+    <View style = {{flex: 1 , height: 60 ,backgroundColor: '#a61e1e', marginTop: 10, justifyContent: 'center'}}>
     <Text style= {styles.textButton}>ยังไม่เคยทำ</Text>
     </View> :
-    <View style = {{flex: 1 , height: 60, backgroundColor: '#42840b', marginTop: 10, justifyContent: 'center'}}>
+    <View style = {{flex: 1 , height: 60, backgroundColor: '#417505', marginTop: 10, justifyContent: 'center'}}>
     <Text style= {styles.textButton}>ดูผลลัพธ์ของตัวเอง</Text>
     </View> }
     </View>
@@ -115,7 +115,7 @@ export default class VIPsScreen extends React.Component {
       <LinearTextGradient
         style={styles.textHeader}
         locations={[0, 1]}
-        colors={['#4a00cc', '#cc66ff']}
+        colors={['#3023ae', '#c86dd7']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         >
@@ -144,7 +144,7 @@ const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   container: {
     flex : 1,
-    backgroundColor: "#EEE",
+    backgroundColor: "#f6f6f6",
   },
   textHeader:{
     fontSize: 20,
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
     fontSize: 20, 
     fontFamily: Fonts.MosseThai_Extra_Bold, 
     padding: 15,
-    color: '#1e272e',
+    color: '#3a3a3a',
     lineHeight: 25
   },
   texttime:{

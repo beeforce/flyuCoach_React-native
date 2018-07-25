@@ -83,7 +83,7 @@ searchText = (e) => {
                         style={{ flex: 1.8 }}
                     >
       <Text style = {styles.textTopicQuestion}>
-      ทุกคำถามโค้ชมีคำตอบ</Text>
+      ทุกคำถาม-โค้ชมีคำตอบ</Text>
       <View style = {{ flexDirection: 'row',
       alignItems: 'baseline',
       height: 45,
@@ -133,11 +133,11 @@ searchText = (e) => {
   const styles = StyleSheet.create({
     container: {
       flex : 1,
-      backgroundColor: "#fff",
+      backgroundColor: "#f6f6f6",
     },
     textTopicQuestion:{
       color: '#d60842',
-      fontSize: 18,
+      fontSize: 20,
       fontFamily: Fonts.MosseThai_Extra_Bold,
       marginLeft: 25,
       marginTop: 25

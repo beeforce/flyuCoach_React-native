@@ -26,7 +26,7 @@ var options = {
 class Signup extends Component {
 
   static navigationOptions = {
-    headerStyle: {backgroundColor: '#f2f6fc', elevation: 0, shadowOpacity: 0},
+    headerStyle: {backgroundColor: '#f6f6f6', elevation: 0, shadowOpacity: 0},
     style: { elevation: 0 }
   };
 
@@ -217,7 +217,7 @@ class Signup extends Component {
                 <TextInput 
                 style = {styles.textinput}
                 placeholder="ใส่อีเมลของเรา"
-                placeholderTextColor="#d81a36"
+                placeholderTextColor="#d60842"
                 keyboardType = "email-address"
                 returnKeyType = "next"
                 underlineColorAndroid="transparent"
@@ -237,7 +237,7 @@ class Signup extends Component {
                 <TextInput 
                 style = {styles.textinput}
                 placeholder="ใส่รหัสผ่านของเรา"
-                placeholderTextColor="#d81a36"
+                placeholderTextColor="#d60842"
                 keyboardType = "default"
                 returnKeyType = "next"
                 underlineColorAndroid="transparent"
@@ -259,7 +259,7 @@ class Signup extends Component {
                 <TextInput 
                 style = {styles.textinput}
                 placeholder="ใส่รหัสผ่านของเราอีกครั้ง"
-                placeholderTextColor="#d81a36"
+                placeholderTextColor="#d60842"
                 keyboardType = "default"
                 returnKeyType = "next"
                 underlineColorAndroid="transparent"
@@ -281,7 +281,7 @@ class Signup extends Component {
                 <TextInput 
                 style = {styles.textinput}
                 placeholder="ใส่เบอร์โทรศัพท์"
-                placeholderTextColor="#d81a36"
+                placeholderTextColor="#d60842"
                 keyboardType = "numeric"
                 returnKeyType = "next"
                 underlineColorAndroid="transparent"
@@ -302,7 +302,7 @@ class Signup extends Component {
                 <TextInput 
                 style = {styles.textinput}
                 placeholder="ใส่ชื่อ นามสกุล"
-                placeholderTextColor="#d81a36"
+                placeholderTextColor="#d60842"
                 keyboardType = "default"
                 returnKeyType = "next"
                 underlineColorAndroid="transparent"
@@ -323,7 +323,7 @@ class Signup extends Component {
                 <TextInput 
                 style = {styles.textinput}
                 placeholder="ใส่ชื่อเล่น"
-                placeholderTextColor="#d81a36"
+                placeholderTextColor="#d60842"
                 keyboardType = "default"
                 returnKeyType = "next"
                 underlineColorAndroid="transparent"
@@ -344,7 +344,7 @@ class Signup extends Component {
                 <TextInput 
                 style = {styles.textinput}
                 placeholder="ใส่วันเดือนปีเกิด(พศ)"
-                placeholderTextColor="#d81a36"
+                placeholderTextColor="#d60842"
                 value= {this.state.Date_of_Birth}
                 keyboardType = "numeric"
                 returnKeyType = "next"
@@ -372,7 +372,7 @@ class Signup extends Component {
                 <TextInput 
                 style = {styles.textinput}
                 placeholder="เลือกจังหวัด"
-                placeholderTextColor="#d81a36"
+                placeholderTextColor="#d60842"
                 value= {this.state.province}
                 keyboardType = "default"
                 returnKeyType = "next"
@@ -394,7 +394,7 @@ class Signup extends Component {
                 <TextInput 
                 style = {styles.textinput}
                 placeholder="เลือกโรงเรียน"
-                placeholderTextColor="#d81a36"
+                placeholderTextColor="#d60842"
                 value= {this.state.school}
                 keyboardType = "default"
                 returnKeyType = "next"
@@ -420,7 +420,7 @@ class Signup extends Component {
                 <TextInput 
                 style = {styles.textinput}
                 placeholder="ใส่เป้าหมายในชีวิต"
-                placeholderTextColor="#d81a36"
+                placeholderTextColor="#d60842"
                 value= {this.state.goal}
                 keyboardType = "default"
                 returnKeyType = "done"
@@ -438,7 +438,7 @@ class Signup extends Component {
                 //   isLoading: true
                 // })
               }}>
-               <LinearGradient colors={['#bbe84a','#7bd834', '#3e9e16']} style={styles.saveButton}>
+               <LinearGradient colors={['#b4ec51','#429321']} style={styles.saveButton}>
                 <Text style={{color: '#ffffff', fontFamily: Fonts.MosseThai_Bold , textAlign:'center', alignSelf:'center'}}>ยืนยันการสร้างบัญชี</Text>
                 </LinearGradient>
                 </TouchableOpacity>
@@ -454,7 +454,7 @@ class Signup extends Component {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#f2f6fc',
+      backgroundColor: '#f6f6f6',
       overflow: 'hidden',
     },
     saveButton:{
@@ -480,7 +480,7 @@ class Signup extends Component {
       width:SCREEN_WIDTH* 0.25,
       height:SCREEN_WIDTH* 0.25,
       borderRadius:(SCREEN_WIDTH* 0.25)/2,
-      backgroundColor: '#3d3d3d',
+      backgroundColor: '#3f3f3f',
       alignSelf: 'center',
       alignItems: 'center',
       justifyContent: 'center'
@@ -505,11 +505,13 @@ class Signup extends Component {
     iconwithText:{
       paddingLeft: 8,
       paddingTop: 1, 
+      color: '#626262',
       alignSelf:'center'
     },
     textwithIcon:{
       alignSelf:'center',
       fontSize: 16,
+      color: '#626262',
       fontFamily: Fonts.MosseThai_Medium
     },
     viewoficonwithtext:{

@@ -20,7 +20,7 @@ export default class JuneActivityList extends Component {
       <View style = {{flex:1}}>
 
         <View style = {{ flex: 1, flexDirection: 'row', paddingTop:15,marginRight: windowWidth * 0.075}}>
-        <LinearGradient colors={['#bbe84a','#7bd834', '#3e9e16']} style = {styles.dateBox}>
+        <LinearGradient colors={['#b4ec51','#429321']} style = {styles.dateBox}>
         <Text style = {styles.textDate}>{item.date}</Text>
         <Text style = {styles.textDate}>JUN</Text>
         </LinearGradient>
@@ -44,7 +44,7 @@ export default class JuneActivityList extends Component {
       <View style = {{flex:1,}}>
 
         <View style = {{ flex: 1, flexDirection: 'row', paddingTop:15,marginRight: windowWidth * 0.075,}}>
-        <LinearGradient colors={['#f7c042', '#f2892e','#f26304']} style = {styles.dateBox}>
+        <LinearGradient colors={['#fad961','#f76b1c']} style = {styles.dateBox}>
         <Text style = {styles.textDate}>{item.date}</Text>
         <Text style = {styles.textDate}>JUL</Text>
         </LinearGradient>
@@ -69,7 +69,7 @@ export default class JuneActivityList extends Component {
       <View style = {{flex: 1}}>
         {/* <LinearGradient colors={['#bced49', '#3e9e16']} style = {styles.monthBox}> */}
         <View style = {{paddingBottom: 20}}>
-        <LinearGradient colors={['#bbe84a','#7bd834', '#3e9e16']} style = {styles.monthBox}>
+        <LinearGradient colors={['#b4ec51','#429321']} style = {styles.monthBox}>
         <View style = {{ margin:13 }}>
         <Text style = {styles.textMonth}>JUNE 2018</Text>
         </View>
@@ -79,7 +79,7 @@ export default class JuneActivityList extends Component {
         </View>
 
         <View style = {{paddingBottom: 20}}>
-        <LinearGradient colors={['#f7c042', '#f2892e','#f26304']} style = {styles.monthBox}>
+        <LinearGradient colors={['#fad961','#f76b1c']} style = {styles.monthBox}>
         <View style = {{ margin:13 }}>
         <Text style = {styles.textMonth}>JULY 2018</Text>
         </View>
@@ -132,12 +132,12 @@ const styles = StyleSheet.create({
   },
   text_title:{
     fontFamily: Fonts.MosseThai_Extra_Bold, 
-    color: '#000', 
+    color: '#3d3d3d', 
     fontSize: 15
   },
   text_description:{
     fontFamily: Fonts.MosseThai_Medium, 
-    color: '#2c3e50', 
+    color: '#3d3d3d', 
     fontSize: 14, 
     paddingTop: 7
   }

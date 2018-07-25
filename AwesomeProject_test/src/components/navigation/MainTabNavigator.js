@@ -14,7 +14,7 @@ import { Fonts } from '../../utils/Fonts';
 
 const navigationOptions = ({ navigation }) => ({
   headerLeft: <HeaderBackButton onPress={() => navigation.goBack(null)} />,
-  headerStyle: {backgroundColor: '#EEEEEE', elevation: 0, shadowOpacity: 0},
+  headerStyle: {backgroundColor: '#f6f6f6', elevation: 0, shadowOpacity: 0},
   style: { elevation: 0 }
 })
 

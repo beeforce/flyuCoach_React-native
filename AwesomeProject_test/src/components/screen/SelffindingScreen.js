@@ -56,7 +56,7 @@ class ChoiceYesorNoButton extends Component {
   render() {
     return (
       <TouchableHighlight style = {[styles.cardviewcontentQuestion,{flex:0.14,}]} underlayColor = 'transparent' onPress = {this.props.onPress}>
-                    <Text style = {styles.textTitleQuestion}>{this.props.text}</Text>
+                    <Text style = {styles.textTitleanswer}>{this.props.text}</Text>
                     </TouchableHighlight>
     )
   }
@@ -78,7 +78,7 @@ export default class SelffindingScreen extends Component {
   static navigationOptions = ({ navigation, navigationOptions }) => {
     return {
     headerTitle: <LogoTitle  title = {navigation.getParam('title', 'ข้อมูลแบบประเมิน')}/>,
-    headerStyle: {backgroundColor: '#EEE', elevation: 0, shadowOpacity: 0},
+    headerStyle: {backgroundColor: '#f6f6f6', elevation: 0, shadowOpacity: 0},
     headerRight: (<View></View>)
   };
 };
@@ -132,7 +132,7 @@ export default class SelffindingScreen extends Component {
         </View>
         <View style = {{ flex: 0.18, marginTop: 10}}>
           <TouchableOpacity style={styles.submitButton} onPress={this.closeMainpage}>
-            <LinearGradient colors={['#afe03e', '#368c0b']} style = {{flex: 1, borderRadius: 27,justifyContent: 'center'}}>
+            <LinearGradient colors={['#b4ec51','#429321']} style = {{flex: 1, borderRadius: 27,justifyContent: 'center'}}>
               <Text style={styles.submitTextstyle}>เริ่มต้น</Text>
             </LinearGradient>
             </TouchableOpacity>
@@ -171,16 +171,16 @@ export default class SelffindingScreen extends Component {
         </View>
   
         </View>
-        <View style = {{ flex: 0.15,}}>
+        <View style = {{ flex: 0.14,}}>
           <TouchableOpacity style={styles.submitButton} onPress= {this.goFinishpageWithresult} >
-            <LinearGradient colors={['#afe03e', '#368c0b']} style = {{flex: 1, borderRadius: 27,justifyContent: 'center'}}>
+            <LinearGradient colors={['#b4ec51','#429321']} style = {{flex: 1, borderRadius: 27,justifyContent: 'center'}}>
               <Text style={styles.submitTextstyle}>ดูผลลัพธ์ของตัวเอง</Text>
             </LinearGradient>
             </TouchableOpacity>
           </View>
-          <View style = {{ flex: 0.15,}}>
+          <View style = {{ flex: 0.14,}}>
           <TouchableOpacity style={styles.submitButton} onPress={this.closeMainpage}>
-            <LinearGradient colors={['#f7c042', '#f2892e','#f26304']} style = {{flex: 1, borderRadius: 27,justifyContent: 'center'}}>
+            <LinearGradient colors={['#fad961', '#f76b1c']} style = {{flex: 1, borderRadius: 27,justifyContent: 'center'}}>
               <Text style={styles.submitTextstyle}>ประเมินใหม่อีกครั้ง</Text>
             </LinearGradient>
             </TouchableOpacity>
@@ -199,11 +199,11 @@ export default class SelffindingScreen extends Component {
       <Text style = {styles.textTitle}>{item.title}</Text>
       <View style = {{flexDirection: 'row', alignItems: 'center', marginBottom: 10,}}>
       <View style = {{flexDirection: 'row', alignItems: 'baseline', paddingRight: 15}}>
-      <Icon name="clock2" style={styles.icontype} size={11} color = '#485460'/>
+      <Icon name="clock2" style={styles.icontype} size={11} color = '#3a3a3a'/>
       <Text style = {styles.texttime}>{item.time} นาที</Text>
       </View>
       <View style = {{flexDirection: 'row', alignItems: 'baseline'}}>
-      <Icon name="tag" style={styles.icontype} size={11} color = '#485460'/>
+      <Icon name="tag" style={styles.icontype} size={11} color = '#3a3a3a'/>
       <Text style = {styles.texttime}>{item.type}</Text>
       </View>
       </View>
@@ -215,7 +215,7 @@ export default class SelffindingScreen extends Component {
           [{ nativeEvent: { contentOffset: { y: this.scrollY } } }]
             )}  >
             <View style = {{paddingTop: 25}}>
-            <Text style = {styles.textTitle}>น้องเหมาะกับอาชีพ{"\n"}"{item.result}"</Text>
+            <Text style = {styles.textTitleCareer}>น้องเหมาะกับอาชีพ{"\n"}"{item.result}"</Text>
             <Text style = {[styles.textDescription,{paddingHorizontal: windowWidth *0.075}]}>{item.resultText}</Text>
             </View>
       </ScrollView>
@@ -226,7 +226,7 @@ export default class SelffindingScreen extends Component {
         <TouchableOpacity style={styles.submitButton} onPress={() =>{
           this.props.navigation.goBack(null)
         }}>
-          <LinearGradient colors={['#afe03e', '#368c0b']} style = {{flex: 1, borderRadius: 27,justifyContent: 'center'}}>
+          <LinearGradient colors={['#b4ec51','#429321']} style = {{flex: 1, borderRadius: 27,justifyContent: 'center'}}>
             <Text style={styles.submitTextstyle}>ย้อนกลับไปหน้าหลัก</Text>
           </LinearGradient>
           </TouchableOpacity>
@@ -429,14 +429,14 @@ export default class SelffindingScreen extends Component {
     return(
     <View style = {{ flex: 0.18, marginTop: 15}}>
     <View style = {{flexDirection: 'row', alignItems:'center', alignSelf:'center', paddingBottom:3}}>
-        <Text style = {{fontSize: 14, fontFamily: Fonts.MosseThai_Bold, color: '#4cd137'}}>{this.state.currentIndex + 1 }/</Text>
-        <Text style = {{fontSize: 14, fontFamily: Fonts.MosseThai_Bold}}>{QuestionList_length} Steps</Text>
+        <Text style = {{fontSize: 14, fontFamily: Fonts.MosseThai_Bold, color: '#417505'}}>{this.state.currentIndex + 1 }</Text>
+        <Text style = {{fontSize: 14, fontFamily: Fonts.MosseThai_Bold}}>/{QuestionList_length} Steps</Text>
         </View>
         <Progress.Bar progress={(this.state.currentIndex + 1)/ QuestionList_length}
         width={windowWidth*0.6} height={15}
         borderWidth = {0}
-        style = {{alignSelf: 'center', borderRadius: 15, backgroundColor: '#3e9e16',}}
-        color = "rgb(115, 214, 40)"/>
+        style = {{alignSelf: 'center', borderRadius: 15, backgroundColor: '#264303',}}
+        color = 'rgb(126,211,33)'/>
         <View style = {{flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: windowWidth * 0.05}}>
         <TouchableOpacity onPress = {this.PreviousAnswer}>
         <Image source={require('../../images/icon_arrow_left.png')} resizeMode={'contain'} style={{ height: 25, width: 25, padding:15 }} />
@@ -477,7 +477,7 @@ const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    backgroundColor: '#EEE'
+    backgroundColor: '#f6f6f6'
   },
   cardviewcontent:{
     flex: 1, 
@@ -535,14 +535,24 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.MosseThai_Bold, 
     paddingTop: 15,
     paddingBottom: 15,
-    color: '#1e272e',
+    color: '#2e2e2e',
+    lineHeight: 25,
+    textAlign: 'center',
+    paddingHorizontal: windowWidth*0.18
+  },
+  textTitleCareer:{ 
+    fontSize: 20, 
+    fontFamily: Fonts.MosseThai_Bold, 
+    paddingTop: 15,
+    paddingBottom: 15,
+    color: '#2e2e2e',
     lineHeight: 25,
     textAlign: 'center',
     paddingHorizontal: windowWidth*0.18
   },
   texttime:{
     fontSize: 9, 
-    color: '#485460', 
+    color: '#3a3a3a', 
     fontFamily: Fonts.MosseThai_Medium,
   },
   icontype:{ 
@@ -557,9 +567,16 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
   textTitleQuestion:{ 
+    fontSize: 20, 
+    fontFamily: Fonts.MosseThai_Regular, 
+    color: '#484848',
+    lineHeight: 25,
+    textAlign: 'center',
+  },
+  textTitleanswer:{ 
     fontSize: 18, 
     fontFamily: Fonts.MosseThai_Bold, 
-    color: '#1e272e',
+    color: '#484848',
     lineHeight: 25,
     textAlign: 'center',
   },

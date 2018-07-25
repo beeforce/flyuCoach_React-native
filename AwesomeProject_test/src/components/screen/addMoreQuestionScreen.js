@@ -21,7 +21,7 @@ export default class addMoreQuestionScreen extends Component {
         <LinearTextGradient
         style={styles.textHeaderdesciptionFirst}
         locations={[0, 1]}
-        colors={['#0000cc', '#cc66ff']}
+        colors={['#3023ae', '#c86dd7']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         >
@@ -31,7 +31,7 @@ export default class addMoreQuestionScreen extends Component {
         <LinearTextGradient
         style={styles.textHeaderMark}
         locations={[0, 1]}
-        colors={['#0000cc', '#cc66ff']}
+        colors={['#3023ae', '#c86dd7']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         >
@@ -63,7 +63,7 @@ export default class addMoreQuestionScreen extends Component {
         <View style = {{ flex: 1,}}>
       <TouchableOpacity style={styles.submitButton} onPress={() => this.props.navigation.goBack(null)}
         >
-        <LinearGradient colors={['#afe03e', '#368c0b']} style = {{flex: 1, borderRadius: 27,justifyContent: 'center'}}>
+        <LinearGradient colors={['#b4ec51', '#429321']} style = {{flex: 1, borderRadius: 27,justifyContent: 'center'}}>
           <Text style={styles.submitTextstyle}>ส่งคำถาม</Text>
         </LinearGradient>
         </TouchableOpacity>
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     },
     textHeader:{
         fontSize: 20,
-        color: '#b30047',
+        color: '#d60842',
         fontFamily: Fonts.MosseThai_Extra_Bold,
         marginLeft: 20,
         marginTop: 5,
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     },
     textQuestion:{
         fontSize: 20,
-        color: '#2c3e50',
+        color: '#454545',
         fontFamily: Fonts.MosseThai_Medium,
         marginLeft: 20,
         marginTop: 15,

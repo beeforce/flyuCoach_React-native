@@ -266,12 +266,12 @@ class Login extends Component {
       <View style={styles.content}>
       <View style={styles.searchSection}>
       <View style={{ justifyContent: 'center', borderWidth: 2, alignSelf: 'center',
-      borderColor: '#2c3e50', width:windowWidth* 0.09, height:windowWidth* 0.09, borderRadius: (windowWidth* 0.09 + windowWidth* 0.09)/2}}>
-      <Icon name="user-alt" style={{alignSelf:'center',padding: 2}} size={16} color = '#2c3e50'/>
+      borderColor: '#464646', width:windowWidth* 0.09, height:windowWidth* 0.09, borderRadius: (windowWidth* 0.09 + windowWidth* 0.09)/2}}>
+      <Icon name="user-alt" style={{alignSelf:'center',padding: 2}} size={16} color = '#242424'/>
       </View>
       <TextInput style={styles.inputtextstyle}
       placeholder="Email Address"
-      placeholderTextColor="#2c3e50"
+      placeholderTextColor="#505050"
       underlineColorAndroid="transparent"
       onChangeText={(email) => this.setState({email})}
       value={this.state.email}
@@ -282,12 +282,12 @@ class Login extends Component {
       </View>
       <View style={styles.searchSection}>
       <View style={{ justifyContent: 'center', borderWidth: 2, alignSelf: 'center',
-      borderColor: '#2c3e50', width:windowWidth* 0.09, height:windowWidth* 0.09, borderRadius: (windowWidth* 0.09 + windowWidth* 0.09)/2}}>
-      <Icon name="lock" style={{ alignSelf:'center', padding: 2}} size={16} color = '#2c3e50'/>
+      borderColor: '#464646', width:windowWidth* 0.09, height:windowWidth* 0.09, borderRadius: (windowWidth* 0.09 + windowWidth* 0.09)/2}}>
+      <Icon name="lock" style={{ alignSelf:'center', padding: 2}} size={16} color = '#242424'/>
       </View>
       <TextInput style={styles.inputtextstyle}
        placeholder="Password"
-       placeholderTextColor="#2c3e50"
+       placeholderTextColor="#505050"
        underlineColorAndroid="transparent"
        onChangeText={(password) => this.setState({password})}
       value={this.state.password}
@@ -300,7 +300,7 @@ class Login extends Component {
       <TouchableOpacity style={styles.LoginButton}
           onPress = {() => this.loginFirebase(this.state.email, this.state.password)}
         >
-        <LinearGradient colors={['#9be534', '#4e8e11']} style = {{flex: 1, justifyContent: 'center', height: 55, borderRadius: 27, width: windowWidth * 0.75}}>
+        <LinearGradient colors={['rgb(180, 236, 81)', 'rgb(66, 147, 33)']} style = {{flex: 1, justifyContent: 'center', height: 55, borderRadius: 27, width: windowWidth * 0.75}}>
           <Text style={styles.LoginTextstyle}>Login</Text>
         </LinearGradient>
         </TouchableOpacity>
@@ -317,15 +317,15 @@ class Login extends Component {
           >
           <LinearGradient start={{ x: 1, y: 0 }}
           end={{ x: 0, y: 1 }}
-          locations={[0,0.5,1]}
-          colors={['#013da5', '#2069e8', '#5191ff']} style = {{flex: 1, justifyContent: 'center', height: 55, borderRadius: 27, width: windowWidth * 0.75}}>
+          locations={[0,1]}
+          colors={['#151897', '#3e8aff']} style = {{flex: 1, justifyContent: 'center', height: 55, borderRadius: 27, width: windowWidth * 0.75}}>
           <View style = {{flex: 1,flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>
           <Icon name="facebook" style={{ paddingRight: 10,}} size={20} color = '#fff'/>
           <Text style={styles.LoginTextstyle}>Connect with Facebook</Text>
           </View>
         </LinearGradient>
         </TouchableOpacity>
-        <Text style = {{paddingHorizontal: windowWidth * 0.2, color: '#5191ff',
+        <Text style = {{paddingHorizontal: windowWidth * 0.2, color: '#4a90e2',
         textAlign:'center', paddingTop: 5, fontFamily: Fonts.MosseThai_Medium, fontSize: 13
         }}>by logging in you agree to our privacy policy & term of service</Text>
         </View>
@@ -372,7 +372,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     marginLeft: 100,
-    backgroundColor: 'rgb(235, 249, 229)'
+    backgroundColor: 'rgb(233, 253, 211)'
   },
   contentContainer:{
     flex:1

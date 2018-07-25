@@ -5,12 +5,13 @@ import IcoMoonConfig from '../../selection.json'
 const Icon = createIconSetFromIcoMoon(IcoMoonConfig)
 import { Fonts } from '../../utils/Fonts'
 import LinearGradient from 'react-native-linear-gradient';
+import { LinearTextGradient } from 'react-native-text-gradient';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default class ForgetPassword extends Component {
   static navigationOptions = {
-    headerStyle: {backgroundColor: '#f2f6fc', elevation: 0, shadowOpacity: 0},
+    headerStyle: {backgroundColor: '#f6f6f6', elevation: 0, shadowOpacity: 0},
     style: { elevation: 0 }
   };
   
@@ -29,7 +30,15 @@ export default class ForgetPassword extends Component {
         <Text style = {styles.textforget}> </Text>
         <View>
         <Icon name="paper-plane" style={{alignSelf: 'center',padding: 30}} size={65} color = '#000'/>
-          <Text style = {{fontFamily: Fonts.MosseThai_Extra_Bold, fontSize: 19, marginTop: 20, alignSelf: 'center', color: '#6da835'}}>ส่งลิงค์เข้าอีเมลเรียบร้อยแล้ว</Text>
+        <LinearTextGradient
+         style = {{fontFamily: Fonts.MosseThai_Extra_Bold, fontSize: 19, marginTop: 20, alignSelf: 'center', color: '#6da835'}}
+        locations={[0, 1]}
+        colors={['#429321', '#b4ec51']}
+        start={{ x: 0, y: 1.5 }}
+        end={{ x: 0, y: 0.5 }}
+        >
+        ส่งลิงค์เข้าอีเมลเรียบร้อยแล้ว
+        </LinearTextGradient>
           
           <Text style = {{fontFamily: Fonts.MosseThai_Regular, fontSize: 14, marginTop: 10, alignSelf: 'center', textAlign: 'center'}}>คุณสามารถเข้าไปเปลี่ยนพาสเวิร์ดใหม่{"\n"}ได้ผ่านทางอีเมลได้ทันที</Text>
           <View style={{position: 'absolute',
@@ -39,7 +48,7 @@ export default class ForgetPassword extends Component {
                         borderRadius: 14,
                         left: SCREEN_WIDTH * 0.515,
                         backgroundColor: 'red'}}>
-          <LinearGradient colors={!this.state.goalSuccess ? ['#bbe84a','#7bd834', '#3e9e16'] : ['#f7c042', '#f2892e','#f26304']} style = {{ flex:1, justifyContent:'center',borderRadius: 14, alignItems:'center' }}>
+          <LinearGradient colors={['#b4ec51','#429321']} style = {{ flex:1, justifyContent:'center',borderRadius: 14, alignItems:'center' }}>
           <Image source={!this.state.goalSuccess ? require('../../images/check_white.png') : require('../../images/cancel_white.png')} style={{ width: 15, height:14}} />
           </LinearGradient>
         </View>
@@ -47,7 +56,7 @@ export default class ForgetPassword extends Component {
   
           <View style = {styles.bottomContent}>
           <TouchableOpacity onPress={() => this.props.navigation.goBack(null)}>
-           <LinearGradient colors={['#bbe84a','#7bd834', '#3e9e16']} style={styles.saveButton}>
+           <LinearGradient colors={['#b4ec51','#429321']} style={styles.saveButton}>
                   <Text style={styles.textSavebutton}>กลับหน้าหลัก</Text>
                   </LinearGradient>
                   </TouchableOpacity>
@@ -59,13 +68,13 @@ export default class ForgetPassword extends Component {
       <View style = {styles.container}>
       <Text style = {styles.textforget}>ลืมพาสเวิร์ดตัวเอง</Text>
       <View style = {styles.content}>
-      <Icon name="paper-plane" style={{alignSelf: 'center',padding: 30}} size={65} color = '#000'/>
+      <Icon name="paper-plane" style={{alignSelf: 'center',padding: 30}} size={65} color = '#2d2c2c'/>
         <View style = {{marginHorizontal: SCREEN_WIDTH * 0.045, marginBottom: 35, borderBottomWidth: 1.5, borderColor: '#c9c9c9'}}>
         <Text style = {{fontFamily: Fonts.MosseThai_Medium, fontSize: 14,}}>Forget Password</Text>
         <TextInput 
         style = {{fontFamily: Fonts.MosseThai_Extra_Bold, fontSize: 13, paddingLeft: -1, color: '#000'}}
         placeholder="กรอกอีเมล์เพื่อรับลิงค์เปลี่ยนพาสเวิร์ดใหม่"
-        placeholderTextColor= '#d81a36'
+        placeholderTextColor= '#d60842'
         value= {this.state.email}
         keyboardType = "email-address"
         underlineColorAndroid="transparent"
@@ -80,7 +89,7 @@ export default class ForgetPassword extends Component {
               sendLinkpressed: true
             })
           }}>
-         <LinearGradient colors={['#bbe84a','#7bd834', '#3e9e16']} style={styles.saveButton}>
+         <LinearGradient colors={['#b4ec51','#429321']} style={styles.saveButton}>
                 <Text style={styles.textSavebutton}>ส่งลิงค์เปลี่ยนพาสเวิร์ด</Text>
                 </LinearGradient>
                 </TouchableOpacity>
@@ -94,7 +103,7 @@ export default class ForgetPassword extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f2f6fc',
+    backgroundColor: '#f6f6f6',
     overflow: 'hidden',
   },
   content:{
@@ -112,7 +121,7 @@ const styles = StyleSheet.create({
     fontSize: 19,
     paddingBottom: 5,
     fontFamily: Fonts.MosseThai_Bold,
-    color: '#353b48'
+    color: '#626262'
   },
   saveButton:{
     backgroundColor: '#A3CB38',
